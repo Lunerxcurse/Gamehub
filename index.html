@@ -1,0 +1,1029 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameHub Beta - Free Online Games</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgZmlsbD0iIzdDM0FFRiI+CiAgPHBhdGggZD0iTTE2OCAxMDRhMTIgMTIgMCAwIDEtMTIgMTJoLTU2djU2YTEyIDEyIDAgMCAxLTI0IDB2LTU2SDIwYTEyIDEyIDAgMCAxIDAtMjRoNTZWMjhhMTIgMTIgMCAwIDEgMjQgMHY1Mmg1NmExMiAxMiAwIDAgMSAxMiAxMnptNjguNTYgMTAuNjktODAuMDctODBhMTYgMTYgMCAwIDAtMjIuNTYgMGwtODAuMDcgODBhMTYgMTYgMCAwIDAgMjIuNTYgMjIuNTdMMTI4IDE1Mi41N2w2OS40NyA2OS40OWExNiAxNiAwIDAgMCAyMi41Ni0yMi41N3oiPjwvcGF0aD4KPC9zdmc+">
+  <style>
+    /* Add footer styles */
+    footer {
+      background: var(--surface);
+      color: var(--text-secondary);
+      text-align: center;
+      padding: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    
+    /* Update Log Modal Styles */
+    #updateLogModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 15, 19, 0.9);
+      z-index: 1100;
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .update-log-content {
+      background: var(--surface);
+      border-radius: 16px;
+      max-width: 500px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .update-log-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .motd {
+      background: var(--surface-hover);
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .update-log-list {
+      text-align: left;
+    }
+
+    .update-log-list li {
+      margin-bottom: 10px;
+      padding: 10px;
+      background: var(--surface-hover);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .suggest-game-btn {
+      background: var(--surface-hover);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .suggest-game-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    #suggestGameModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 15, 19, 0.9);
+      z-index: 1200;
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .suggest-game-content {
+      background: var(--surface);
+      border-radius: 16px;
+      max-width: 500px;
+      width: 100%;
+      padding: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .suggest-game-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .suggest-game-form input,
+    .suggest-game-form textarea {
+      width: 100%;
+      padding: 10px;
+      background: var(--surface-hover);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+    }
+
+    .suggest-game-form button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .suggest-game-form button:hover {
+      opacity: 0.9;
+    }
+
+    /* Enhanced Logo Styles */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .logo i {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover i {
+      transform: rotate(15deg);
+    }
+
+    /* Enhanced Logo Beta Tag */
+    .logo sup {
+      background: var(--primary);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.5em;
+      margin-left: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Enhanced Button and Interaction Styles */
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      perspective: 1000px;
+    }
+
+    .suggest-game-btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      transform-style: preserve-3d;
+    }
+
+    .suggest-game-btn:hover {
+      transform: translateZ(20px) rotateX(-10deg);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.5);
+    }
+
+    .suggest-game-btn i {
+      margin-right: 0.5rem;
+    }
+
+    /* Subtle Pulse Animation for Interactivity */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .game-card:hover,
+    .featured-card:hover {
+      animation: pulse 0.5s ease-in-out;
+    }
+
+    /* Featured Card Image Support */
+    .featured-card-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.7);
+      transition: transform 0.3s ease;
+    }
+
+    .featured-card:hover .featured-card-image {
+      transform: scale(1.05);
+    }
+
+    .featured-card-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Updated Categories Styles */
+    .categories {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      padding: 0.5rem;
+      justify-content: center;
+    }
+
+    .categories button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      border: 2px solid var(--border);
+      color: var(--text-secondary);
+      padding: 0.7rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+    }
+
+    .categories button i {
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
+      margin-right: 0.3rem;
+    }
+
+    .categories button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg, 
+        transparent, 
+        rgba(124, 58, 237, 0.2), 
+        transparent
+      );
+      transition: all 0.5s ease;
+      z-index: 1;
+    }
+
+    .categories button:hover::before {
+      left: 100%;
+    }
+
+    .categories button.active,
+    .categories button:hover {
+      border-color: var(--primary);
+      color: var(--text);
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.2);
+    }
+
+    .categories button.active i,
+    .categories button:hover i {
+      color: var(--primary);
+    }
+
+    .categories button.active::after,
+    .categories button:hover::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 50%;
+      height: 3px;
+      background: var(--primary);
+      transform: translateX(-50%);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .categories {
+        gap: 0.5rem;
+      }
+      
+      .categories button {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Updated Jump Back In Section Styles */
+    .jump-back-section {
+      margin-bottom: 3rem;
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+    }
+
+    .jump-back-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .jump-back-title i {
+      color: var(--primary);
+    }
+
+    .jump-back-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .jump-back-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      background: var(--surface-hover);
+      cursor: pointer;
+      transform-origin: center;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .jump-back-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(124, 58, 237, 0.2);
+      z-index: 10;
+    }
+
+    .jump-back-card-content {
+      padding: 1rem;
+      background: linear-gradient(transparent, rgba(15, 15, 19, 0.9));
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .jump-back-card-content h3 {
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .jump-back-card-content p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .jump-back-empty {
+      text-align: center;
+      color: var(--text-secondary);
+      padding: 2rem;
+      background: var(--surface-hover);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      grid-column: 1 / -1;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .jump-back-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Updated Proxy Input and Button Styles */
+    .proxy-input-group {
+      display: flex;
+      margin: 1rem;
+      background: var(--surface-hover);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      height: 60px;
+    }
+
+    .proxy-input-group input {
+      flex-grow: 1;
+      padding: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .proxy-go-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 1.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      font-size: 1.2rem;
+    }
+
+    .proxy-options {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+
+    #proxyFrame-container {
+      flex-grow: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #proxyFrame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .proxy-loading {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 26, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      color: var(--text);
+      font-size: 1.5rem;
+    }
+
+    /* Style for AI Copilot button */
+    .ai-btn {
+      background: linear-gradient(135deg, #4CAF50, #2196F3);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    }
+
+    .ai-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    }
+
+    .ai-btn i {
+      margin-right: 0.3rem;
+    }
+
+    /* Mobile Responsiveness for nav controls */
+    @media (max-width: 768px) {
+      .nav-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .ai-btn {
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="logo">
+      <i class="ph ph-game-controller"></i>
+      <span>GameHub <sup>BETA</sup></span>
+    </a>
+    <div class="nav-controls">
+      <div class="search">
+        <i class="ph ph-magnifying-glass"></i>
+        <input type="text" placeholder="Search games..." id="searchInput">
+      </div>
+      <button id="suggestGameBtn" class="suggest-game-btn">
+        <i class="ph ph-envelope-simple"></i>
+        Suggest a Game
+      </button>
+      <button id="aiCopilotBtn" class="ai-btn">
+        <i class="ph ph-brain"></i>
+        AI Copilot
+      </button>
+    </div>
+  </nav>
+
+  <!-- New Jump Back In Section -->
+  <section class="jump-back-section">
+    <h2 class="jump-back-title">
+      <i class="ph ph-clock-clockwise"></i>
+      Jump Back In
+    </h2>
+    <div id="jumpBackGrid" class="jump-back-grid">
+      <!-- Recently played games will be inserted here -->
+    </div>
+  </section>
+
+  <div class="categories">
+    <button class="active" data-category="all">
+      <i class="ph ph-squares-four"></i>
+      All Games
+    </button>
+    <button data-category="arcade">
+      <i class="ph ph-game-controller"></i>
+      Arcade
+    </button>
+    <button data-category="action">
+      <i class="ph ph-sword"></i>
+      Action
+    </button>
+    <button data-category="racing">
+      <i class="ph ph-car"></i>
+      Racing
+    </button>
+    <button data-category="simulation">
+      <i class="ph ph-person"></i>
+      Simulation
+    </button>
+    <button data-category="puzzle">
+      <i class="ph ph-puzzle-piece"></i>
+      Puzzle
+    </button>
+    <button data-category="sports">
+      <i class="ph ph-basketball"></i>
+      Sports
+    </button>
+    <button data-category="horror">
+      <i class="ph ph-ghost"></i>
+      Horror
+    </button>
+    <button data-category="io">
+      <i class="ph ph-globe"></i>
+      .io Games
+    </button>
+  </div>
+
+  <div class="games-grid" id="gamesGrid">
+    <!-- Games inserted here -->
+  </div>
+
+  <div id="gameModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle"></h2>
+        <div class="modal-controls">
+          <button class="close-btn">
+            <i class="ph ph-x"></i>
+          </button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <iframe id="gameFrame" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="ph ph-gear"></i> Settings</h2>
+        <button class="close-btn settings-close-btn">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <div class="settings-grid">
+        <div class="settings-section">
+          <h3><i class="ph ph-paint-brush"></i> Theme Colors</h3>
+          <div class="setting-item">
+            <label>Primary Color</label>
+            <input type="color" id="primaryColor" value="#7c3aed">
+          </div>
+          <div class="setting-item">
+            <label>Background Color</label>
+            <input type="color" id="backgroundColor" value="#0f0f13">
+          </div>
+          <div class="setting-item">
+            <label>Surface Color</label>
+            <input type="color" id="surfaceColor" value="#1a1a1f">
+          </div>
+        </div>
+        
+        <div class="settings-section">
+          <h3><i class="ph ph-keyboard"></i> Hotkeys</h3>
+          <div class="setting-item">
+            <label>Panic Key (Quick Exit)</label>
+            <input type="text" id="panicKey" placeholder="Press any key" readonly>
+          </div>
+          <div class="setting-item">
+            <label>Fullscreen Key</label>
+            <input type="text" id="fullscreenKey" placeholder="Press any key" readonly>
+          </div>
+          <div class="setting-item">
+            <label>Panic URL</label>
+            <input type="url" id="panicUrl" placeholder="https://classroom.google.com">
+          </div>
+        </div>
+        
+        <div class="settings-section">
+          <h3><i class="ph ph-eye-slash"></i> Tab Cloak</h3>
+          <div class="setting-item">
+            <label>Cloak Presets</label>
+            <select id="cloakPreset">
+              <option value="classroom">Google Classroom</option>
+              <option value="docs">Google Docs</option>
+              <option value="drive">Google Drive</option>
+              <option value="calendar">Calendar</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label>Custom Title</label>
+            <input type="text" id="cloakTitle" placeholder="Custom page title">
+          </div>
+          <div class="setting-item">
+            <label>Custom Icon</label>
+            <select id="cloakIcon">
+              <option value="ph-books">Books</option>
+              <option value="ph-file-doc">Document</option>
+              <option value="ph-chart-line">Chart</option>
+              <option value="ph-calendar">Calendar</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="settings-section">
+          <h3><i class="ph ph-globe"></i> <span data-translate="language">Language</span></h3>
+          <div class="setting-item">
+            <label data-translate="language">Language</label>
+            <select id="languageSelect">
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="fr">Français</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="settings-actions">
+        <button class="reset-btn">Reset to Default</button>
+        <button class="save-btn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update Log Modal -->
+  <div id="updateLogModal">
+    <div class="update-log-content">
+      <div class="update-log-header">
+        <h2><i class="ph ph-megaphone"></i> Update Log</h2>
+        <button class="close-btn update-log-close">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      
+      <div class="motd">
+        <h3>Message of the Day</h3>
+        <p>Idk so Have a Great Day!</p>
+      </div>
+      
+      <div class="update-log-list">
+        <h3>Recent Updates</h3>
+        <ul>
+          <li>We've been busy adding new games and features. Explore, have fun, and enjoy!</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Suggest Game Modal -->
+  <div id="suggestGameModal">
+    <div class="suggest-game-content">
+      <div class="update-log-header">
+        <h2><i class="ph ph-envelope-simple"></i> Suggest a Game</h2>
+        <button class="close-btn suggest-game-close">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <form class="suggest-game-form" id="suggestGameForm">
+        <input type="text" name="name" placeholder="Your Name (Optional)" />
+        <input type="email" name="email" placeholder="Your Email (Optional)" />
+        <input type="text" name="gameName" placeholder="Game Name" required />
+        <textarea name="gameDescription" placeholder="Why should we add this game?" rows="4" required></textarea>
+        <button type="submit">Send Suggestion</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    class RecentGamesManager {
+      constructor() {
+        this.MAX_RECENT_GAMES = 6;
+        this.STORAGE_KEY = 'recentGames';
+      }
+
+      addRecentGame(game) {
+        if (!game || !game.id) return;
+
+        let recentGames = this.getRecentGames();
+        
+        // Remove duplicate if exists
+        recentGames = recentGames.filter(g => g.id !== game.id);
+        
+        // Add to the beginning of the array
+        recentGames.unshift(game);
+        
+        // Trim to max number of recent games
+        recentGames = recentGames.slice(0, this.MAX_RECENT_GAMES);
+        
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(recentGames));
+        this.updateRecentGamesDisplay();
+      }
+
+      getRecentGames() {
+        const stored = localStorage.getItem(this.STORAGE_KEY);
+        return stored ? JSON.parse(stored) : [];
+      }
+
+      updateRecentGamesDisplay() {
+        const jumpBackGrid = document.getElementById('jumpBackGrid');
+        if (!jumpBackGrid) return;
+
+        const recentGames = this.getRecentGames();
+        jumpBackGrid.innerHTML = '';
+
+        if (recentGames.length === 0) {
+          jumpBackGrid.innerHTML = `
+            <div class="jump-back-empty">
+              <p>No recently played games</p>
+            </div>
+          `;
+          return;
+        }
+
+        recentGames.forEach(game => {
+          const card = document.createElement('div');
+          card.className = 'jump-back-card';
+          card.innerHTML = `
+            <div class="jump-back-card-content">
+              <h3>${game.title}</h3>
+              <p>${game.description}</p>
+            </div>
+          `;
+          card.addEventListener('click', () => openGame(game));
+          jumpBackGrid.appendChild(card);
+        });
+      }
+    }
+
+    window.RecentGamesManager = RecentGamesManager;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        const initializeModules = () => {
+          // Settings Initialization
+          try {
+            if (typeof Settings === 'function') {
+              window.settingsInstance = new Settings();
+            } else {
+              console.warn('Settings module not loaded or defined');
+            }
+          } catch (settingsError) {
+            console.error('Settings initialization error:', settingsError);
+          }
+
+          // TabCloak Initialization
+          try {
+            if (typeof TabCloak === 'function') {
+              window.tabCloakInstance = new TabCloak();
+            } else {
+              console.warn('TabCloak module not loaded or defined');
+            }
+          } catch (cloakError) {
+            console.error('TabCloak initialization error:', cloakError);
+          }
+
+          // Event Listeners and Game Display
+          try {
+            if (typeof setupEventListeners === 'function') {
+              setupEventListeners();
+            } else {
+              console.warn('setupEventListeners not defined');
+            }
+
+            if (typeof displayGames === 'function') {
+              displayGames();
+            } else {
+              console.warn('displayGames not defined');
+            }
+          } catch (gameError) {
+            console.error('Game initialization error:', gameError);
+          }
+
+          // Other Modal Initializations
+          try {
+            initializeUpdateLogModal();
+            initializeSuggestGameModal();
+            initializeRecentGamesManager();
+          } catch (modalError) {
+            console.error('Modal initialization error:', modalError);
+          }
+        };
+
+        const loadScripts = () => {
+          const scriptsToLoad = [
+            { src: 'settings.js', global: 'Settings' },
+            { src: 'cloak.js', global: 'TabCloak' },
+            { src: 'games.js', global: 'games' },
+            { src: 'app.js', global: 'displayGames' }
+          ];
+
+          return Promise.all(
+            scriptsToLoad.map(script => 
+              new Promise((resolve, reject) => {
+                // Skip loading if global is already defined
+                if (window[script.global]) {
+                  console.log(`${script.global} already loaded`);
+                  resolve();
+                  return;
+                }
+
+                const scriptEl = document.createElement('script');
+                scriptEl.src = script.src;
+                scriptEl.onload = resolve;
+                scriptEl.onerror = reject;
+                document.body.appendChild(scriptEl);
+              })
+            )
+          );
+        };
+
+        loadScripts()
+          .then(() => {
+            console.log('All scripts loaded successfully');
+            initializeModules();
+          })
+          .catch((loadError) => {
+            console.error('Script loading error:', loadError);
+            alert('Failed to load necessary scripts. Please refresh the page.');
+          });
+
+      } catch (mainError) {
+        console.error('Main initialization error:', mainError);
+        alert('Critical initialization error. Please refresh the page.');
+      }
+    });
+
+    // Modularized Initialization Functions
+    function initializeUpdateLogModal() {
+      const updateLogModal = document.getElementById('updateLogModal');
+      const updateLogCloseBtn = document.querySelector('.update-log-close');
+      
+      if (updateLogModal && updateLogCloseBtn) {
+        updateLogCloseBtn.addEventListener('click', () => {
+          updateLogModal.style.display = 'none';
+        });
+        
+        // Show update log
+        updateLogModal.style.display = 'flex';
+      }
+    }
+
+    function initializeSuggestGameModal() {
+      const suggestGameBtn = document.getElementById('suggestGameBtn');
+      const suggestGameModal = document.getElementById('suggestGameModal');
+      const suggestGameCloseBtn = document.querySelector('.suggest-game-close');
+      const suggestGameForm = document.getElementById('suggestGameForm');
+
+      if (suggestGameBtn && suggestGameModal && suggestGameCloseBtn && suggestGameForm) {
+        suggestGameBtn.addEventListener('click', () => {
+          suggestGameModal.style.display = 'flex';
+        });
+
+        suggestGameCloseBtn.addEventListener('click', () => {
+          suggestGameModal.style.display = 'none';
+        });
+
+        suggestGameForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          const name = e.target.elements.name.value.trim() || 'Anonymous';
+          const email = e.target.elements.email.value.trim() || 'Not Provided';
+          const gameName = e.target.elements.gameName.value.trim();
+          const gameDescription = e.target.elements.gameDescription.value.trim();
+          
+          if (!gameName || !gameDescription) {
+            alert('Please provide a game name and description.');
+            return;
+          }
+
+          const emailBody = encodeURIComponent(`
+Game Suggestion Details:
+
+Sender Name: ${name}
+Sender Email: ${email}
+
+Game Name: ${gameName}
+
+Suggestion Description:
+${gameDescription}
+          `);
+
+          window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=briansubirat6@gmail.com&su=Game%20Suggestion:%20${encodeURIComponent(gameName)}&body=${emailBody}`, '_blank');
+          
+          e.target.reset();
+          suggestGameModal.style.display = 'none';
+        });
+      }
+    }
+
+    function initializeRecentGamesManager() {
+      const recentGamesManager = new RecentGamesManager();
+      recentGamesManager.updateRecentGamesDisplay();
+    }
+
+    // Close settings modal function
+    function closeSettingsModal() {
+      const settingsModal = document.getElementById('settingsModal');
+      if (settingsModal) {
+        settingsModal.style.display = 'none';
+      }
+    }
+
+    // Add close event listeners for settings modal
+    document.addEventListener('DOMContentLoaded', () => {
+      const settingsCloseBtn = document.querySelector('.settings-close-btn');
+      const saveBtn = document.querySelector('.save-btn');
+      const resetBtn = document.querySelector('.reset-btn');
+
+      if (settingsCloseBtn) {
+        settingsCloseBtn.addEventListener('click', closeSettingsModal);
+      }
+
+      if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+          // Add any save logic here
+          closeSettingsModal();
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          // Add any reset logic here
+          closeSettingsModal();
+        });
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const aiCopilotBtn = document.getElementById('aiCopilotBtn');
+      if (aiCopilotBtn) {
+        aiCopilotBtn.addEventListener('click', () => {
+          window.open('https://copilot.microsoft.com/chats/oQ12Yruvynzi1FRiXyyBP', '_blank');
+        });
+      }
+    });
+  </script>
+  <footer>
+    2024 GameHub Beta. Made with by Brian
+  </footer>
+</body>
+</html>
