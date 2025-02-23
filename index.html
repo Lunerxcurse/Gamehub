@@ -11,11 +11,9 @@
     /* Add footer styles */
     footer {
       background: var(--surface);
-      color: var(--text-secondary);
-      text-align: center;
-      padding: 1rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.9rem;
+      color: var(--text);
+      padding: 2rem;
+      margin-top: 3rem;
     }
     
     /* Update Log Modal Styles */
@@ -607,9 +605,281 @@
       box-shadow: 0 15px 30px rgba(124, 58, 237, 0.2);
       z-index: 10;
     }
+
+    .search-suggestions {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      z-index: 1000;
+    }
+
+    .search-suggestions.active {
+      display: block;
+    }
+
+    .suggestion-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .suggestion-item:hover {
+      background: var(--surface-hover);
+    }
+
+    .game-title {
+      font-weight: 600;
+    }
+
+    .game-category {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    /* Footer Styles */
+    footer {
+      background: var(--surface);
+      color: var(--text);
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    
+    /* Updated Footer Styles */
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .creator-info {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      background: var(--surface-hover);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      max-width: 300px;
+    }
+
+    .creator-info:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+    }
+
+    .creator-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+    }
+
+    .creator-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .creator-details h3 {
+      font-size: 1.1rem;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .creator-details p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-left: 0.5rem;
+    }
+
+    .social-link {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      padding: 0.2rem;
+    }
+
+    .social-link:hover {
+      color: var(--primary);
+      transform: scale(1.2);
+    }
+
+    /* Mobile Responsiveness for footer */
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
+        padding: 0.8rem;
+      }
+
+      .creator-info {
+        justify-content: center;
+        margin: 0 auto;
+        width: 280px;
+        padding: 0.8rem;
+      }
+    }
+    
+    /* Add sidebar styles */
+    .mobile-sidebar {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100vh;
+      background: var(--surface);
+      z-index: 1000;
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      box-shadow: 2px 0 15px rgba(0,0,0,0.2);
+    }
+
+    .mobile-sidebar.open {
+      transform: translateX(300px);
+    }
+
+    .mobile-sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-sidebar-overlay.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .mobile-sidebar-content {
+      padding: 1rem;
+    }
+
+    .mobile-sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-sidebar-menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1100;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .mobile-sidebar-menu-btn {
+        display: block;
+      }
+
+      .mobile-sidebar-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .mobile-sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .mobile-sidebar-search {
+        margin-bottom: 1rem;
+      }
+
+      .mobile-sidebar-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar">
+    <div class="mobile-sidebar-header">
+      <a href="/" class="logo">
+        <i class="ph ph-game-controller"></i>
+        <span>GameHub <sup>BETA</sup></span>
+      </a>
+    </div>
+    
+    <div class="mobile-sidebar-content">
+      <div class="mobile-sidebar-search">
+        <div class="search">
+          <i class="ph ph-magnifying-glass"></i>
+          <input type="text" placeholder="Search games..." id="mobileSidebarSearchInput">
+          <div class="search-suggestions" id="mobileSidebarSearchSuggestions"></div>
+        </div>
+      </div>
+
+      <div class="mobile-sidebar-nav">
+        <button id="mobileSuggestGameBtn" class="suggest-game-btn">
+          <i class="ph ph-envelope"></i>
+          Suggest a Game
+        </button>
+        <button id="mobileAiCopilotBtn" class="ai-btn">
+          <i class="ph ph-robot"></i>
+          AI Copilot
+        </button>
+      </div>
+
+      <div class="mobile-sidebar-recent">
+        <h3>
+          <i class="ph ph-clock-clockwise"></i>
+          Recent Games
+        </h3>
+        <div class="recent-games" id="mobileSidebarRecentGames">
+          <!-- Recent games will be populated here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="mobile-sidebar-overlay"></div>
+
   <nav>
     <a href="/" class="logo">
       <i class="ph ph-game-controller"></i>
@@ -619,6 +889,7 @@
       <div class="search">
         <i class="ph ph-magnifying-glass"></i>
         <input type="text" placeholder="Search games..." id="searchInput">
+        <div class="search-suggestions" id="searchSuggestions"></div>
       </div>
       <button id="suggestGameBtn" class="suggest-game-btn">
         <i class="ph ph-envelope"></i>
@@ -830,6 +1101,121 @@
     </div>
   </div>
 
+  <script>
+    class SearchSuggestions {
+      constructor() {
+        this.searchInput = document.getElementById('searchInput');
+        this.suggestionsContainer = document.getElementById('searchSuggestions');
+        this.setupEventListeners();
+      }
+
+      setupEventListeners() {
+        if (!this.searchInput || !this.suggestionsContainer) {
+          console.warn('Search elements not found');
+          return;
+        }
+
+        this.searchInput.addEventListener('input', () => this.handleInput());
+        this.searchInput.addEventListener('focus', () => this.handleInput());
+        
+        document.addEventListener('click', (e) => {
+          if (!this.searchInput.contains(e.target) && !this.suggestionsContainer.contains(e.target)) {
+            this.hideSuggestions();
+          }
+        });
+      }
+
+      handleInput() {
+        if (!this.searchInput) return;
+        
+        const query = this.searchInput.value.toLowerCase().trim();
+        
+        if (!query) {
+          this.hideSuggestions();
+          return;
+        }
+
+        const suggestions = this.getSuggestions(query);
+        this.displaySuggestions(suggestions);
+      }
+
+      getSuggestions(query) {
+        if (!window.games || !Array.isArray(window.games)) {
+          console.warn('Games data not available');
+          return [];
+        }
+        
+        return window.games
+          .filter(game => {
+            if (!game) return false;
+            
+            const matchesTitle = (game.title || '').toLowerCase().includes(query);
+            const matchesDescription = (game.description || '').toLowerCase().includes(query);
+            const matchesCategory = (game.category || '').toLowerCase().includes(query);
+            return matchesTitle || matchesDescription || matchesCategory;
+          })
+          .slice(0, 5);
+      }
+
+      displaySuggestions(suggestions) {
+        if (!this.suggestionsContainer) return;
+
+        if (!suggestions.length) {
+          this.hideSuggestions();
+          return;
+        }
+
+        this.suggestionsContainer.innerHTML = suggestions
+          .map(game => `
+            <div class="suggestion-item" data-game='${JSON.stringify(game)}'>
+              <i class="ph ${game.icon || 'ph-game-controller'}"></i>
+              <span class="game-title">${game.title || 'Unknown Game'}</span>
+              <span class="game-category">${game.category || 'uncategorized'}</span>
+            </div>
+          `)
+          .join('');
+
+        const suggestionItems = this.suggestionsContainer.querySelectorAll('.suggestion-item');
+        suggestionItems.forEach(item => {
+          item.addEventListener('click', () => {
+            try {
+              const gameData = JSON.parse(item.dataset.game);
+              if (gameData && gameData.url) {
+                openGame(gameData);
+                this.hideSuggestions();
+                if (this.searchInput) {
+                  this.searchInput.value = '';
+                }
+              }
+            } catch (err) {
+              console.error('Error handling suggestion click:', err);
+            }
+          });
+        });
+
+        this.suggestionsContainer.classList.add('active');
+      }
+
+      hideSuggestions() {
+        if (this.suggestionsContainer) {
+          this.suggestionsContainer.classList.remove('active');
+        }
+      }
+    }
+
+    // Initialize search suggestions only after DOM is loaded and games data is available
+    function initializeSearch() {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          setTimeout(() => new SearchSuggestions(), 100);
+        });
+      } else {
+        setTimeout(() => new SearchSuggestions(), 100);
+      }
+    }
+
+    initializeSearch();
+  </script>
   <script>
     class RecentGamesManager {
       constructor() {
@@ -1099,8 +1485,149 @@ ${gameDescription}
       }
     });
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuBtn = document.querySelector('.mobile-sidebar-menu-btn');
+      const sidebar = document.querySelector('.mobile-sidebar');
+      const sidebarOverlay = document.querySelector('.mobile-sidebar-overlay');
+      const closeSidebarBtn = document.querySelector('.close-sidebar-btn');
+
+      let startX = 0;
+      let isTouch = false;
+
+      function openSidebar() {
+        sidebar.classList.add('open');
+        sidebarOverlay.classList.add('active');
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        sidebarOverlay.classList.remove('active');
+      }
+
+      // Touch and Swipe Detection
+      document.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isTouch = true;
+      });
+
+      document.addEventListener('touchmove', (e) => {
+        if (!isTouch) return;
+        const currentX = e.touches[0].clientX;
+        const diffX = startX - currentX;
+
+        if (diffX > 50) {
+          openSidebar();
+          isTouch = false;
+        } else if (diffX < -50) {
+          closeSidebar();
+          isTouch = false;
+        }
+      });
+
+      document.addEventListener('touchend', () => {
+        isTouch = false;
+      });
+
+      // Menu Button Click
+      menuBtn.addEventListener('click', openSidebar);
+
+      // Close Sidebar Button
+      closeSidebarBtn.addEventListener('click', closeSidebar);
+
+      // Overlay Click
+      sidebarOverlay.addEventListener('click', closeSidebar);
+
+      // Mobile Suggest Game Button
+      const mobileSuggestGameBtn = document.getElementById('mobileSuggestGameBtn');
+      const suggestGameModal = document.getElementById('suggestGameModal');
+      if (mobileSuggestGameBtn && suggestGameModal) {
+        mobileSuggestGameBtn.addEventListener('click', () => {
+          suggestGameModal.style.display = 'flex';
+          closeSidebar();
+        });
+      }
+
+      // Mobile AI Copilot Button
+      const mobileAiCopilotBtn = document.getElementById('mobileAiCopilotBtn');
+      if (mobileAiCopilotBtn) {
+        mobileAiCopilotBtn.addEventListener('click', () => {
+          window.open('https://copilot.microsoft.com/', '_blank');
+          closeSidebar();
+        });
+      }
+
+      // Initialize mobile search suggestions
+      const mobileSidebarSearchInput = document.getElementById('mobileSidebarSearchInput');
+      const mobileSidebarSearchSuggestions = document.getElementById('mobileSidebarSearchSuggestions');
+
+      if (mobileSidebarSearchInput && mobileSidebarSearchSuggestions) {
+        mobileSidebarSearchInput.addEventListener('input', () => {
+          const query = mobileSidebarSearchInput.value.toLowerCase().trim();
+          
+          if (!query) {
+            mobileSidebarSearchSuggestions.classList.remove('active');
+            return;
+          }
+
+          const suggestions = window.games
+            .filter(game => 
+              game.title.toLowerCase().includes(query) || 
+              game.description.toLowerCase().includes(query)
+            )
+            .slice(0, 5);
+
+          mobileSidebarSearchSuggestions.innerHTML = suggestions
+            .map(game => `
+              <div class="suggestion-item" data-game='${JSON.stringify(game)}'>
+                <i class="ph ${game.icon || 'ph-game-controller'}"></i>
+                <span class="game-title">${game.title}</span>
+                <span class="game-category">${game.category}</span>
+              </div>
+            `)
+            .join('');
+
+          const suggestionItems = mobileSidebarSearchSuggestions.querySelectorAll('.suggestion-item');
+          suggestionItems.forEach(item => {
+            item.addEventListener('click', () => {
+              const gameData = JSON.parse(item.dataset.game);
+              openGame(gameData);
+              mobileSidebarSearchInput.value = '';
+              mobileSidebarSearchSuggestions.classList.remove('active');
+              closeSidebar();
+            });
+          });
+
+          mobileSidebarSearchSuggestions.classList.add('active');
+        });
+      }
+    });
+  </script>
+
   <footer>
-    2024 GameHub Beta. Made with by Brian
+    <div class="footer-content">
+      <div class="creator-info">
+        <img src="https://avatars.githubusercontent.com/u/145749058" alt="Brian" class="creator-avatar">
+        <div class="creator-details">
+          <h3>Created by Brian</h3>
+          <p>Developer</p>
+        </div>
+        <div class="social-links">
+          <a href="https://www.roblox.com/users/5740927099/profile" target="_blank" class="social-link" aria-label="Roblox">
+            <i class="ph ph-game-controller"></i>
+          </a>
+          <a href="/cdn-cgi/l/email-protection#e684948f87889593848f948792d0a6818b878f8ac885898b" target="_blank" class="social-link" aria-label="Email">
+            <i class="ph ph-envelope-simple"></i>
+          </a>
+          <a href="https://www.reddit.com/user/Quantom_Echo/" target="_blank" class="social-link" aria-label="Reddit">
+            <i class="ph ph-reddit-logo"></i>
+          </a>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2024 GameHub
+      </div>
+    </div>
   </footer>
-</body>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>

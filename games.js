@@ -3,6 +3,33 @@
 
   const additionalGames = [
     {
+      id: 'run-3',
+      title: 'Run 3',
+      description: 'Navigate through space in this endless runner',
+      category: 'arcade',
+      icon: 'ph-person-simple-run',
+      url: 'https://en.gameslol.net/data/run-3/index.html',
+      featured: false
+    },
+    {
+      id: 'drift-boss',
+      title: 'Drift Boss',
+      description: 'Master the art of drifting in this endless driving game',
+      category: 'racing',
+      icon: 'ph-car',
+      url: 'https://www.mathplayground.com/drift-boss-v3/index.html',
+      featured: false
+    },
+    {
+      id: 'fireboy-watergirl',
+      title: 'Fireboy & Watergirl',
+      description: 'Cooperative puzzle platformer',
+      category: 'puzzle',
+      icon: 'ph-fire',
+      url: 'https://html5.gamedistribution.com/62c49c90c7404b6689d7c4f3f6506fd8/',
+      featured: false
+    },
+    {
       id: 'dvd-logo',
       title: 'DVD Logo',
       description: 'Classic bouncing DVD logo game',
@@ -44,7 +71,7 @@
       description: 'Engage in hilarious archer battles with ragdoll physics',
       category: 'action',
       icon: 'ph-bow-arrow',
-      url: 'https://codelab.situscms.com/game/ragdollarchers/index.html',
+      url: 'https://codelab.sitescms.com/game/ragdollarchers/index.html',
       featured: false
     },
     {
@@ -325,23 +352,20 @@
       icon: 'ph-paper-plane',
       url: 'https://paperio.site/', 
       featured: false
-    }
-  ];
-
-  const newGames = [
+    },
     {
       id: 'vex-6',
-      title: 'Vex 6',
+      title: 'Vex 6',  
       description: 'Challenging platformer with intricate obstacle courses',
       category: 'action',
       icon: 'ph-arrow-up-right',
-      url: 'https://htmlxm.github.io/h9/vex-6/',  
+      url: 'https://htmlxm.github.io/h9/vex-6/',
       featured: false
     },
     {
       id: 'core-ball',
       title: 'Core Ball',
-      description: 'Arcade ball bouncing strategy game',
+      description: 'Arcade ball bouncing strategy game', 
       category: 'arcade',
       icon: 'ph-circle',
       url: 'https://www.onlinescientificresearch.com/games/core-ball/core-ball/index.html',
@@ -351,9 +375,9 @@
       id: 'basket-random',
       title: 'Basket Random',
       description: 'Chaotic basketball with unpredictable physics',
-      category: 'sports',
+      category: 'sports', 
       icon: 'ph-basketball',
-      url: 'https://html5.gamedistribution.com/rvvASMiM/basket-random/index.html',
+      url: 'https://basketball-random.com/gg/basketball-random/',  
       featured: false
     },
     {
@@ -361,7 +385,7 @@
       title: '1v1.LOL',
       description: 'Fast-paced building and shooting battle game',
       category: 'action',
-      icon: 'ph-crosshair',
+      icon: 'ph-crosshair', 
       url: 'https://1v1.lol/',
       featured: false
     },
@@ -371,15 +395,156 @@
       description: 'Hilarious multiplayer sniper duel game',
       category: 'action',
       icon: 'ph-target',
-      url: 'https://games.playtropolis.com/rooftop-snipers/',  
+      url: 'https://games.playtropolis.com/rooftop-snipers/',
       featured: false
+    },
+    {
+      id: 'bitlife',
+      title: 'BitLife',
+      description: 'Life simulation game where every choice matters',
+      category: 'simulation',
+      icon: 'ph-person',
+      url: 'https://2048taylorswift.github.io/bitlife/',
+      featured: false
+    },
+    {
+      id: 'baldis-basics',
+      title: "Baldi's Basics",
+      description: 'Horror educational game with unexpected twists',
+      category: 'horror',
+      icon: 'ph-ruler',
+      url: 'https://www.silvergames.com/en/baldis-basics-in-education-and-learning/gameframe',
+      featured: false
+    },
+    {
+      id: 'defly-io',
+      title: 'Defly.io',
+      description: 'Build, destroy and survive in this multiplayer arena',
+      category: 'io',
+      icon: 'ph-sword',
+      url: 'https://defly.io/',
+      featured: false
+    },
+    {
+      id: 'stumble-guys',
+      title: 'Stumble Guys',
+      description: 'Multiplayer knockout party game',
+      category: 'io',
+      icon: 'ph-person-simple-run',
+      url: 'https://www.stumbleguys.com/play',
+      featured: false
+    },
+    {
+      id: 'shell-shockers',
+      title: 'Shell Shockers',
+      description: 'Egg-themed first-person shooter',
+      category: 'action',
+      icon: 'ph-egg',
+      url: 'https://shellshock.io/',
+      featured: false
+    },
+    {
+      id: 'superhot',
+      title: 'SUPERHOT',
+      description: 'Time moves only when you move',
+      category: 'action',
+      icon: 'ph-timer',
+      url: 'https://timeshooter.io/wp-content/uploads/games/html5/S/super-hot%20(2)/index.html',
+      featured: true
+    },
+    {
+      id: 'gun-mayhem',
+      title: 'Gun Mayhem',
+      description: 'Action-packed shooter with multiple characters',
+      category: 'action',
+      icon: 'ph-crosshair',
+      url: 'https://www.silvergames.com/en/gun-mayhem/gameframe',  
+      featured: false
+    },
+    {
+      id: 'escape-the-room',
+      title: 'Escape the Room',
+      description: 'Puzzle adventure to escape a mysterious room',
+      category: 'puzzle',
+      icon: 'ph-door-open',
+      url: 'https://kdata1.com/2024/10/escapeseries/',
+      featured: false
+    },
+    {
+      id: 'tomb-of-the-mask',
+      title: 'Tomb of the Mask',
+      description: 'Challenging maze-based adventure game',
+      category: 'arcade',
+      icon: 'ph-map',
+      url: 'https://tomb-of-the-mask-online.github.io/file/',
+      featured: false
+    },
+    {
+      id: 'sister-location',
+      title: 'Five Nights at Freddy\'s: Sister Location',
+      description: 'Horror survival game in the FNAF universe',
+      category: 'horror',
+      icon: 'ph-ghost',
+      url: 'https://run3.io/popgame/fnaf/fnafsl.html',
+      featured: false
+    },
+    {
+      id: 'sniper-assassin',
+      title: 'Sniper Assassin',
+      description: 'Test your precision in this strategic shooter game',
+      category: 'action',
+      icon: 'ph-crosshair',
+      url: 'https://www.silvergames.com/en/sniper-assassin-4/gameframe',
+      featured: false
+    },
+    {
+      id: 'gun-mayhem',
+      title: 'Gun Mayhem',
+      description: 'Action-packed shooter with multiple characters',
+      category: 'action',
+      icon: 'ph-crosshair',
+      url: 'https://www.silvergames.com/en/gun-mayhem/gameframe',  
+      featured: false
+    },
+    {
+      id: 'flee-the-complex',
+      title: 'Flee the Complex',
+      description: 'Strategic escape adventure game',
+      category: 'action',
+      icon: 'ph-door-open',
+      url: 'https://www.silvergames.com/en/fleeing-the-complex/gameframe',
+      featured: false
+    },
+    {
+      id: 'escaping-the-prison',
+      title: 'Escaping the Prison',
+      description: 'Strategic escape adventure game',
+      category: 'action',
+      icon: 'ph-door-open',
+      url: 'https://www.silvergames.com/en/escaping-the-prison/gameframe',
+      featured: false
+    },
+    {
+      id: 'backrooms',
+      title: 'Backrooms',
+      description: 'Survive the unsettling, procedurally generated liminal spaces',
+      category: 'horror',
+      icon: 'ph-ghost',
+      url: 'https://backroomsgame.io/game/backrooms/',
+      featured: false
+    },
+    {
+      id: 'fortnite',
+      title: 'Fortnite',
+      description: 'Battle Royale browser game experience',
+      category: 'action',
+      icon: 'ph-target',
+      url: 'https://www.xbox.com/en-US/play/games/fortnite/BT5P2X999VH2',
+      featured: true
     }
   ];
 
-  // Merge existing games with new games, preserving order
-  window.games = [
-    ...window.games,
-    ...additionalGames,
-    ...newGames
-  ];
+  window.games = [...window.games, ...additionalGames];
+
+  window.dispatchEvent(new Event('gamesDataReady'));
 })();
