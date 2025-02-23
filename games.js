@@ -3,6 +3,15 @@
 
   const additionalGames = [
     {
+      id: 'there-is-no-game',
+      title: 'There Is No Game',
+      description: 'A game that tells you there is no game... or is there?',
+      category: 'puzzle',
+      icon: 'ph-question',
+      url: 'https://kdata1.com/2015/6/there-is-no-game/',
+      featured: false
+    },
+    {
       id: 'run-3',
       title: 'Run 3',
       description: 'Navigate through space in this endless runner',
