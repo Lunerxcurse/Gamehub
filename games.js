@@ -8,7 +8,7 @@
       description: 'A game that tells you there is no game... or is there?',
       category: 'puzzle',
       icon: 'ph-question',
-      url: 'https://kdata1.com/2015/6/there-is-no-game/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/there-is-no-game/index.html',
       featured: false
     },
     {
@@ -17,7 +17,7 @@
       description: 'Navigate through space in this endless runner',
       category: 'arcade',
       icon: 'ph-person-simple-run',
-      url: 'https://en.gameslol.net/data/run-3/index.html',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/run3/index.html',
       featured: false
     },
     {
@@ -44,7 +44,7 @@
       description: 'Classic bouncing DVD logo game',
       category: 'arcade',
       icon: 'ph-tv',
-      url: 'https://aidanspeakss.github.io/dvd-logo-game/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/dvdlogo/index.html',
       featured: false
     },
     {
@@ -80,7 +80,7 @@
       description: 'Engage in hilarious archer battles with ragdoll physics',
       category: 'action',
       icon: 'ph-bow-arrow',
-      url: 'https://codelab.sitescms.com/game/ragdollarchers/index.html',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/ragdoll-archers/index.html',
       featured: false
     },
     {
@@ -89,7 +89,7 @@
       description: 'High-speed racing game with minimalist graphics',
       category: 'racing',
       icon: 'ph-car',
-      url: 'https://storytellergame.io/gg/polytrack-unblocked/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/polytrack/index.html',
       featured: false
     },
     {
@@ -98,7 +98,7 @@
       description: 'Relaxing driving simulation game',
       category: 'simulation',
       icon: 'ph-car',
-      url: 'https://slowroads.io/#A2-973f4ca9@0',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/slow-roads/index.html',
       featured: false
     },
     {
@@ -507,15 +507,6 @@
       featured: false
     },
     {
-      id: 'gun-mayhem',
-      title: 'Gun Mayhem',
-      description: 'Action-packed shooter with multiple characters',
-      category: 'action',
-      icon: 'ph-crosshair',
-      url: 'https://www.silvergames.com/en/gun-mayhem/gameframe',  
-      featured: false
-    },
-    {
       id: 'flee-the-complex',
       title: 'Flee the Complex',
       description: 'Strategic escape adventure game',
@@ -550,10 +541,320 @@
       icon: 'ph-target',
       url: 'https://www.xbox.com/en-US/play/games/fortnite/BT5P2X999VH2',
       featured: true
+    },
+    // New added games
+    {
+      id: 'wordle',
+      title: 'Wordle',
+      description: 'Guess the hidden word in six tries',
+      category: 'puzzle',
+      icon: 'ph-textbox',
+      url: 'https://www.nytimes.com/games/wordle/index.html',
+      featured: false
+    },
+    {
+      id: 'idle-breakout',
+      title: 'Idle Breakout',
+      description: 'Automated brick-breaking idle game',
+      category: 'idle',
+      icon: 'ph-bricks',
+      url: 'https://html5.gamedistribution.com/rvvASMiM/c3a70ae98547407a92ebedca8b79fdfa/index.html',
+      featured: false
+    },
+    {
+      id: 'geometry-dash',
+      title: 'Geometry Dash',
+      description: 'Rhythm-based action platformer',
+      category: 'arcade',
+      icon: 'ph-square',
+      url: 'https://webglmath.github.io/geometry-dash/',
+      featured: false
+    },
+    {
+      id: 'ovo',
+      title: 'OvO',
+      description: 'Precision platformer with simple controls',
+      category: 'arcade',
+      icon: 'ph-egg',
+      url: 'https://dedragames.com/games/ovo/1.4/',
+      featured: false
+    },
+    {
+      id: 'stickman-golf',
+      title: 'Stickman Golf',
+      description: 'Golf game with physics challenges',
+      category: 'sports',
+      icon: 'ph-golf-ball',
+      url: 'https://www.mathplayground.com/stickman-golf/index.html',
+      featured: false
+    },
+    {
+      id: 'territorial-io',
+      title: 'Territorial.io',
+      description: 'Multiplayer territory conquest game',
+      category: 'io',
+      icon: 'ph-map',
+      url: 'https://territorial.io/',
+      featured: false
+    },
+    {
+      id: 'zombs-royale',
+      title: 'Zombs Royale',
+      description: 'Top-down battle royale with zombies',
+      category: 'io',
+      icon: 'ph-skull',
+      url: 'https://zombsroyale.io/',
+      featured: false
+    },
+    {
+      id: 'ev-io',
+      title: 'Ev.io',
+      description: 'Fast-paced first-person shooter game',
+      category: 'io',
+      icon: 'ph-crosshair',
+      url: 'https://ev.io/',
+      featured: false
+    },
+    {
+      id: 'doom',
+      title: 'DOOM',
+      description: 'Classic first-person shooter',
+      category: 'action',
+      icon: 'ph-gun',
+      url: 'https://archive.org/details/doom-play',
+      featured: true
+    },
+    {
+      id: 'google-baseball',
+      title: 'Google Baseball',
+      description: 'Swing the bat at the right time to hit home runs',
+      category: 'sports',
+      icon: 'ph-baseball',
+      url: 'https://www.google.com/logos/2019/july4th19/r6/july4th19.html',
+      featured: false
+    },
+    {
+      id: 'soccer-random',
+      title: 'Soccer Random',
+      description: 'Physics-based soccer game with ragdoll players',
+      category: 'sports',
+      icon: 'ph-soccer-ball',
+      url: 'https://soccer-random.io/',
+      featured: false
+    },
+    {
+      id: 'rocket-league',
+      title: 'Rocket League Haxball',
+      description: 'Soccer with rocket-powered cars, 2D version',
+      category: 'sports',
+      icon: 'ph-car',
+      url: 'https://openrocket.io/',
+      featured: false
+    },
+    {
+      id: 'happy-wheels',
+      title: 'Happy Wheels',
+      description: 'Physics-based obstacle course game',
+      category: 'action',
+      icon: 'ph-wheelchair',
+      url: 'https://totaljerkface.com/happy_wheels.tjf',
+      featured: false
+    },
+    {
+      id: 'tetris',
+      title: 'Tetris',
+      description: 'Classic block-stacking puzzle game',
+      category: 'puzzle',
+      icon: 'ph-squares-four',
+      url: 'https://tetris.com/play-tetris',
+      featured: false
+    },
+    {
+      id: 'hole-io',
+      title: 'Hole.io',
+      description: 'Grow your hole to consume everything',
+      category: 'io',
+      icon: 'ph-circle',
+      url: 'https://hole-io.com/',
+      featured: false
+    },
+    {
+      id: 'smash-karts',
+      title: 'Smash Karts',
+      description: 'Multiplayer kart battle game',
+      category: 'racing',
+      icon: 'ph-car',
+      url: 'https://smashkarts.io/',
+      featured: false
+    },
+    {
+      id: 'slither-io',
+      title: 'Slither.io',
+      description: 'Multiplayer snake game',
+      category: 'io',
+      icon: 'ph-snake',
+      url: 'https://slither.io/',
+      featured: false
+    },
+    {
+      id: 'krunker-io',
+      title: 'Krunker.io',
+      description: 'Fast-paced first-person shooter',
+      category: 'io',
+      icon: 'ph-crosshair',
+      url: 'https://krunker.io/',
+      featured: true
+    },
+    {
+      id: 'hexgl',
+      title: 'HexGL',
+      description: 'Futuristic racing game',
+      category: 'racing',
+      icon: 'ph-triangle',
+      url: 'https://hexgl.bkcore.com/play/',
+      featured: false
+    },
+    {
+      id: 'agar-io',
+      title: 'Agar.io',
+      description: 'Grow your cell by consuming others',
+      category: 'io',
+      icon: 'ph-circles-three',
+      url: 'https://agar.io/',
+      featured: false
+    },
+    {
+      id: 'clicker-heroes',
+      title: 'Clicker Heroes',
+      description: 'Incremental game with RPG elements',
+      category: 'idle',
+      icon: 'ph-hand-pointing',
+      url: 'https://www.clickerheroes.com/',
+      featured: false
+    },
+    {
+      id: 'death-run-3d',
+      title: 'Death Run 3D',
+      description: 'Fast-paced tunnel runner game',
+      category: 'arcade',
+      icon: 'ph-triangle',
+      url: 'https://www.y8.com/games/death_run_3d',
+      featured: false
+    },
+    {
+      id: 'pokemon-showdown',
+      title: 'Pokémon Showdown',
+      description: 'Competitive Pokémon battle simulator',
+      category: 'simulation',
+      icon: 'ph-lightning',
+      url: 'https://play.pokemonshowdown.com/',
+      featured: false
+    },
+    {
+      id: 'cut-the-rope',
+      title: 'Cut the Rope',
+      description: 'Physics-based puzzle game',
+      category: 'puzzle',
+      icon: 'ph-scissors',
+      url: 'https://www.crazygames.com/game/cut-the-rope',
+      featured: false
+    },
+    {
+      id: 'crossy-road',
+      title: 'Crossy Road',
+      description: 'Endless arcade hopper game',
+      category: 'arcade',
+      icon: 'ph-road-horizon',
+      url: 'https://poki.com/en/g/crossy-road',
+      featured: false
+    },
+    {
+      id: 'a-dark-room',
+      title: 'A Dark Room',
+      description: 'Text-based adventure with incremental mechanics',
+      category: 'idle',
+      icon: 'ph-moon',
+      url: 'https://adarkroom.doublespeakgames.com/',
+      featured: false
+    },
+    {
+      id: 'basketball-stars',
+      title: 'Basketball Stars',
+      description: 'Fast-paced basketball game',
+      category: 'sports',
+      icon: 'ph-basketball',
+      url: 'https://www.basketballstars.io/',
+      featured: false
+    },
+    {
+      id: 'bloxorz',
+      title: 'Bloxorz',
+      description: 'Roll the block to the goal',
+      category: 'puzzle',
+      icon: 'ph-cube',
+      url: 'https://www.mathplayground.com/logic_bloxorz.html',
+      featured: false
+    },
+    {
+      id: 'ski-safari',
+      title: 'Ski Safari',
+      description: 'Endless downhill skiing adventure',
+      category: 'arcade',
+      icon: 'ph-mountains',
+      url: 'https://html5.gamedistribution.com/b5b6635d870a4386a93ddbc0954dcee7/',
+      featured: false
+    },
+    {
+      id: 'short-life',
+      title: 'Short Life',
+      description: 'Dark humor platformer with ragdoll physics',
+      category: 'action',
+      icon: 'ph-bandage',
+      url: 'https://www.silvergames.com/en/short-life/gameframe',
+      featured: false
+    },
+    {
+      id: 'just-one-boss',
+      title: 'Just One Boss',
+      description: 'Challenging boss fight game',
+      category: 'action',
+      icon: 'ph-sword',
+      url: 'https://www.crazygames.com/game/just-one-boss',
+      featured: false
+    },
+    {
+      id: 'monkey-mart',
+      title: 'Monkey Mart',
+      description: 'Build and manage your supermarket empire',
+      category: 'simulation',
+      icon: 'ph-storefront',
+      url: 'https://www.crazygames.com/game/monkey-mart',
+      featured: false
+    },
+    {
+      id: 'rocket-soccer-derby',
+      title: 'Rocket Soccer Derby',
+      description: 'Vehicle-based soccer game',
+      category: 'sports',
+      icon: 'ph-car',
+      url: 'https://www.crazygames.com/game/rocket-soccer-derby',
+      featured: false
     }
   ];
 
   window.games = [...window.games, ...additionalGames];
+
+  const ids = new Set();
+  window.games = window.games.filter(game => {
+    if (!game.id) return false;
+    
+    if (ids.has(game.id)) {
+      game.id = `${game.id}-${Math.random().toString(36).substring(2, 7)}`;
+    }
+    
+    ids.add(game.id);
+    return true;
+  });
 
   window.dispatchEvent(new Event('gamesDataReady'));
 })();

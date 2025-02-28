@@ -1,839 +1,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GameHub Beta - Free Online Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GameHub Pro - Free Online Games</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgZmlsbD0iIzdDM0FFRiI+CiAgPHBhdGggZD0iTTE2OCAxMDRhMTIgMTIgMCAwIDEtMTIgMTJoLTU2djU2YTEyIDEyIDAgMCAxLTI0IDB2LTU2SDIwYTEyIDEyIDAgMCAxIDAtMjRoNTZWMjhhMTIgMTIgMCAwIDEgMjQgMHY1Mmg1NmExMiAxMiAwIDAgMSAxMiAxMnptNjguNTYgMTAuNjktODAuMDctODBhMTYgMTYgMCAwIDAtMjIuNTYgMGwtODAuMDcgODBhMTYgMTYgMCAwIDAgMjIuNTYgMjIuNTdMMTI4IDE1Mi41N2w2OS40NyA2OS40OWExNiAxNiAwIDAgMCAyMi41Ni0yMi41N3oiPjwvcGF0aD4KPC9zdmc+">
-  <style>
-    /* Add footer styles */
-    footer {
-      background: var(--surface);
-      color: var(--text);
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-    
-    /* Update Log Modal Styles */
-    #updateLogModal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(15, 15, 19, 0.9);
-      z-index: 1100;
-      backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .update-log-content {
-      background: var(--surface);
-      border-radius: 16px;
-      max-width: 500px;
-      width: 100%;
-      max-height: 80vh;
-      overflow-y: auto;
-      border: 1px solid var(--border);
-      padding: 20px;
-      text-align: center;
-    }
-
-    .update-log-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .motd {
-      background: var(--surface-hover);
-      padding: 15px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      border: 1px solid var(--border);
-    }
-
-    .update-log-list {
-      text-align: left;
-    }
-
-    .update-log-list li {
-      margin-bottom: 10px;
-      padding: 10px;
-      background: var(--surface-hover);
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-
-    .suggest-game-btn {
-      background: var(--surface-hover);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 10px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .suggest-game-btn:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-    }
-
-    #suggestGameModal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(15, 15, 19, 0.9);
-      z-index: 1200;
-      backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .suggest-game-content {
-      background: var(--surface);
-      border-radius: 16px;
-      max-width: 500px;
-      width: 100%;
-      padding: 20px;
-      border: 1px solid var(--border);
-    }
-
-    .suggest-game-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .suggest-game-form input,
-    .suggest-game-form textarea {
-      width: 100%;
-      padding: 10px;
-      background: var(--surface-hover);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text);
-    }
-
-    .suggest-game-form button {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .suggest-game-form button:hover {
-      opacity: 0.9;
-    }
-
-    /* Enhanced Logo Styles */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 1.8rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform 0.3s ease;
-    }
-
-    .logo:hover {
-      transform: scale(1.05);
-    }
-
-    .logo i {
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 2.5rem;
-      transition: transform 0.3s ease;
-    }
-
-    .logo:hover i {
-      transform: rotate(15deg);
-    }
-
-    /* Enhanced Logo Beta Tag */
-    .logo sup {
-      background: var(--primary);
-      color: white;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.5em;
-      margin-left: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    /* Enhanced Button and Interaction Styles */
-    .nav-controls {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      perspective: 1000px;
-    }
-
-    .suggest-game-btn {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border: none;
-      color: white;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
-      transform-style: preserve-3d;
-    }
-
-    .suggest-game-btn:hover {
-      transform: translateZ(20px) rotateX(-10deg);
-      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.5);
-    }
-
-    .suggest-game-btn i {
-      margin-right: 0.5rem;
-    }
-
-    /* Subtle Pulse Animation for Interactivity */
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    .game-card:hover,
-    .featured-card:hover {
-      animation: pulse 0.5s ease-in-out;
-    }
-
-    /* Featured Card Image Support */
-    .featured-card-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      filter: brightness(0.7);
-      transition: transform 0.3s ease;
-    }
-
-    .featured-card:hover .featured-card-image {
-      transform: scale(1.05);
-    }
-
-    .featured-card-content {
-      position: relative;
-      z-index: 1;
-    }
-    
-    /* Updated Categories Styles */
-    .categories {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      padding: 0.5rem;
-      justify-content: center;
-    }
-
-    .categories button {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: transparent;
-      border: 2px solid var(--border);
-      color: var(--text-secondary);
-      padding: 0.7rem 1.2rem;
-      border-radius: 30px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.9rem;
-    }
-
-    .categories button i {
-      color: var(--text-secondary);
-      transition: color 0.3s ease;
-      margin-right: 0.3rem;
-    }
-
-    .categories button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        120deg, 
-        transparent, 
-        rgba(124, 58, 237, 0.2), 
-        transparent
-      );
-      transition: all 0.5s ease;
-      z-index: 1;
-    }
-
-    .categories button:hover::before {
-      left: 100%;
-    }
-
-    .categories button.active,
-    .categories button:hover {
-      border-color: var(--primary);
-      color: var(--text);
-      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.2);
-    }
-
-    .categories button.active i,
-    .categories button:hover i {
-      color: var(--primary);
-    }
-
-    .categories button.active::after,
-    .categories button:hover::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 50%;
-      height: 3px;
-      background: var(--primary);
-      transform: translateX(-50%);
-    }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-      .categories {
-        gap: 0.5rem;
-      }
-      
-      .categories button {
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
-      }
-    }
-
-    /* Updated Jump Back In Section Styles */
-    .jump-back-section {
-      margin-bottom: 3rem;
-      background: var(--surface);
-      border-radius: 20px;
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-    }
-
-    .jump-back-title {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .jump-back-title i {
-      color: var(--primary);
-    }
-
-    .jump-back-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-
-    .jump-back-card {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      border: 1px solid var(--border);
-      background: var(--surface-hover);
-      cursor: pointer;
-      transform-origin: center;
-      height: 250px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-    .jump-back-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 30px rgba(124, 58, 237, 0.2);
-      z-index: 10;
-    }
-
-    .jump-back-card-content {
-      padding: 1rem;
-      background: linear-gradient(transparent, rgba(15, 15, 19, 0.9));
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-
-    .jump-back-card-content h3 {
-      color: var(--text);
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-
-    .jump-back-card-content p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-
-    .jump-back-empty {
-      text-align: center;
-      color: var(--text-secondary);
-      padding: 2rem;
-      background: var(--surface-hover);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      grid-column: 1 / -1;
-    }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-      .jump-back-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Updated Proxy Input and Button Styles */
-    .proxy-input-group {
-      display: flex;
-      margin: 1rem;
-      background: var(--surface-hover);
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      height: 60px;
-    }
-
-    .proxy-input-group input {
-      flex-grow: 1;
-      padding: 1rem;
-      background: transparent;
-      border: none;
-      color: var(--text);
-      outline: none;
-      font-size: 1rem;
-    }
-
-    .proxy-go-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0 1.5rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 80px;
-      font-size: 1.2rem;
-    }
-
-    .proxy-options {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      color: var(--text-secondary);
-      flex-wrap: wrap;
-    }
-
-    #proxyFrame-container {
-      flex-grow: 1;
-      overflow: hidden;
-      position: relative;
-    }
-
-    #proxyFrame {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .proxy-loading {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(26, 26, 26, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      color: var(--text);
-      font-size: 1.5rem;
-    }
-
-    /* Style for AI Copilot button */
-    .ai-btn {
-      background: linear-gradient(135deg, #4CAF50, #2196F3);
-      color: white;
-      border: none;
-      padding: 0.7rem 1.2rem;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-    }
-
-    .ai-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
-    }
-
-    .ai-btn i {
-      margin-right: 0.3rem;
-    }
-
-    /* Mobile Responsiveness for nav controls */
-    @media (max-width: 768px) {
-      .nav-controls {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      .ai-btn {
-        margin-top: 0.5rem;
-      }
-    }
-    
-    /* Game Card Styles */
-    .game-card {
-      position: relative;
-      background: var(--surface);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      border: 1px solid var(--border);
-      cursor: pointer;
-    }
-
-    .game-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(
-        circle at center, 
-        rgba(124, 58, 237, 0.2) 0%, 
-        transparent 70%
-      );
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .game-card:hover::before {
-      opacity: 1;
-    }
-
-    .game-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 15px 30px rgba(124, 58, 237, 0.2);
-      z-index: 10;
-    }
-
-    .featured-card {
-      position: relative;
-      background: var(--surface);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      border: 1px solid var(--border);
-      cursor: pointer;
-    }
-
-    .featured-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(
-        circle at center, 
-        rgba(124, 58, 237, 0.2) 0%, 
-        transparent 70%
-      );
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .featured-card:hover::before {
-      opacity: 1;
-    }
-
-    .featured-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 15px 30px rgba(124, 58, 237, 0.2);
-      z-index: 10;
-    }
-
-    .search-suggestions {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem;
-      z-index: 1000;
-    }
-
-    .search-suggestions.active {
-      display: block;
-    }
-
-    .suggestion-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .suggestion-item:hover {
-      background: var(--surface-hover);
-    }
-
-    .game-title {
-      font-weight: 600;
-    }
-
-    .game-category {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    
-    /* Footer Styles */
-    footer {
-      background: var(--surface);
-      color: var(--text);
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-    
-    /* Updated Footer Styles */
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 2rem;
-      align-items: center;
-      padding: 1rem;
-    }
-
-    .creator-info {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      background: var(--surface-hover);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      transition: all 0.3s ease;
-      max-width: 300px;
-    }
-
-    .creator-info:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-    }
-
-    .creator-avatar {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      border: 2px solid var(--primary);
-    }
-
-    .creator-details {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .creator-details h3 {
-      font-size: 1.1rem;
-      margin: 0;
-      font-weight: 600;
-    }
-
-    .creator-details p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin: 0;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 0.6rem;
-      margin-left: 0.5rem;
-    }
-
-    .social-link {
-      color: var(--text-secondary);
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      padding: 0.2rem;
-    }
-
-    .social-link:hover {
-      color: var(--primary);
-      transform: scale(1.2);
-    }
-
-    /* Mobile Responsiveness for footer */
-    @media (max-width: 768px) {
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        text-align: center;
-        padding: 0.8rem;
-      }
-
-      .creator-info {
-        justify-content: center;
-        margin: 0 auto;
-        width: 280px;
-        padding: 0.8rem;
-      }
-    }
-    
-    /* Add sidebar styles */
-    .mobile-sidebar {
-      position: fixed;
-      top: 0;
-      left: -300px;
-      width: 300px;
-      height: 100vh;
-      background: var(--surface);
-      z-index: 1000;
-      transition: transform 0.3s ease;
-      overflow-y: auto;
-      box-shadow: 2px 0 15px rgba(0,0,0,0.2);
-    }
-
-    .mobile-sidebar.open {
-      transform: translateX(300px);
-    }
-
-    .mobile-sidebar-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 999;
-      display: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .mobile-sidebar-overlay.active {
-      display: block;
-      opacity: 1;
-    }
-
-    .mobile-sidebar-content {
-      padding: 1rem;
-    }
-
-    .mobile-sidebar-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .mobile-sidebar-menu-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1100;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px;
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
-
-      .mobile-sidebar-menu-btn {
-        display: block;
-      }
-
-      .mobile-sidebar-content {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .mobile-sidebar-nav {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .mobile-sidebar-search {
-        margin-bottom: 1rem;
-      }
-
-      .mobile-sidebar-actions {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-    }
-  </style>
 </head>
 <body>
   <!-- Mobile Sidebar -->
@@ -841,8 +14,11 @@
     <div class="mobile-sidebar-header">
       <a href="/" class="logo">
         <i class="ph ph-game-controller"></i>
-        <span>GameHub <sup>BETA</sup></span>
+        <span>GameHub <sup>PRO</sup></span>
       </a>
+      <button class="close-btn mobile-sidebar-close">
+        <i class="ph ph-x"></i>
+      </button>
     </div>
     
     <div class="mobile-sidebar-content">
@@ -851,16 +27,21 @@
           <i class="ph ph-magnifying-glass"></i>
           <input type="text" placeholder="Search games..." id="mobileSidebarSearchInput">
         </div>
+        <div class="mobile-sidebar-search-suggestions" id="mobileSidebarSearchSuggestions"></div>
       </div>
 
       <div class="mobile-sidebar-nav">
-        <button class="suggest-game-btn" onclick="openSuggestGameModal()">
-          <i class="ph ph-envelope"></i>
+        <button class="mobile-action-btn primary-btn" id="mobileSuggestGameBtn">
+          <i class="ph ph-plus-circle"></i>
           Suggest a Game
         </button>
-        <button class="ai-btn" onclick="openAICopilot()">
+        <button class="mobile-action-btn secondary-btn" id="mobileAiCopilotBtn">
           <i class="ph ph-robot"></i>
           AI Copilot
+        </button>
+        <button class="mobile-action-btn" id="mobileSettingsBtn">
+          <i class="ph ph-gear"></i>
+          Settings
         </button>
       </div>
 
@@ -873,16 +54,21 @@
           <!-- Recent games will be populated here -->
         </div>
       </div>
+
+      <div class="mobile-sidebar-footer">
+        <p class="version">GameHub Pro v2.4.0</p>
+      </div>
     </div>
   </div>
 
   <!-- Sidebar Overlay -->
   <div class="mobile-sidebar-overlay"></div>
 
+  <!-- Desktop Navigation -->
   <nav>
     <a href="/" class="logo">
       <i class="ph ph-game-controller"></i>
-      <span>GameHub <sup>BETA</sup></span>
+      <span>GameHub <sup>PRO</sup></span>
     </a>
     <div class="nav-controls">
       <div class="search">
@@ -891,76 +77,163 @@
         <div class="search-suggestions" id="searchSuggestions"></div>
       </div>
       <button id="suggestGameBtn" class="suggest-game-btn">
-        <i class="ph ph-envelope"></i>
-        Suggest a Game
+        <i class="ph ph-plus-circle"></i>
+        <span>Suggest</span>
       </button>
       <button id="aiCopilotBtn" class="ai-btn">
         <i class="ph ph-robot"></i>
-        AI Copilot
+        <span>AI Copilot</span>
+      </button>
+      <button id="settingsBtn" class="settings-btn">
+        <i class="ph ph-gear"></i>
       </button>
     </div>
   </nav>
 
-  <!-- New Jump Back In Section -->
-  <section class="jump-back-section">
-    <h2 class="jump-back-title">
-      <i class="ph ph-clock-clockwise"></i>
-      Jump Back In
-    </h2>
-    <div id="jumpBackGrid" class="jump-back-grid">
-      <!-- Recently played games will be inserted here -->
-    </div>
-  </section>
+  <main>
+    <!-- Recently Played Section -->
+    <section class="jump-back-section">
+      <div class="jump-back-header">
+        <h2 class="jump-back-title">
+          <i class="ph ph-clock-clockwise"></i>
+          Recently Played
+        </h2>
+        <div class="jump-back-actions">
+          <button id="clearRecentBtn" class="action-btn">
+            <i class="ph ph-trash"></i>
+            Clear
+          </button>
+        </div>
+      </div>
+      <div id="jumpBackGrid" class="jump-back-grid">
+        <!-- Recently played games will be inserted here -->
+      </div>
+    </section>
 
-  <div class="categories">
-    <button class="active" data-category="all">
-      <i class="ph ph-squares-four"></i>
-      All Games
-    </button>
-    <button data-category="arcade">
-      <i class="ph ph-game-controller"></i>
-      Arcade
-    </button>
-    <button data-category="action">
-      <i class="ph ph-sword"></i>
-      Action
-    </button>
-    <button data-category="racing">
-      <i class="ph ph-car"></i>
-      Racing
-    </button>
-    <button data-category="simulation">
-      <i class="ph ph-person"></i>
-      Simulation
-    </button>
-    <button data-category="puzzle">
-      <i class="ph ph-puzzle-piece"></i>
-      Puzzle
-    </button>
-    <button data-category="sports">
-      <i class="ph ph-basketball"></i>
-      Sports
-    </button>
-    <button data-category="horror">
-      <i class="ph ph-ghost"></i>
-      Horror
-    </button>
-    <button data-category="io">
-      <i class="ph ph-globe"></i>
-      .io Games
-    </button>
-  </div>
+    <!-- New Games Section -->
+    <section class="new-games-section">
+      <div class="new-games-header">
+        <h2 class="new-games-title">
+          <i class="ph ph-sparkle"></i>
+          New Arrivals
+        </h2>
+        <div class="new-games-actions">
+          <button id="refreshNewGamesBtn" class="action-btn">
+            <i class="ph ph-arrows-clockwise"></i>
+            Refresh
+          </button>
+        </div>
+      </div>
+      <div class="new-games-swiper" id="newGamesSwiper">
+        <!-- New games will be populated here via JS -->
+      </div>
+    </section>
 
-  <div class="games-grid" id="gamesGrid">
-    <!-- Games inserted here -->
-  </div>
+    <!-- Popular Tags Section -->
+    <section class="tags-section">
+      <div class="tags-header">
+        <h2 class="tags-title">
+          <i class="ph ph-tag"></i>
+          Popular Tags
+        </h2>
+      </div>
+      <div class="tags-container" id="popularTags">
+        <button class="tag-chip" data-tag="action">Action</button>
+        <button class="tag-chip" data-tag="shooter">Shooter</button>
+        <button class="tag-chip" data-tag="strategy">Strategy</button>
+        <button class="tag-chip" data-tag="platformer">Platformer</button>
+        <button class="tag-chip" data-tag="multiplayer">Multiplayer</button>
+        <button class="tag-chip" data-tag="rpg">RPG</button>
+        <button class="tag-chip" data-tag="racing">Racing</button>
+        <button class="tag-chip" data-tag="idle">Idle</button>
+      </div>
+    </section>
 
+    <!-- All Games Section -->
+    <section class="collection-section">
+      <div class="collection-header">
+        <h2 class="collection-title">
+          <i class="ph ph-game-controller"></i>
+          All Games
+        </h2>
+      </div>
+      
+      <div class="collection-filters">
+        <div class="filter-chip active" data-category="all">
+          <i class="ph ph-squares-four"></i>
+          All Games
+        </div>
+        <div class="filter-chip" data-category="arcade">
+          <i class="ph ph-game-controller"></i>
+          Arcade
+        </div>
+        <div class="filter-chip" data-category="action">
+          <i class="ph ph-sword"></i>
+          Action
+        </div>
+        <div class="filter-chip" data-category="racing">
+          <i class="ph ph-car"></i>
+          Racing
+        </div>
+        <div class="filter-chip" data-category="simulation">
+          <i class="ph ph-person"></i>
+          Simulation
+        </div>
+        <div class="filter-chip" data-category="puzzle">
+          <i class="ph ph-puzzle-piece"></i>
+          Puzzle
+        </div>
+        <div class="filter-chip" data-category="sports">
+          <i class="ph ph-basketball"></i>
+          Sports
+        </div>
+        <div class="filter-chip" data-category="horror">
+          <i class="ph ph-ghost"></i>
+          Horror
+        </div>
+        <div class="filter-chip" data-category="io">
+          <i class="ph ph-globe"></i>
+          .io Games
+        </div>
+        <div class="filter-chip" data-category="idle">
+          <i class="ph ph-timer"></i>
+          Idle
+        </div>
+      </div>
+      
+      <div class="sort-filters">
+        <span class="sort-label">Sort by:</span>
+        <div class="sort-options">
+          <button class="sort-option active" data-sort="popular">Popular</button>
+          <button class="sort-option" data-sort="newest">Newest</button>
+          <button class="sort-option" data-sort="rating">Rating</button>
+          <button class="sort-option" data-sort="name">Name</button>
+        </div>
+      </div>
+      
+      <div class="games-grid" id="gamesGrid">
+        <!-- Games will be populated here via JS -->
+      </div>
+      
+      <div class="load-more-container">
+        <button id="loadMoreBtn" class="load-more-btn">
+          <i class="ph ph-plus-circle"></i>
+          Load More Games
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Game Modal -->
   <div id="gameModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
         <h2 id="modalTitle"></h2>
         <div class="modal-controls">
-          <button class="close-btn">
+          <button class="fullscreen-btn" id="fullscreenBtn">
+            <i class="ph ph-arrows-out"></i>
+          </button>
+          <button class="close-btn" id="closeModalBtn">
             <i class="ph ph-x"></i>
           </button>
         </div>
@@ -971,6 +244,7 @@
     </div>
   </div>
 
+  <!-- Enhanced Settings Modal -->
   <div id="settingsModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -979,113 +253,297 @@
           <i class="ph ph-x"></i>
         </button>
       </div>
-      <div class="settings-grid">
-        <div class="settings-section">
-          <h3><i class="ph ph-paint-brush"></i> Theme Colors</h3>
-          <div class="setting-item">
-            <label>Primary Color</label>
-            <input type="color" id="primaryColor" value="#7c3aed">
-          </div>
-          <div class="setting-item">
-            <label>Background Color</label>
-            <input type="color" id="backgroundColor" value="#0f0f13">
-          </div>
-          <div class="setting-item">
-            <label>Surface Color</label>
-            <input type="color" id="surfaceColor" value="#1a1a1f">
-          </div>
-        </div>
-        
-        <div class="settings-section">
-          <h3><i class="ph ph-keyboard"></i> Hotkeys</h3>
-          <div class="setting-item">
-            <label>Panic Key (Quick Exit)</label>
-            <input type="text" id="panicKey" placeholder="Press any key" readonly>
-          </div>
-          <div class="setting-item">
-            <label>Fullscreen Key</label>
-            <input type="text" id="fullscreenKey" placeholder="Press any key" readonly>
-          </div>
-          <div class="setting-item">
-            <label>Panic URL</label>
-            <input type="url" id="panicUrl" placeholder="https://classroom.google.com">
-          </div>
-        </div>
-        
-        <div class="settings-section">
-          <h3><i class="ph ph-eye-slash"></i> Tab Cloak</h3>
-          <div class="setting-item">
-            <label>Cloak Presets</label>
-            <select id="cloakPreset">
-              <option value="classroom">Google Classroom</option>
-              <option value="docs">Google Docs</option>
-              <option value="drive">Google Drive</option>
-              <option value="calendar">Calendar</option>
-            </select>
-          </div>
-          <div class="setting-item">
-            <label>Custom Title</label>
-            <input type="text" id="cloakTitle" placeholder="Custom page title">
-          </div>
-          <div class="setting-item">
-            <label>Custom Icon</label>
-            <select id="cloakIcon">
-              <option value="ph-books">Books</option>
-              <option value="ph-file-doc">Document</option>
-              <option value="ph-chart-line">Chart</option>
-              <option value="ph-calendar">Calendar</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="settings-section">
-          <h3><i class="ph ph-globe"></i> <span data-translate="language">Language</span></h3>
-          <div class="setting-item">
-            <label data-translate="language">Language</label>
-            <select id="languageSelect">
-              <option value="en">English</option>
-              <option value="es">Español</option>
-              <option value="fr">Français</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="settings-actions">
-        <button class="reset-btn">Reset to Default</button>
-        <button class="save-btn">Save Changes</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Update Log Modal -->
-  <div id="updateLogModal">
-    <div class="update-log-content">
-      <div class="update-log-header">
-        <h2><i class="ph ph-megaphone"></i> Update Log</h2>
-        <button class="close-btn update-log-close">
-          <i class="ph ph-x"></i>
-        </button>
-      </div>
       
-      <div class="motd">
-        <h3>Message of the Day</h3>
-        <p>Idk so Have a Great Day!</p>
-      </div>
-      
-      <div class="update-log-list">
-        <h3>Recent Updates</h3>
-        <ul>
-          <li>We've been busy adding new games and features. Explore, have fun, and enjoy!</li>
-        </ul>
+      <div class="settings-panel">
+        <div class="settings-tabs">
+          <div class="settings-tab active" data-tab="appearance">
+            <i class="ph ph-paint-brush"></i>
+            Appearance
+          </div>
+          <div class="settings-tab" data-tab="privacy">
+            <i class="ph ph-shield"></i>
+            Privacy
+          </div>
+          <div class="settings-tab" data-tab="controls">
+            <i class="ph ph-keyboard"></i>
+            Controls
+          </div>
+          <div class="settings-tab" data-tab="cloak">
+            <i class="ph ph-eye-slash"></i>
+            Tab Cloak
+          </div>
+          <div class="settings-tab" data-tab="about">
+            <i class="ph ph-info"></i>
+            About
+          </div>
+        </div>
+        
+        <div class="settings-tab-content active" data-tab-content="appearance">
+          <div class="settings-grid">
+            <div class="settings-section">
+              <h3><i class="ph ph-palette"></i> Theme Colors</h3>
+              <div class="setting-item">
+                <label>Primary Color</label>
+                <input type="color" id="primaryColor" value="#7c3aed">
+              </div>
+              <div class="setting-item">
+                <label>Background Color</label>
+                <input type="color" id="backgroundColor" value="#0f0f13">
+              </div>
+              <div class="setting-item">
+                <label>Surface Color</label>
+                <input type="color" id="surfaceColor" value="#1a1a1f">
+              </div>
+            </div>
+            
+            <div class="settings-section">
+              <h3><i class="ph ph-device-mobile"></i> Interface</h3>
+              <div class="setting-item">
+                <label>Theme Mode</label>
+                <select id="themeMode">
+                  <option value="dark">Dark Mode</option>
+                  <option value="light">Light Mode</option>
+                  <option value="system">System Default</option>
+                </select>
+              </div>
+              <div class="setting-item">
+                <label>Games Grid Size</label>
+                <select id="gridSize">
+                  <option value="small">Small</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="large">Large</option>
+                </select>
+              </div>
+              <div class="setting-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <label style="margin-bottom: 0;">Show Game Ratings</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="showRatings" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="setting-item">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <label style="margin-bottom: 0;">Enable Animations</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="enableAnimations" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="settings-tab-content" data-tab-content="privacy">
+          <div class="settings-grid">
+            <div class="settings-section">
+              <h3><i class="ph ph-shield-check"></i> Privacy Settings</h3>
+              <div class="setting-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <label style="margin-bottom: 0;">Save Game History</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="saveHistory" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="setting-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <label style="margin-bottom: 0;">Incognito Mode</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="incognitoMode">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="setting-item">
+                <label>Panic URL</label>
+                <input type="url" id="panicUrl" placeholder="https://classroom.google.com" value="https://classroom.google.com">
+              </div>
+            </div>
+            
+            <div class="settings-section">
+              <h3><i class="ph ph-trash"></i> Data Management</h3>
+              <div class="setting-item">
+                <button class="reset-btn" style="width: 100%; margin-bottom: 1rem;" id="clearHistory">
+                  Clear Game History
+                </button>
+                <button class="reset-btn" style="width: 100%; margin-bottom: 1rem;" id="clearSettings">
+                  Reset Settings
+                </button>
+                <button class="reset-btn" style="width: 100%;" id="clearAllData">
+                  Clear All Data
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="settings-tab-content" data-tab-content="controls">
+          <div class="settings-grid">
+            <div class="settings-section">
+              <h3><i class="ph ph-keyboard"></i> Hotkeys</h3>
+              <div class="setting-item">
+                <label>Panic Key (Quick Exit)</label>
+                <input type="text" id="panicKey" placeholder="Press any key" readonly value="Escape">
+              </div>
+              <div class="setting-item">
+                <label>Fullscreen Key</label>
+                <input type="text" id="fullscreenKey" placeholder="Press any key" readonly value="F">
+              </div>
+              <div class="setting-item">
+                <label>Toggle Settings Key</label>
+                <input type="text" id="settingsKey" placeholder="Press any key" readonly value="S">
+              </div>
+            </div>
+            
+            <div class="settings-section">
+              <h3><i class="ph ph-game-controller"></i> Game Controls</h3>
+              <div class="setting-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <label style="margin-bottom: 0;">Enable Touch Controls</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="touchControls" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="setting-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <label style="margin-bottom: 0;">Auto-Pause When Inactive</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoPause" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="setting-item">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <label style="margin-bottom: 0;">Game Focus Mode</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="gameFocusMode">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="settings-tab-content" data-tab-content="cloak">
+          <div class="settings-grid">
+            <div class="settings-section">
+              <h3><i class="ph ph-eye-slash"></i> Tab Cloak</h3>
+              <div class="setting-item">
+                <label>Cloak Presets</label>
+                <select id="cloakPreset">
+                  <option value="classroom">Google Classroom</option>
+                  <option value="docs">Google Docs</option>
+                  <option value="drive">Google Drive</option>
+                  <option value="calendar">Calendar</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </div>
+              <div class="setting-item">
+                <label>Custom Title</label>
+                <input type="text" id="cloakTitle" placeholder="Custom page title">
+              </div>
+              <div class="setting-item">
+                <label>Custom Icon</label>
+                <select id="cloakIcon">
+                  <option value="ph-books">Books</option>
+                  <option value="ph-file-doc">Document</option>
+                  <option value="ph-chart-line">Chart</option>
+                  <option value="ph-calendar">Calendar</option>
+                  <option value="ph-student">Student</option>
+                  <option value="ph-graduation-cap">Education</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="settings-section">
+              <h3><i class="ph ph-timer"></i> Auto Cloak</h3>
+              <div class="setting-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <label style="margin-bottom: 0;">Auto-Cloak on Launch</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoCloak">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="setting-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <label style="margin-bottom: 0;">Auto-Cloak on Tab Switch</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoCloakTabSwitch">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="setting-item">
+                <button id="resetCloak" class="reset-btn" style="width: 100%;">
+                  Reset Tab Cloak
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="settings-tab-content" data-tab-content="about">
+          <div class="settings-grid">
+            <div class="settings-section">
+              <h3><i class="ph ph-info"></i> About GameHub Pro</h3>
+              <div style="text-align: center; padding: 1rem 0;">
+                <i class="ph ph-game-controller" style="font-size: 4rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <h2 style="margin-bottom: 0.5rem;">GameHub Pro v2.4.0</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">The ultimate game collection platform</p>
+              </div>
+              <div class="setting-item">
+                <p style="margin-bottom: 1rem;">
+                  GameHub Pro provides a curated collection of browser games that you can play for free. Our platform is designed to be user-friendly, fast, and customizable.
+                </p>
+                <p>
+                  Thank you for using GameHub Pro! We're constantly working to improve your gaming experience.
+                </p>
+              </div>
+            </div>
+            
+            <div class="settings-section">
+              <h3><i class="ph ph-envelope"></i> Contact & Support</h3>
+              <div class="setting-item">
+                <p>
+                  If you have any questions, suggestions, or need support, please contact us:
+                </p>
+                <div style="margin-top: 1rem;">
+                  <a href="/cdn-cgi/l/email-protection#1270607b737c6167707b6073662452757f737b7e3c717d7f" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 0.5rem;">
+                    <i class="ph ph-envelope"></i>
+                    <span class="__cf_email__" data-cfemail="94f6e6fdf5fae7e1f6fde6f5e0a2d4f3f9f5fdf8baf7fbf9">[email&#160;protected]</span>
+                  </a>
+                  <a href="https://github.com/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 0.5rem;">
+                    <i class="ph ph-github-logo"></i>
+                    GitHub Repository
+                  </a>
+                  <a href="https://discord.com/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none;">
+                    <i class="ph ph-discord-logo"></i>
+                    Join our Discord
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Suggest Game Modal -->
-  <div id="suggestGameModal">
+  <div id="suggestGameModal" class="modal">
     <div class="suggest-game-content">
-      <div class="update-log-header">
-        <h2><i class="ph ph-envelope-simple"></i> Suggest a Game</h2>
+      <div class="modal-header">
+        <h2><i class="ph ph-plus-circle"></i> Suggest a Game</h2>
         <button class="close-btn suggest-game-close">
           <i class="ph ph-x"></i>
         </button>
@@ -1095,399 +553,177 @@
         <input type="email" name="email" placeholder="Your Email (Optional)" />
         <input type="text" name="gameName" placeholder="Game Name" required />
         <textarea name="gameDescription" placeholder="Why should we add this game?" rows="4" required></textarea>
-        <button type="submit">Send Suggestion</button>
+        <button type="submit">Submit Suggestion</button>
       </form>
     </div>
   </div>
 
-  <script>
-    class SearchSuggestions {
-      constructor() {
-        this.searchInput = document.getElementById('searchInput');
-        this.suggestionsContainer = document.getElementById('searchSuggestions');
-        this.setupEventListeners();
-      }
-
-      setupEventListeners() {
-        if (!this.searchInput || !this.suggestionsContainer) {
-          console.warn('Search elements not found');
-          return;
-        }
-
-        this.searchInput.addEventListener('input', () => this.handleInput());
-        this.searchInput.addEventListener('focus', () => this.handleInput());
-        
-        document.addEventListener('click', (e) => {
-          if (!this.searchInput.contains(e.target) && !this.suggestionsContainer.contains(e.target)) {
-            this.hideSuggestions();
-          }
-        });
-      }
-
-      handleInput() {
-        if (!this.searchInput) return;
-        
-        const query = this.searchInput.value.toLowerCase().trim();
-        
-        if (!query) {
-          this.hideSuggestions();
-          return;
-        }
-
-        const suggestions = this.getSuggestions(query);
-        this.displaySuggestions(suggestions);
-      }
-
-      getSuggestions(query) {
-        if (!window.games || !Array.isArray(window.games)) {
-          console.warn('Games data not available');
-          return [];
-        }
-        
-        return window.games
-          .filter(game => {
-            if (!game) return false;
-            
-            const matchesTitle = (game.title || '').toLowerCase().includes(query);
-            const matchesDescription = (game.description || '').toLowerCase().includes(query);
-            const matchesCategory = (game.category || '').toLowerCase().includes(query);
-            return matchesTitle || matchesDescription || matchesCategory;
-          })
-          .slice(0, 5);
-      }
-
-      displaySuggestions(suggestions) {
-        if (!this.suggestionsContainer) return;
-
-        if (!suggestions.length) {
-          this.hideSuggestions();
-          return;
-        }
-
-        this.suggestionsContainer.innerHTML = suggestions
-          .map(game => `
-            <div class="suggestion-item" data-game='${JSON.stringify(game)}'>
-              <i class="ph ${game.icon || 'ph-game-controller'}"></i>
-              <span class="game-title">${game.title || 'Unknown Game'}</span>
-              <span class="game-category">${game.category || 'uncategorized'}</span>
+  <!-- Game Info Modal -->
+  <div id="gameInfoModal" class="modal">
+    <div class="game-info-content">
+      <div class="modal-header">
+        <h2 id="gameInfoTitle">Game Title</h2>
+        <button class="close-btn game-info-close">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <div class="game-info-body">
+        <div class="game-info-header">
+          <div id="gameInfoIcon" class="game-info-icon">
+            <i class="ph ph-game-controller"></i>
+          </div>
+          <div class="game-info-meta">
+            <div id="gameInfoCategory" class="game-info-category">Category</div>
+            <div class="game-info-rating">
+              <div class="stars-container" id="gameInfoRating">
+                <i class="ph ph-star-fill"></i>
+                <i class="ph ph-star-fill"></i>
+                <i class="ph ph-star-fill"></i>
+                <i class="ph ph-star-fill"></i>
+                <i class="ph ph-star"></i>
+              </div>
+              <span id="gameInfoRatingValue">4.0</span>
             </div>
-          `)
-          .join('');
+          </div>
+        </div>
+        <div class="game-info-description" id="gameInfoDescription">
+          Game description will appear here.
+        </div>
+        <div class="game-info-stats">
+          <div class="stat-item">
+            <i class="ph ph-users"></i>
+            <span id="gameInfoPlays">1.2K plays</span>
+          </div>
+          <div class="stat-item">
+            <i class="ph ph-calendar"></i>
+            <span id="gameInfoAdded">Added on Jan 15, 2024</span>
+          </div>
+        </div>
+        <div class="game-info-tags" id="gameInfoTags">
+          <span class="info-tag">Action</span>
+          <span class="info-tag">Multiplayer</span>
+          <span class="info-tag">Strategy</span>
+        </div>
+        <div class="game-info-controls">
+          <button class="play-now-btn" id="playNowBtn">
+            <i class="ph ph-play"></i>
+            Play Now
+          </button>
+          <button class="add-favorite-btn" id="addFavoriteBtn">
+            <i class="ph ph-heart"></i>
+            <span>Add to Favorites</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        const suggestionItems = this.suggestionsContainer.querySelectorAll('.suggestion-item');
-        suggestionItems.forEach(item => {
-          item.addEventListener('click', () => {
-            try {
-              const gameData = JSON.parse(item.dataset.game);
-              if (gameData && gameData.url) {
-                openGame(gameData);
-                this.hideSuggestions();
-                if (this.searchInput) {
-                  this.searchInput.value = '';
-                }
-              }
-            } catch (err) {
-              console.error('Error handling suggestion click:', err);
-            }
-          });
-        });
+  <!-- Favorites Modal -->
+  <div id="favoritesModal" class="modal">
+    <div class="favorites-content">
+      <div class="modal-header">
+        <h2><i class="ph ph-heart"></i> Your Favorites</h2>
+        <button class="close-btn favorites-close-btn">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <div class="favorites-body">
+        <div id="favoritesList" class="favorites-list">
+          <!-- Favorites will be listed here -->
+        </div>
+        <div class="favorites-empty" id="favoritesEmptyState">
+          <i class="ph ph-heart-break"></i>
+          <p>No favorite games yet</p>
+          <p class="favorites-empty-subtitle">Add games to your favorites to see them here</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        this.suggestionsContainer.classList.add('active');
-      }
+  <!-- Quick Actions Menu -->
+  <div class="quick-actions-menu" id="quickActions">
+    <button class="quick-action-btn" id="quickFavoritesBtn">
+      <i class="ph ph-heart"></i>
+    </button>
+    <button class="quick-action-btn" id="quickShareBtn">
+      <i class="ph ph-share-network"></i>
+    </button>
+    <button class="quick-action-btn" id="quickTopBtn">
+      <i class="ph ph-arrow-up"></i>
+    </button>
+  </div>
 
-      hideSuggestions() {
-        if (this.suggestionsContainer) {
-          this.suggestionsContainer.classList.remove('active');
-        }
-      }
-    }
-
-    // Initialize search suggestions only after DOM is loaded and games data is available
-    function initializeSearch() {
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-          setTimeout(() => new SearchSuggestions(), 100);
-        });
-      } else {
-        setTimeout(() => new SearchSuggestions(), 100);
-      }
-    }
-
-    initializeSearch();
-  </script>
-  <script>
-    class RecentGamesManager {
-      constructor() {
-        this.MAX_RECENT_GAMES = 6;
-        this.STORAGE_KEY = 'recentGames';
-      }
-
-      addRecentGame(game) {
-        if (!game || !game.id) return;
-
-        let recentGames = this.getRecentGames();
-        
-        // Remove duplicate if exists
-        recentGames = recentGames.filter(g => g.id !== game.id);
-        
-        // Add to the beginning of the array
-        recentGames.unshift(game);
-        
-        // Trim to max number of recent games
-        recentGames = recentGames.slice(0, this.MAX_RECENT_GAMES);
-        
-        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(recentGames));
-        this.updateRecentGamesDisplay();
-      }
-
-      getRecentGames() {
-        const stored = localStorage.getItem(this.STORAGE_KEY);
-        return stored ? JSON.parse(stored) : [];
-      }
-
-      updateRecentGamesDisplay() {
-        const jumpBackGrid = document.getElementById('jumpBackGrid');
-        if (!jumpBackGrid) return;
-
-        const recentGames = this.getRecentGames();
-        jumpBackGrid.innerHTML = '';
-
-        if (recentGames.length === 0) {
-          jumpBackGrid.innerHTML = `
-            <div class="jump-back-empty">
-              <p>No recently played games</p>
-            </div>
-          `;
-          return;
-        }
-
-        recentGames.forEach(game => {
-          const card = document.createElement('div');
-          card.className = 'jump-back-card';
-          card.innerHTML = `
-            <div class="jump-back-card-content">
-              <h3>${game.title}</h3>
-              <p>${game.description}</p>
-            </div>
-          `;
-          card.addEventListener('click', () => openGame(game));
-          jumpBackGrid.appendChild(card);
-        });
-      }
-    }
-
-    window.RecentGamesManager = RecentGamesManager;
-
-    window.addEventListener('DOMContentLoaded', () => {
-      try {
-        const initializeModules = () => {
-          // Settings Initialization
-          try {
-            if (typeof Settings === 'function') {
-              window.settingsInstance = new Settings();
-            } else {
-              console.warn('Settings module not loaded or defined');
-            }
-          } catch (settingsError) {
-            console.error('Settings initialization error:', settingsError);
-          }
-
-          // TabCloak Initialization
-          try {
-            if (typeof TabCloak === 'function') {
-              window.tabCloakInstance = new TabCloak();
-            } else {
-              console.warn('TabCloak module not loaded or defined');
-            }
-          } catch (cloakError) {
-            console.error('TabCloak initialization error:', cloakError);
-          }
-
-          // Event Listeners and Game Display
-          try {
-            if (typeof setupEventListeners === 'function') {
-              setupEventListeners();
-            } else {
-              console.warn('setupEventListeners not defined');
-            }
-
-            if (typeof displayGames === 'function') {
-              displayGames();
-            } else {
-              console.warn('displayGames not defined');
-            }
-          } catch (gameError) {
-            console.error('Game initialization error:', gameError);
-          }
-
-          // Other Modal Initializations
-          try {
-            initializeUpdateLogModal();
-            initializeSuggestGameModal();
-            initializeRecentGamesManager();
-          } catch (modalError) {
-            console.error('Modal initialization error:', modalError);
-          }
-        };
-
-        const loadScripts = () => {
-          const scriptsToLoad = [
-            { src: 'settings.js', global: 'Settings' },
-            { src: 'cloak.js', global: 'TabCloak' },
-            { src: 'games.js', global: 'games' },
-            { src: 'app.js', global: 'displayGames' }
-          ];
-
-          return Promise.all(
-            scriptsToLoad.map(script => 
-              new Promise((resolve, reject) => {
-                // Skip loading if global is already defined
-                if (window[script.global]) {
-                  console.log(`${script.global} already loaded`);
-                  resolve();
-                  return;
-                }
-
-                const scriptEl = document.createElement('script');
-                scriptEl.src = script.src;
-                scriptEl.onload = resolve;
-                scriptEl.onerror = reject;
-                document.body.appendChild(scriptEl);
-              })
-            )
-          );
-        };
-
-        loadScripts()
-          .then(() => {
-            console.log('All scripts loaded successfully');
-            initializeModules();
-          })
-          .catch((loadError) => {
-            console.error('Script loading error:', loadError);
-            alert('Failed to load necessary scripts. Please refresh the page.');
-          });
-
-      } catch (mainError) {
-        console.error('Main initialization error:', mainError);
-        alert('Critical initialization error. Please refresh the page.');
-      }
-    });
-
-    // Modularized Initialization Functions
-    function initializeUpdateLogModal() {
-      const updateLogModal = document.getElementById('updateLogModal');
-      const updateLogCloseBtn = document.querySelector('.update-log-close');
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <i class="ph ph-game-controller"></i>
+        <span>GameHub</span>
+      </div>
       
-      if (updateLogModal && updateLogCloseBtn) {
-        updateLogCloseBtn.addEventListener('click', () => {
-          updateLogModal.style.display = 'none';
-        });
+      <div class="footer-links">
+        <div class="footer-group">
+          <h4>About</h4>
+          <ul>
+            <li><a href="#"><i class="ph ph-info"></i> About Us</a></li>
+            <li><a href="#"><i class="ph ph-envelope"></i> Contact</a></li>
+            <li><a href="#"><i class="ph ph-shield-check"></i> Privacy Policy</a></li>
+            <li><a href="#"><i class="ph ph-file-text"></i> Terms of Use</a></li>
+          </ul>
+        </div>
         
-        // Show update log
-        updateLogModal.style.display = 'flex';
-      }
-    }
+        <div class="footer-group">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#"><i class="ph ph-question"></i> Help Center</a></li>
+            <li><a href="#"><i class="ph ph-bug"></i> Report a Bug</a></li>
+            <li><a href="#" id="footerSuggestGame"><i class="ph ph-plus-circle"></i> Suggest a Game</a></li>
+            <li><a href="#"><i class="ph ph-timer"></i> Status</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-group">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://github.com/"><i class="ph ph-github-logo"></i> GitHub</a></li>
+            <li><a href="https://twitter.com/"><i class="ph ph-twitter-logo"></i> Twitter</a></li>
+            <li><a href="https://discord.com/"><i class="ph ph-discord-logo"></i> Discord</a></li>
+            <li><a href="/cdn-cgi/l/email-protection#e486968d858a9791868d968590d2a48389858d88ca878b89"><i class="ph ph-envelope-simple"></i> Email Us</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="copyright">
+          &copy; 2024 GameHub. All rights reserved.
+        </div>
+        
+        <div class="social-links">
+          <a href="https://github.com/" class="social-link" target="_blank">
+            <i class="ph ph-github-logo"></i>
+          </a>
+          <a href="https://twitter.com/" class="social-link" target="_blank">
+            <i class="ph ph-twitter-logo"></i>
+          </a>
+          <a href="https://discord.com/" class="social-link" target="_blank">
+            <i class="ph ph-discord-logo"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-    function initializeSuggestGameModal() {
-      const suggestGameBtn = document.getElementById('suggestGameBtn');
-      const suggestGameModal = document.getElementById('suggestGameModal');
-      const suggestGameCloseBtn = document.querySelector('.suggest-game-close');
-      const suggestGameForm = document.getElementById('suggestGameForm');
-
-      if (suggestGameBtn && suggestGameModal && suggestGameCloseBtn && suggestGameForm) {
-        suggestGameBtn.addEventListener('click', () => {
-          suggestGameModal.style.display = 'flex';
-        });
-
-        suggestGameCloseBtn.addEventListener('click', () => {
-          suggestGameModal.style.display = 'none';
-        });
-
-        suggestGameForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          
-          const name = e.target.elements.name.value.trim() || 'Anonymous';
-          const email = e.target.elements.email.value.trim() || 'Not Provided';
-          const gameName = e.target.elements.gameName.value.trim();
-          const gameDescription = e.target.elements.gameDescription.value.trim();
-          
-          if (!gameName || !gameDescription) {
-            alert('Please provide a game name and description.');
-            return;
-          }
-
-          const emailBody = encodeURIComponent(`
-Game Suggestion Details:
-
-Sender Name: ${name}
-Sender Email: ${email}
-
-Game Name: ${gameName}
-
-Suggestion Description:
-${gameDescription}
-          `);
-
-          window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=briansubirat6@gmail.com&su=Game%20Suggestion:%20${encodeURIComponent(gameName)}&body=${emailBody}`, '_blank');
-          
-          e.target.reset();
-          suggestGameModal.style.display = 'none';
-        });
-      }
-    }
-
-    function initializeRecentGamesManager() {
-      const recentGamesManager = new RecentGamesManager();
-      recentGamesManager.updateRecentGamesDisplay();
-    }
-
-    // Close settings modal function
-    function closeSettingsModal() {
-      const settingsModal = document.getElementById('settingsModal');
-      if (settingsModal) {
-        settingsModal.style.display = 'none';
-      }
-    }
-
-    // Add close event listeners for settings modal
-    document.addEventListener('DOMContentLoaded', () => {
-      const settingsCloseBtn = document.querySelector('.settings-close-btn');
-      const saveBtn = document.querySelector('.save-btn');
-      const resetBtn = document.querySelector('.reset-btn');
-
-      if (settingsCloseBtn) {
-        settingsCloseBtn.addEventListener('click', closeSettingsModal);
-      }
-
-      if (saveBtn) {
-        saveBtn.addEventListener('click', () => {
-          // Add any save logic here
-          closeSettingsModal();
-        });
-      }
-
-      if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-          // Add any reset logic here
-          closeSettingsModal();
-        });
-      }
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const aiCopilotBtn = document.getElementById('aiCopilotBtn');
-      if (aiCopilotBtn) {
-        aiCopilotBtn.addEventListener('click', () => {
-          window.open('https://copilot.microsoft.com/', '_blank');
-        });
-      }
-    });
-  </script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="cloak.js"></script>
+  <script src="settings.js"></script>
+  <script src="games.js"></script>
+  <script src="app.js"></script>
+  
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Mobile sidebar functionality
       const sidebar = document.querySelector('.mobile-sidebar');
       const sidebarOverlay = document.querySelector('.mobile-sidebar-overlay');
+      const sidebarCloseBtn = document.querySelector('.mobile-sidebar-close');
       
       let touchStartX = 0;
       let touchEndX = 0;
@@ -1504,10 +740,10 @@ ${gameDescription}
         if (!isSwiping) return;
         
         touchEndX = e.touches[0].clientX;
-        const swipeDistance = touchEndX - touchStartX; // Changed to detect right swipe
+        const swipeDistance = touchEndX - touchStartX;
         
-        // If swiping from left edge to right
-        if (touchStartX < 50 && swipeDistance > 50) { // Changed to detect right swipe
+        // If swiping from left edge to right (less than 30px from edge)
+        if (touchStartX < 30 && swipeDistance > 50) {
           openSidebar();
           isSwiping = false;
         }
@@ -1527,23 +763,26 @@ ${gameDescription}
       function openSidebar() {
         sidebar.classList.add('open');
         sidebarOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
       }
 
       function closeSidebar() {
         sidebar.classList.remove('open');
         sidebarOverlay.classList.remove('active');
+        document.body.style.overflow = '';
       }
 
-      // Close sidebar when clicking overlay
+      // Close sidebar when clicking overlay or close button
       sidebarOverlay.addEventListener('click', closeSidebar);
+      if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeSidebar);
 
-      // Menu Button Click
-      const menuBtn = document.querySelector('.mobile-sidebar-menu-btn');
-      menuBtn.addEventListener('click', openSidebar);
-
-      // Mobile Suggest Game Button
+      // Mobile sidebar button functionality
       const mobileSuggestGameBtn = document.getElementById('mobileSuggestGameBtn');
+      const mobileAiCopilotBtn = document.getElementById('mobileAiCopilotBtn');
+      const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
       const suggestGameModal = document.getElementById('suggestGameModal');
+      const settingsModal = document.getElementById('settingsModal');
+
       if (mobileSuggestGameBtn && suggestGameModal) {
         mobileSuggestGameBtn.addEventListener('click', () => {
           suggestGameModal.style.display = 'flex';
@@ -1551,8 +790,6 @@ ${gameDescription}
         });
       }
 
-      // Mobile AI Copilot Button
-      const mobileAiCopilotBtn = document.getElementById('mobileAiCopilotBtn');
       if (mobileAiCopilotBtn) {
         mobileAiCopilotBtn.addEventListener('click', () => {
           window.open('https://copilot.microsoft.com/', '_blank');
@@ -1560,7 +797,23 @@ ${gameDescription}
         });
       }
 
-      // Initialize mobile search suggestions
+      if (mobileSettingsBtn && settingsModal) {
+        mobileSettingsBtn.addEventListener('click', () => {
+          settingsModal.style.display = 'flex';
+          closeSidebar();
+        });
+      }
+
+      // Footer suggestion link
+      const footerSuggestGame = document.getElementById('footerSuggestGame');
+      if (footerSuggestGame && suggestGameModal) {
+        footerSuggestGame.addEventListener('click', (e) => {
+          e.preventDefault();
+          suggestGameModal.style.display = 'flex';
+        });
+      }
+
+      // Initialize search functionality for mobile
       const mobileSidebarSearchInput = document.getElementById('mobileSidebarSearchInput');
       const mobileSidebarSearchSuggestions = document.getElementById('mobileSidebarSearchSuggestions');
 
@@ -1573,13 +826,16 @@ ${gameDescription}
             return;
           }
 
+          // Filter games based on search query
           const suggestions = window.games
-            .filter(game => 
-              game.title.toLowerCase().includes(query) || 
-              game.description.toLowerCase().includes(query)
-            )
+            .filter(game => {
+              return game.title.toLowerCase().includes(query) || 
+                     game.description.toLowerCase().includes(query) ||
+                     game.category.toLowerCase().includes(query);
+            })
             .slice(0, 5);
 
+          // Generate and display suggestions
           mobileSidebarSearchSuggestions.innerHTML = suggestions
             .map(game => `
               <div class="suggestion-item" data-game='${JSON.stringify(game)}'>
@@ -1590,47 +846,1072 @@ ${gameDescription}
             `)
             .join('');
 
-          const suggestionItems = mobileSidebarSearchSuggestions.querySelectorAll('.suggestion-item');
-          suggestionItems.forEach(item => {
+          // Add click handlers for suggestions
+          mobileSidebarSearchSuggestions.querySelectorAll('.suggestion-item').forEach(item => {
             item.addEventListener('click', () => {
-              const gameData = JSON.parse(item.dataset.game);
-              openGame(gameData);
-              mobileSidebarSearchInput.value = '';
-              mobileSidebarSearchSuggestions.classList.remove('active');
-              closeSidebar();
+              try {
+                const gameData = JSON.parse(item.dataset.game);
+                openGame(gameData);
+                mobileSidebarSearchInput.value = '';
+                mobileSidebarSearchSuggestions.classList.remove('active');
+                closeSidebar();
+              } catch (err) {
+                console.error('Error handling mobile suggestion click:', err);
+              }
             });
           });
 
           mobileSidebarSearchSuggestions.classList.add('active');
         });
+
+        // Hide suggestions when clicking elsewhere
+        document.addEventListener('click', (e) => {
+          if (!mobileSidebarSearchInput.contains(e.target) && 
+              !mobileSidebarSearchSuggestions.contains(e.target)) {
+            mobileSidebarSearchSuggestions.classList.remove('active');
+          }
+        });
       }
+
+      // Initialize new games section
+      function initNewGames() {
+        const newGamesSwiper = document.getElementById('newGamesSwiper');
+        if (!newGamesSwiper || !window.games) return;
+
+        // Get newest games (for demo, just use a random selection)
+        const newGames = [...window.games]
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 10);
+        
+        newGamesSwiper.innerHTML = newGames.map(game => `
+          <div class="new-game-card" data-game='${JSON.stringify(game)}'>
+            <div class="new-game-thumbnail">
+              <i class="ph ${game.icon}"></i>
+            </div>
+            <div class="new-label">NEW</div>
+            <div class="new-game-info">
+              <h3>${game.title}</h3>
+              <p>${game.description}</p>
+            </div>
+          </div>
+        `).join('');
+
+        newGamesSwiper.querySelectorAll('.new-game-card').forEach(card => {
+          card.addEventListener('click', () => {
+            try {
+              const gameData = JSON.parse(card.dataset.game);
+              openGame(gameData);
+            } catch (err) {
+              console.error('Error handling new game click:', err);
+            }
+          });
+        });
+      }
+
+      // Refresh new games
+      const refreshNewGamesBtn = document.getElementById('refreshNewGamesBtn');
+      if (refreshNewGamesBtn) {
+        refreshNewGamesBtn.addEventListener('click', () => {
+          initNewGames();
+          showNotification('New games refreshed!', 'success');
+        });
+      }
+
+      // Clear recent games
+      const clearRecentBtn = document.getElementById('clearRecentBtn');
+      if (clearRecentBtn) {
+        clearRecentBtn.addEventListener('click', () => {
+          localStorage.removeItem('recentGames');
+          const recentGamesManager = new RecentGamesManager();
+          recentGamesManager.updateRecentGamesDisplay();
+          showNotification('Recent games cleared!', 'success');
+        });
+      }
+
+      // Popular Tags
+      const popularTags = document.getElementById('popularTags');
+      if (popularTags) {
+        popularTags.querySelectorAll('.tag-chip').forEach(tag => {
+          tag.addEventListener('click', () => {
+            const tagValue = tag.getAttribute('data-tag');
+            // Search for games with this tag
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+              searchInput.value = tagValue;
+              displayGames('all', tagValue);
+              showNotification(`Showing games with tag: ${tagValue}`, 'info');
+              
+              // Scroll to games section
+              const gamesSection = document.querySelector('.collection-section');
+              if (gamesSection) {
+                gamesSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          });
+        });
+      }
+
+      // Sort functionality
+      const sortOptions = document.querySelectorAll('.sort-option');
+      if (sortOptions) {
+        sortOptions.forEach(option => {
+          option.addEventListener('click', () => {
+            // Remove active class from all options
+            sortOptions.forEach(o => o.classList.remove('active'));
+            // Add active class to clicked option
+            option.classList.add('active');
+            
+            // Get selected sort option
+            const sortBy = option.getAttribute('data-sort');
+            
+            // Apply sorting
+            applySorting(sortBy);
+          });
+        });
+      }
+
+      function applySorting(sortBy) {
+        // This would typically update the game listings
+        // For this demo, we'll just show a notification
+        showNotification(`Games sorted by: ${sortBy}`, 'info');
+        
+        // Get current category filter
+        const activeCategory = document.querySelector('.filter-chip.active')?.getAttribute('data-category') || 'all';
+        
+        // Refresh games with new sorting
+        displayGames(activeCategory, '', sortBy);
+      }
+
+      // Load more button
+      const loadMoreBtn = document.getElementById('loadMoreBtn');
+      if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', () => {
+          // Simulate loading more games
+          showNotification('Loading more games...', 'info');
+          
+          // Set button to loading state
+          loadMoreBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Loading...';
+          loadMoreBtn.disabled = true;
+          
+          // Wait a bit then show more games
+          setTimeout(() => {
+            // Simulate new games being loaded
+            const activeCategory = document.querySelector('.filter-chip.active')?.getAttribute('data-category') || 'all';
+            displayGames(activeCategory, '', null, true);
+            
+            // Reset button
+            loadMoreBtn.innerHTML = '<i class="ph ph-plus-circle"></i> Load More Games';
+            loadMoreBtn.disabled = false;
+            
+            showNotification('More games loaded!', 'success');
+          }, 1000);
+        });
+      }
+
+      // Game info modal functionality
+      const gameInfoModal = document.getElementById('gameInfoModal');
+      const gameInfoCloseBtn = document.querySelector('.game-info-close');
+      const playNowBtn = document.getElementById('playNowBtn');
+      const addFavoriteBtn = document.getElementById('addFavoriteBtn');
+      
+      if (gameInfoCloseBtn) {
+        gameInfoCloseBtn.addEventListener('click', () => {
+          gameInfoModal.style.display = 'none';
+        });
+      }
+      
+      if (playNowBtn) {
+        playNowBtn.addEventListener('click', () => {
+          const gameData = JSON.parse(playNowBtn.getAttribute('data-game') || '{}');
+          if (gameData && gameData.url) {
+            openGame(gameData);
+            gameInfoModal.style.display = 'none';
+          }
+        });
+      }
+      
+      if (addFavoriteBtn) {
+        addFavoriteBtn.addEventListener('click', () => {
+          const gameData = JSON.parse(addFavoriteBtn.getAttribute('data-game') || '{}');
+          if (gameData && gameData.id) {
+            // Toggle favorite status
+            toggleFavorite(gameData);
+            
+            // Update button text
+            const isFavorite = isFavoriteGame(gameData.id);
+            addFavoriteBtn.innerHTML = isFavorite 
+              ? '<i class="ph ph-heart-break"></i><span>Remove from Favorites</span>'
+              : '<i class="ph ph-heart"></i><span>Add to Favorites</span>';
+          }
+        });
+      }
+      
+      function showGameInfo(game) {
+        if (!game || !gameInfoModal) return;
+        
+        // Set game info
+        document.getElementById('gameInfoTitle').textContent = game.title;
+        document.getElementById('gameInfoIcon').innerHTML = `<i class="ph ${game.icon}"></i>`;
+        document.getElementById('gameInfoCategory').textContent = game.category;
+        document.getElementById('gameInfoDescription').textContent = game.description;
+        
+        // Generate random stats for demo
+        const plays = Math.floor(Math.random() * 10000);
+        const playsFormatted = plays > 1000 ? `${(plays/1000).toFixed(1)}K` : plays;
+        document.getElementById('gameInfoPlays').textContent = `${playsFormatted} plays`;
+        
+        // Random date in 2024
+        const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const randomMonth = month[Math.floor(Math.random() * month.length)];
+        const randomDay = Math.floor(Math.random() * 28) + 1;
+        document.getElementById('gameInfoAdded').textContent = `Added on ${randomMonth} ${randomDay}, 2024`;
+        
+        // Generate random rating
+        const rating = (Math.random() * 1.5 + 3.5).toFixed(1);
+        document.getElementById('gameInfoRatingValue').textContent = rating;
+        
+        // Update stars based on rating
+        const starsContainer = document.getElementById('gameInfoRating');
+        if (starsContainer) {
+          const fullStars = Math.floor(parseFloat(rating));
+          const hasHalfStar = parseFloat(rating) - fullStars >= 0.5;
+          
+          starsContainer.innerHTML = '';
+          
+          for (let i = 0; i < 5; i++) {
+            if (i < fullStars) {
+              starsContainer.innerHTML += '<i class="ph ph-star-fill"></i>';
+            } else if (i === fullStars && hasHalfStar) {
+              starsContainer.innerHTML += '<i class="ph ph-star-half"></i>';
+            } else {
+              starsContainer.innerHTML += '<i class="ph ph-star"></i>';
+            }
+          }
+        }
+        
+        // Generate random tags
+        const allTags = ['Action', 'Adventure', 'Arcade', 'Casual', 'Family', 'Free', 'Indie', 
+                         'Multiplayer', 'Physics', 'Platformer', 'Racing', 'RPG', 'Simulation', 
+                         'Shooter', 'Sports', 'Strategy', 'Puzzle'];
+        const numTags = Math.floor(Math.random() * 3) + 1;
+        const gameTags = [];
+        
+        // Always include the category as a tag
+        gameTags.push(game.category.charAt(0).toUpperCase() + game.category.slice(1));
+        
+        // Add random tags
+        while (gameTags.length < numTags) {
+          const randomTag = allTags[Math.floor(Math.random() * allTags.length)];
+          if (!gameTags.includes(randomTag)) {
+            gameTags.push(randomTag);
+          }
+        }
+        
+        // Set tags
+        document.getElementById('gameInfoTags').innerHTML = gameTags
+          .map(tag => `<span class="info-tag">${tag}</span>`)
+          .join('');
+        
+        // Set data for play button
+        if (playNowBtn) {
+          playNowBtn.setAttribute('data-game', JSON.stringify(game));
+        }
+        
+        // Update favorite button
+        if (addFavoriteBtn) {
+          addFavoriteBtn.setAttribute('data-game', JSON.stringify(game));
+          
+          const isFavorite = isFavoriteGame(game.id);
+          addFavoriteBtn.innerHTML = isFavorite 
+            ? '<i class="ph ph-heart-break"></i><span>Remove from Favorites</span>'
+            : '<i class="ph ph-heart"></i><span>Add to Favorites</span>';
+        }
+        
+        // Show the modal
+        gameInfoModal.style.display = 'flex';
+      }
+      
+      // Favorites functionality
+      function toggleFavorite(game) {
+        if (!game || !game.id) return;
+        
+        let favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+        const index = favorites.findIndex(g => g.id === game.id);
+        
+        if (index === -1) {
+          // Add to favorites
+          favorites.push(game);
+          showNotification(`Added ${game.title} to favorites`, 'success');
+        } else {
+          // Remove from favorites
+          favorites.splice(index, 1);
+          showNotification(`Removed ${game.title} from favorites`, 'info');
+        }
+        
+        localStorage.setItem('favoriteGames', JSON.stringify(favorites));
+        updateFavoritesModal();
+      }
+      
+      function isFavoriteGame(gameId) {
+        const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+        return favorites.some(game => game.id === gameId);
+      }
+      
+      // Initialize favorites modal
+      const favoritesModal = document.getElementById('favoritesModal');
+      const favoritesCloseBtn = document.querySelector('.favorites-close-btn');
+      const quickFavoritesBtn = document.getElementById('quickFavoritesBtn');
+      
+      if (favoritesCloseBtn) {
+        favoritesCloseBtn.addEventListener('click', () => {
+          favoritesModal.style.display = 'none';
+        });
+      }
+      
+      if (quickFavoritesBtn) {
+        quickFavoritesBtn.addEventListener('click', () => {
+          updateFavoritesModal();
+          favoritesModal.style.display = 'flex';
+        });
+      }
+      
+      function updateFavoritesModal() {
+        const favoritesList = document.getElementById('favoritesList');
+        const favoritesEmptyState = document.getElementById('favoritesEmptyState');
+        
+        if (!favoritesList || !favoritesEmptyState) return;
+        
+        const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+        
+        if (favorites.length === 0) {
+          favoritesList.style.display = 'none';
+          favoritesEmptyState.style.display = 'flex';
+          return;
+        }
+        
+        favoritesList.style.display = 'grid';
+        favoritesEmptyState.style.display = 'none';
+        
+        favoritesList.innerHTML = favorites.map(game => `
+          <div class="favorite-item" data-game-id="${game.id}">
+            <div class="favorite-icon">
+              <i class="ph ${game.icon}"></i>
+            </div>
+            <div class="favorite-info">
+              <h3>${game.title}</h3>
+              <p>${game.category}</p>
+            </div>
+            <div class="favorite-actions">
+              <button class="favorite-play-btn" data-game='${JSON.stringify(game)}'>
+                <i class="ph ph-play"></i>
+              </button>
+              <button class="favorite-remove-btn" data-game-id="${game.id}">
+                <i class="ph ph-x"></i>
+              </button>
+            </div>
+          </div>
+        `).join('');
+        
+        // Add event listeners to play buttons
+        favoritesList.querySelectorAll('.favorite-play-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            try {
+              const gameData = JSON.parse(btn.getAttribute('data-game'));
+              openGame(gameData);
+              favoritesModal.style.display = 'none';
+            } catch (err) {
+              console.error('Error playing favorite game:', err);
+            }
+          });
+        });
+        
+        // Add event listeners to remove buttons
+        favoritesList.querySelectorAll('.favorite-remove-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const gameId = btn.getAttribute('data-game-id');
+            const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+            const gameIndex = favorites.findIndex(g => g.id === gameId);
+            
+            if (gameIndex !== -1) {
+              const gameName = favorites[gameIndex].title;
+              favorites.splice(gameIndex, 1);
+              localStorage.setItem('favoriteGames', JSON.stringify(favorites));
+              
+              showNotification(`Removed ${gameName} from favorites`, 'info');
+              updateFavoritesModal();
+            }
+          });
+        });
+      }
+
+      // Quick Actions Menu functionality
+      const quickActions = document.getElementById('quickActions');
+      const quickTopBtn = document.getElementById('quickTopBtn');
+      const quickShareBtn = document.getElementById('quickShareBtn');
+      
+      if (quickTopBtn) {
+        quickTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+      
+      if (quickShareBtn) {
+        quickShareBtn.addEventListener('click', () => {
+          if (navigator.share) {
+            navigator.share({
+              title: 'GameHub Pro',
+              text: 'Check out this awesome game collection!',
+              url: window.location.href
+            })
+            .then(() => showNotification('Thanks for sharing!', 'success'))
+            .catch(err => console.error('Share failed:', err));
+          } else {
+            // Fallback
+            navigator.clipboard.writeText(window.location.href)
+              .then(() => showNotification('Link copied to clipboard!', 'success'))
+              .catch(() => showNotification('Failed to copy link', 'error'));
+          }
+        });
+      }
+      
+      // Show/hide quick actions menu based on scroll
+      let lastScrollTop = 0;
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (quickActions) {
+          if (scrollTop > 300) {
+            quickActions.classList.add('visible');
+          } else {
+            quickActions.classList.remove('visible');
+          }
+          
+          // Hide when scrolling down, show when scrolling up (after initial threshold)
+          if (scrollTop > lastScrollTop && scrollTop > 600) {
+            quickActions.classList.add('hidden');
+          } else {
+            quickActions.classList.remove('hidden');
+          }
+        }
+        
+        lastScrollTop = scrollTop;
+      });
+
+      // Initialize category/filter buttons
+      function initCategoryFilters() {
+        const filterChips = document.querySelectorAll('.filter-chip');
+        
+        filterChips.forEach(chip => {
+          chip.addEventListener('click', () => {
+            // Remove active class from all chips
+            filterChips.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked chip
+            chip.classList.add('active');
+            
+            // Get category and update game grid
+            const category = chip.getAttribute('data-category');
+            if (typeof displayGames === 'function') {
+              displayGames(category);
+            }
+          });
+        });
+      }
+
+      // Initialize game suggestion form
+      function initSuggestGameForm() {
+        const suggestGameForm = document.getElementById('suggestGameForm');
+        const suggestGameCloseBtn = document.querySelector('.suggest-game-close');
+        
+        if (suggestGameForm) {
+          suggestGameForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = e.target.elements.name.value.trim() || 'Anonymous';
+            const email = e.target.elements.email.value.trim() || 'Not Provided';
+            const gameName = e.target.elements.gameName.value.trim();
+            const gameDescription = e.target.elements.gameDescription.value.trim();
+            
+            if (!gameName || !gameDescription) {
+              showNotification('Please provide a game name and description.', 'error');
+              return;
+            }
+
+            const emailBody = encodeURIComponent(`
+Game Suggestion Details:
+
+Sender Name: ${name}
+Sender Email: ${email}
+
+Game Name: ${gameName}
+
+Suggestion Description:
+${gameDescription}
+            `);
+
+            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=briansubirat6@gmail.com&su=Game%20Suggestion:%20${encodeURIComponent(gameName)}&body=${emailBody}`, '_blank');
+            
+            e.target.reset();
+            suggestGameModal.style.display = 'none';
+            showNotification('Thank you for your game suggestion!', 'success');
+          });
+        }
+        
+        if (suggestGameCloseBtn) {
+          suggestGameCloseBtn.addEventListener('click', () => {
+            suggestGameModal.style.display = 'none';
+          });
+        }
+      }
+
+      // Initialize desktop buttons
+      function initDesktopButtons() {
+        const suggestGameBtn = document.getElementById('suggestGameBtn');
+        const aiCopilotBtn = document.getElementById('aiCopilotBtn');
+        const settingsBtn = document.getElementById('settingsBtn');
+        
+        if (suggestGameBtn) {
+          suggestGameBtn.addEventListener('click', () => {
+            suggestGameModal.style.display = 'flex';
+          });
+        }
+        
+        if (aiCopilotBtn) {
+          aiCopilotBtn.addEventListener('click', () => {
+            window.open('https://copilot.microsoft.com/', '_blank');
+          });
+        }
+        
+        if (settingsBtn) {
+          settingsBtn.addEventListener('click', () => {
+            settingsModal.style.display = 'flex';
+          });
+        }
+      }
+
+      // Initialize settings modal
+      function initSettingsModal() {
+        const settingsCloseBtn = document.querySelector('.settings-close-btn');
+        const settingsTabs = document.querySelectorAll('.settings-tab');
+        const settingsContents = document.querySelectorAll('.settings-tab-content');
+        
+        function activateSettingsTab(tabId) {
+          settingsTabs.forEach(tab => {
+            if (tab.getAttribute('data-tab') === tabId) {
+              tab.classList.add('active');
+            } else {
+              tab.classList.remove('active');
+            }
+          });
+          
+          settingsContents.forEach(content => {
+            if (content.getAttribute('data-tab-content') === tabId) {
+              content.classList.add('active');
+            } else {
+              content.classList.remove('active');
+            }
+          });
+        }
+        
+        if (settingsTabs && settingsContents) {
+          settingsTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+              const tabId = tab.getAttribute('data-tab');
+              activateSettingsTab(tabId);
+            });
+          });
+        }
+        
+        if (settingsCloseBtn) {
+          settingsCloseBtn.addEventListener('click', () => {
+            settingsModal.style.display = 'none';
+          });
+        }
+
+        // Clear buttons
+        const clearHistoryBtn = document.getElementById('clearHistory');
+        const clearSettingsBtn = document.getElementById('clearSettings');
+        const clearAllDataBtn = document.getElementById('clearAllData');
+        const resetCloakBtn = document.getElementById('resetCloak');
+        
+        if (clearHistoryBtn) {
+          clearHistoryBtn.addEventListener('click', () => {
+            localStorage.removeItem('recentGames');
+            showNotification('Game history has been cleared', 'success');
+            const recentGamesManager = new RecentGamesManager();
+            recentGamesManager.updateRecentGamesDisplay();
+          });
+        }
+        
+        if (clearSettingsBtn) {
+          clearSettingsBtn.addEventListener('click', () => {
+            if (confirm('Reset all settings to default values?')) {
+              if (window.Settings) {
+                const settings = new Settings();
+                settings.resetSettings();
+                showNotification('All settings have been reset to defaults', 'success');
+              }
+            }
+          });
+        }
+        
+        if (clearAllDataBtn) {
+          clearAllDataBtn.addEventListener('click', () => {
+            if (confirm('This will clear ALL data including game history and settings. Are you sure?')) {
+              localStorage.clear();
+              showNotification('All data has been cleared', 'success');
+              setTimeout(() => {
+                window.location.reload();
+              }, 1500);
+            }
+          });
+        }
+        
+        if (resetCloakBtn) {
+          resetCloakBtn.addEventListener('click', () => {
+            if (window.TabCloak) {
+              const tabCloak = new TabCloak();
+              tabCloak.resetCloak();
+              showNotification('Tab cloak has been reset', 'success');
+            }
+          });
+        }
+      }
+
+      // Enhanced game card interaction
+      function enhanceGameCards() {
+        document.addEventListener('click', (e) => {
+          // Find closest game card
+          const gameCard = e.target.closest('.game-card');
+          if (!gameCard) return;
+          
+          try {
+            // Get game data
+            const gameId = gameCard.getAttribute('data-game-id');
+            const game = window.games.find(g => g.id === gameId);
+            
+            if (game) {
+              // Check if info button was clicked
+              const infoButton = e.target.closest('.game-info-btn');
+              
+              if (infoButton) {
+                // Show game info modal
+                showGameInfo(game);
+              } else {
+                // Play the game
+                openGame(game);
+              }
+            }
+          } catch (err) {
+            console.error('Error handling game card click:', err);
+          }
+        });
+      }
+
+      // Initialize all sections
+      initNewGames();
+      initCategoryFilters();
+      initSuggestGameForm();
+      initDesktopButtons();
+      initSettingsModal();
+      enhanceGameCards();
+
+      // Call global function to display all games
+      if (typeof displayGames === 'function') {
+        displayGames('all');
+      }
+
+      // Initialize settings functionality
+      function initSettingsFunctionality() {
+        // Theme settings
+        const primaryColorInput = document.getElementById('primaryColor');
+        const backgroundColorInput = document.getElementById('backgroundColor');
+        const surfaceColorInput = document.getElementById('surfaceColor');
+        const themeModeSelect = document.getElementById('themeMode');
+        
+        function applyThemeColors() {
+          const root = document.documentElement;
+          
+          if (primaryColorInput) {
+            root.style.setProperty('--primary', primaryColorInput.value);
+            // Calculate darker shade for primary-dark
+            const darkColor = adjustColorBrightness(primaryColorInput.value, -20);
+            root.style.setProperty('--primary-dark', darkColor);
+            // Update gradient
+            root.style.setProperty('--gradient-primary', `linear-gradient(135deg, ${primaryColorInput.value}, ${darkColor})`);
+          }
+          
+          if (backgroundColorInput) {
+            root.style.setProperty('--background', backgroundColorInput.value);
+          }
+          
+          if (surfaceColorInput) {
+            root.style.setProperty('--surface', surfaceColorInput.value);
+            // Calculate slightly lighter shade for surface-hover
+            root.style.setProperty('--surface-hover', adjustColorBrightness(surfaceColorInput.value, 10));
+          }
+
+          // Save settings
+          saveSettings();
+        }
+        
+        function adjustColorBrightness(hex, percent) {
+          // Convert hex to RGB
+          let r = parseInt(hex.substring(1, 3), 16);
+          let g = parseInt(hex.substring(3, 5), 16);
+          let b = parseInt(hex.substring(5, 7), 16);
+          
+          // Adjust brightness
+          r = Math.max(0, Math.min(255, r + percent));
+          g = Math.max(0, Math.min(255, g + percent));
+          b = Math.max(0, Math.min(255, b + percent));
+          
+          // Convert back to hex
+          return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+        }
+        
+        // Apply theme mode
+        function applyThemeMode(mode) {
+          const root = document.documentElement;
+          
+          if (mode === 'light') {
+            root.style.setProperty('--background', '#f8fafc');
+            root.style.setProperty('--surface', '#ffffff');
+            root.style.setProperty('--surface-hover', '#f1f5f9');
+            root.style.setProperty('--text', '#0f172a');
+            root.style.setProperty('--text-secondary', '#64748b');
+            root.style.setProperty('--border', 'rgba(0,0,0,0.1)');
+            
+            if (backgroundColorInput) backgroundColorInput.value = '#f8fafc';
+            if (surfaceColorInput) surfaceColorInput.value = '#ffffff';
+          } else {
+            root.style.setProperty('--background', '#0f0f13');
+            root.style.setProperty('--surface', '#1a1a1f');
+            root.style.setProperty('--surface-hover', '#24242b');
+            root.style.setProperty('--text', '#ffffff');
+            root.style.setProperty('--text-secondary', '#94a3b8');
+            root.style.setProperty('--border', 'rgba(255,255,255,0.1)');
+            
+            if (backgroundColorInput) backgroundColorInput.value = '#0f0f13';
+            if (surfaceColorInput) surfaceColorInput.value = '#1a1a1f';
+          }
+          
+          saveSettings();
+        }
+        
+        // Add event listeners
+        if (primaryColorInput) {
+          primaryColorInput.addEventListener('input', applyThemeColors);
+        }
+        
+        if (backgroundColorInput) {
+          backgroundColorInput.addEventListener('input', applyThemeColors);
+        }
+        
+        if (surfaceColorInput) {
+          surfaceColorInput.addEventListener('input', applyThemeColors);
+        }
+        
+        if (themeModeSelect) {
+          themeModeSelect.addEventListener('change', () => {
+            applyThemeMode(themeModeSelect.value);
+          });
+        }
+        
+        // Grid size setting
+        const gridSizeSelect = document.getElementById('gridSize');
+        
+        function applyGridSize(size) {
+          const gamesGrid = document.getElementById('gamesGrid');
+          if (!gamesGrid) return;
+          
+          switch (size) {
+            case 'small':
+              gamesGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(180px, 1fr))';
+              break;
+            case 'medium':
+              gamesGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(220px, 1fr))';
+              break;
+            case 'large':
+              gamesGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(260px, 1fr))';
+              break;
+          }
+          
+          saveSettings();
+        }
+        
+        if (gridSizeSelect) {
+          gridSizeSelect.addEventListener('change', () => {
+            applyGridSize(gridSizeSelect.value);
+          });
+        }
+        
+        // Game ratings toggle
+        const showRatingsToggle = document.getElementById('showRatings');
+        
+        function toggleRatings(show) {
+          const ratingElements = document.querySelectorAll('.game-rating');
+          
+          ratingElements.forEach(elem => {
+            elem.style.display = show ? 'flex' : 'none';
+          });
+          
+          saveSettings();
+        }
+        
+        if (showRatingsToggle) {
+          showRatingsToggle.addEventListener('change', () => {
+            toggleRatings(showRatingsToggle.checked);
+          });
+        }
+        
+        // Animations toggle
+        const enableAnimationsToggle = document.getElementById('enableAnimations');
+        
+        function toggleAnimations(enable) {
+          document.body.classList.toggle('reduce-motion', !enable);
+          saveSettings();
+        }
+        
+        if (enableAnimationsToggle) {
+          enableAnimationsToggle.addEventListener('change', () => {
+            toggleAnimations(enableAnimationsToggle.checked);
+          });
+        }
+        
+        // Privacy settings
+        const saveHistoryToggle = document.getElementById('saveHistory');
+        const incognitoModeToggle = document.getElementById('incognitoMode');
+        const panicUrlInput = document.getElementById('panicUrl');
+        
+        if (saveHistoryToggle) {
+          saveHistoryToggle.addEventListener('change', () => {
+            localStorage.setItem('saveHistory', saveHistoryToggle.checked);
+            saveSettings();
+          });
+        }
+        
+        if (incognitoModeToggle) {
+          incognitoModeToggle.addEventListener('change', () => {
+            localStorage.setItem('incognitoMode', incognitoModeToggle.checked);
+            saveSettings();
+          });
+        }
+        
+        if (panicUrlInput) {
+          panicUrlInput.addEventListener('change', () => {
+            localStorage.setItem('panicUrl', panicUrlInput.value);
+            saveSettings();
+          });
+        }
+        
+        // Control settings
+        const panicKeyInput = document.getElementById('panicKey');
+        const fullscreenKeyInput = document.getElementById('fullscreenKey');
+        const settingsKeyInput = document.getElementById('settingsKey');
+        
+        if (panicKeyInput) {
+          panicKeyInput.addEventListener('keydown', (e) => {
+            e.preventDefault();
+            panicKeyInput.value = e.key;
+            localStorage.setItem('panicKey', e.key);
+            saveSettings();
+          });
+        }
+        
+        if (fullscreenKeyInput) {
+          fullscreenKeyInput.addEventListener('keydown', (e) => {
+            e.preventDefault();
+            fullscreenKeyInput.value = e.key;
+            localStorage.setItem('fullscreenKey', e.key);
+            saveSettings();
+          });
+        }
+        
+        if (settingsKeyInput) {
+          settingsKeyInput.addEventListener('keydown', (e) => {
+            e.preventDefault();
+            settingsKeyInput.value = e.key;
+            localStorage.setItem('settingsKey', e.key);
+            saveSettings();
+          });
+        }
+        
+        // Save all settings to localStorage
+        function saveSettings() {
+          const settings = {
+            theme: {
+              primary: primaryColorInput ? primaryColorInput.value : '#7c3aed',
+              background: backgroundColorInput ? backgroundColorInput.value : '#0f0f13',
+              surface: surfaceColorInput ? surfaceColorInput.value : '#1a1a1f',
+              themeMode: themeModeSelect ? themeModeSelect.value : 'dark'
+            },
+            layout: {
+              gridSize: gridSizeSelect ? gridSizeSelect.value : 'medium',
+              showRatings: showRatingsToggle ? showRatingsToggle.checked : true,
+              enableAnimations: enableAnimationsToggle ? enableAnimationsToggle.checked : true
+            },
+            privacy: {
+              saveHistory: saveHistoryToggle ? saveHistoryToggle.checked : true,
+              incognitoMode: incognitoModeToggle ? incognitoModeToggle.checked : false,
+              panicUrl: panicUrlInput ? panicUrlInput.value : 'https://classroom.google.com'
+            },
+            controls: {
+              panicKey: panicKeyInput ? panicKeyInput.value : 'Escape',
+              fullscreenKey: fullscreenKeyInput ? fullscreenKeyInput.value : 'F',
+              settingsKey: settingsKeyInput ? settingsKeyInput.value : 'S'
+            }
+          };
+          
+          localStorage.setItem('gameHubSettings', JSON.stringify(settings));
+        }
+        
+        // Load settings from localStorage
+        function loadSettings() {
+          const savedSettings = localStorage.getItem('gameHubSettings');
+          if (!savedSettings) return;
+          
+          try {
+            const settings = JSON.parse(savedSettings);
+            
+            // Apply theme settings
+            if (settings.theme) {
+              if (primaryColorInput && settings.theme.primary) {
+                primaryColorInput.value = settings.theme.primary;
+              }
+              
+              if (backgroundColorInput && settings.theme.background) {
+                backgroundColorInput.value = settings.theme.background;
+              }
+              
+              if (surfaceColorInput && settings.theme.surface) {
+                surfaceColorInput.value = settings.theme.surface;
+              }
+              
+              if (themeModeSelect && settings.theme.themeMode) {
+                themeModeSelect.value = settings.theme.themeMode;
+                applyThemeMode(settings.theme.themeMode);
+              }
+              
+              // Apply theme colors
+              applyThemeColors();
+            }
+            
+            // Apply layout settings
+            if (settings.layout) {
+              if (gridSizeSelect && settings.layout.gridSize) {
+                gridSizeSelect.value = settings.layout.gridSize;
+                applyGridSize(settings.layout.gridSize);
+              }
+              
+              if (showRatingsToggle && settings.layout.showRatings !== undefined) {
+                showRatingsToggle.checked = settings.layout.showRatings;
+                toggleRatings(settings.layout.showRatings);
+              }
+              
+              if (enableAnimationsToggle && settings.layout.enableAnimations !== undefined) {
+                enableAnimationsToggle.checked = settings.layout.enableAnimations;
+                toggleAnimations(settings.layout.enableAnimations);
+              }
+            }
+            
+            // Apply privacy settings
+            if (settings.privacy) {
+              if (saveHistoryToggle && settings.privacy.saveHistory !== undefined) {
+                saveHistoryToggle.checked = settings.privacy.saveHistory;
+              }
+              
+              if (incognitoModeToggle && settings.privacy.incognitoMode !== undefined) {
+                incognitoModeToggle.checked = settings.privacy.incognitoMode;
+              }
+              
+              if (panicUrlInput && settings.privacy.panicUrl) {
+                panicUrlInput.value = settings.privacy.panicUrl;
+              }
+            }
+            
+            // Apply control settings
+            if (settings.controls) {
+              if (panicKeyInput && settings.controls.panicKey) {
+                panicKeyInput.value = settings.controls.panicKey;
+              }
+              
+              if (fullscreenKeyInput && settings.controls.fullscreenKey) {
+                fullscreenKeyInput.value = settings.controls.fullscreenKey;
+              }
+              
+              if (settingsKeyInput && settings.controls.settingsKey) {
+                settingsKeyInput.value = settings.controls.settingsKey;
+              }
+            }
+          } catch (error) {
+            console.error('Error loading settings:', error);
+          }
+        }
+        
+        // Initialize settings
+        loadSettings();
+        
+        // Apply global hotkeys
+        document.addEventListener('keydown', (e) => {
+          const panicKey = localStorage.getItem('panicKey') || 'Escape';
+          const fullscreenKey = localStorage.getItem('fullscreenKey') || 'F';
+          const settingsKey = localStorage.getItem('settingsKey') || 'S';
+          
+          if (e.key === panicKey) {
+            const panicUrl = localStorage.getItem('panicUrl') || 'https://classroom.google.com';
+            window.location.href = panicUrl;
+          }
+          
+          if (e.key.toLowerCase() === fullscreenKey.toLowerCase() && !e.ctrlKey && !e.altKey && !e.metaKey) {
+            const gameFrame = document.getElementById('gameFrame');
+            if (gameFrame && gameFrame.requestFullscreen) {
+              gameFrame.requestFullscreen();
+            }
+          }
+          
+          if (e.key.toLowerCase() === settingsKey.toLowerCase() && !e.ctrlKey && !e.altKey && !e.metaKey) {
+            settingsModal.style.display = settingsModal.style.display === 'flex' ? 'none' : 'flex';
+          }
+        });
+      }
+      
+      // Initialize settings functionality
+      initSettingsFunctionality();
+
+      // Notification system
+      window.showNotification = function(message, type = 'info') {
+        // Remove any existing notifications
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+          existingNotification.remove();
+        }
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        
+        let icon = 'ph-info';
+        if (type === 'success') icon = 'ph-check-circle';
+        if (type === 'error') icon = 'ph-x-circle';
+        
+        notification.innerHTML = `
+          <i class="ph ${icon}"></i>
+          <p>${message}</p>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Show notification with animation
+        setTimeout(() => notification.classList.add('show'), 10);
+        
+        // Auto hide after 3 seconds
+        setTimeout(() => {
+          notification.classList.remove('show');
+          setTimeout(() => notification.remove(), 300);
+        }, 3000);
+      };
     });
   </script>
-
-  <footer>
-    <div class="footer-content">
-      <div class="creator-info">
-        <img src="https://avatars.githubusercontent.com/u/145749058" alt="Brian" class="creator-avatar">
-        <div class="creator-details">
-          <h3>Created by Brian</h3>
-          <p>Developer</p>
-        </div>
-        <div class="social-links">
-          <a href="https://www.roblox.com/users/5740927099/profile" target="_blank" class="social-link" aria-label="Roblox">
-            <i class="ph ph-game-controller"></i>
-          </a>
-          <a href="/cdn-cgi/l/email-protection#97f5e5fef6f9e4e2f5fee5f6e3a1d7f0faf6fefbb9f4f8fa" target="_blank" class="social-link" aria-label="Email">
-            <i class="ph ph-envelope-simple"></i>
-          </a>
-          <a href="https://www.reddit.com/user/Quantom_Echo/" target="_blank" class="social-link" aria-label="Reddit">
-            <i class="ph ph-reddit-logo"></i>
-          </a>
-        </div>
-      </div>
-      <div class="copyright">
-        &copy; 2024 GameHub
-      </div>
-    </div>
-  </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</body>
 </html>
