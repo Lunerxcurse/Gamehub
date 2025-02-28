@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgZmlsbD0iIzdDM0FFRiI+CiAgPHBhdGggZD0iTTE2OCAxMDRhMTIgMTIgMCAwIDEtMTIgMTJoLTU2djU2YTEyIDEyIDAgMCAxLTI0IDB2LTU2SDIwYTEyIDEyIDAgMCAxIDAtMjRoNTZWMjhhMTIgMTIgMCAwIDEgMjQgMHY1Mmg1NmExMiAxMiAwIDAgMSAxMiAxMnptNjguNTYgMTAuNjktODAuMDctODBhMTYgMTYgMCAwIDAtMjIuNTYgMGwtODAuMDcgODBhMTYgMTYgMCAwIDAgMjIuNTYgMjIuNTdMMTI4IDE1Mi41N2w2OS40NyA2OS40OWExNiAxNiAwIDAgMCAyMi41Ni0yMi41N3oiPjwvcGF0aD4KPC9zdmc+">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgZmlsbD0iIzdDM0FFRiI+CiAgPHBhdGggZD0iTTE4OCAxMDRhMTIgMTIgMCAwIDEtMTIgMTJoLTU2djU2YTEyIDEyIDAgMCAxLTI0IDB2LTU2SDIwYTEyIDEyIDAgMCAxIDAtMjRoNTZWMjhhMTIgMTIgMCAwIDEgMjQgMHY1Mmg1NmExMiAxMiAwIDAgMSAxMiAxMnptNjguNTYgMTAuNjktODAuMDctODBhMTYgMTYgMCAwIDAtMjIuNTYgMGwtODAuMDcgODBhMTYgMTYgMCAwIDAgMjIuNTYgMjIuNTdMMTI4IDE1Mi41N2w2OS40NyA2OS40OWExNiAxNiAwIDAgMCAyMi41Ni0yMi41N3oiPjwvcGF0aD4KPC9zdmc+">
 </head>
 <body>
   <!-- Mobile Sidebar -->
@@ -518,9 +518,9 @@
                   If you have any questions, suggestions, or need support, please contact us:
                 </p>
                 <div style="margin-top: 1rem;">
-                  <a href="/cdn-cgi/l/email-protection#1270607b737c6167707b6073662452757f737b7e3c717d7f" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 0.5rem;">
+                  <a href="/cdn-cgi/l/email-protection#2a4858434b44595f4843584b5e1c6a4d474b434604494547" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 0.5rem;">
                     <i class="ph ph-envelope"></i>
-                    <span class="__cf_email__" data-cfemail="94f6e6fdf5fae7e1f6fde6f5e0a2d4f3f9f5fdf8baf7fbf9">[email&#160;protected]</span>
+                    <span class="__cf_email__" data-cfemail="593b2b3038372a2c3b302b382d6f193e34383035773a3634">[email&#160;protected]</span>
                   </a>
                   <a href="https://github.com/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 0.5rem;">
                     <i class="ph ph-github-logo"></i>
@@ -653,6 +653,26 @@
     </button>
   </div>
 
+  <!-- Mobile Navigation Bar -->
+  <div class="mobile-nav-bar">
+    <div class="mobile-nav-item active">
+      <i class="ph ph-house"></i>
+      <span>Home</span>
+    </div>
+    <div class="mobile-nav-item">
+      <i class="ph ph-star"></i>
+      <span>Featured</span>
+    </div>
+    <div class="mobile-nav-item">
+      <i class="ph ph-magnifying-glass"></i>
+      <span>Search</span>
+    </div>
+    <div class="mobile-nav-item">
+      <i class="ph ph-gear"></i>
+      <span>Settings</span>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <div class="footer-content">
@@ -688,7 +708,7 @@
             <li><a href="https://github.com/"><i class="ph ph-github-logo"></i> GitHub</a></li>
             <li><a href="https://twitter.com/"><i class="ph ph-twitter-logo"></i> Twitter</a></li>
             <li><a href="https://discord.com/"><i class="ph ph-discord-logo"></i> Discord</a></li>
-            <li><a href="/cdn-cgi/l/email-protection#e486968d858a9791868d968590d2a48389858d88ca878b89"><i class="ph ph-envelope-simple"></i> Email Us</a></li>
+            <li><a href="/cdn-cgi/l/email-protection#5331213a323d2026313a2132276513343e323a3f7d303c3e"><i class="ph ph-envelope-simple"></i> Email Us</a></li>
           </ul>
         </div>
       </div>
@@ -1257,264 +1277,269 @@
       
       if (quickShareBtn) {
         quickShareBtn.addEventListener('click', () => {
+          // Create a more robust share sheet
           if (navigator.share) {
             navigator.share({
               title: 'GameHub Pro',
-              text: 'Check out this awesome game collection!',
+              text: 'Check out this awesome game collection with over 100 free games!',
               url: window.location.href
             })
             .then(() => showNotification('Thanks for sharing!', 'success'))
             .catch(err => console.error('Share failed:', err));
           } else {
-            // Fallback
-            navigator.clipboard.writeText(window.location.href)
-              .then(() => showNotification('Link copied to clipboard!', 'success'))
-              .catch(() => showNotification('Failed to copy link', 'error'));
+            // Create custom share modal for browsers without Web Share API
+            const shareModal = document.createElement('div');
+            shareModal.className = 'modal';
+            shareModal.style.display = 'flex';
+            
+            shareModal.innerHTML = `
+              <div class="game-info-content" style="max-width: 400px;">
+                <div class="modal-header">
+                  <h2><i class="ph ph-share-network"></i> Share GameHub</h2>
+                  <button class="close-btn" id="shareModalCloseBtn">
+                    <i class="ph ph-x"></i>
+                  </button>
+                </div>
+                <div style="padding: 1.5rem;">
+                  <p style="margin-bottom: 1rem; text-align: center;">Share this awesome game collection with your friends!</p>
+                  
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                    <a href="https://wa.me/?text=${encodeURIComponent('Check out GameHub Pro - over 100 free games! ' + window.location.href)}" target="_blank" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--text);">
+                      <div style="width: 50px; height: 50px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
+                        <i class="ph ph-whatsapp-logo" style="color: white; font-size: 1.5rem;"></i>
+                      </div>
+                      <span style="font-size: 0.8rem;">WhatsApp</span>
+                    </a>
+                    
+                    <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent('Check out GameHub Pro - over 100 free games!')}" target="_blank" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--text);">
+                      <div style="width: 50px; height: 50px; border-radius: 50%; background: #0088cc; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
+                        <i class="ph ph-telegram-logo" style="color: white; font-size: 1.5rem;"></i>
+                      </div>
+                      <span style="font-size: 0.8rem;">Telegram</span>
+                    </a>
+                    
+                    <a href="mailto:?subject=${encodeURIComponent('Check out this awesome game collection!')}&body=${encodeURIComponent('I found this amazing free game collection: ' + window.location.href)}" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--text);">
+                      <div style="width: 50px; height: 50px; border-radius: 50%; background: #D44638; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
+                        <i class="ph ph-envelope" style="color: white; font-size: 1.5rem;"></i>
+                      </div>
+                      <span style="font-size: 0.8rem;">Email</span>
+                    </a>
+                  </div>
+                  
+                  <div style="position: relative; margin-bottom: 1rem;">
+                    <input type="text" id="shareUrlInput" value="${window.location.href}" style="width: 100%; padding: 0.8rem; border-radius: var(--radius-sm); background: var(--surface-hover); border: 1px solid var(--border); color: var(--text);" readonly>
+                    <button id="copyShareLinkBtn" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: var(--primary); color: white; border: none; border-radius: var(--radius-sm); padding: 0.4rem 0.8rem; cursor: pointer;">
+                      Copy
+                    </button>
+                  </div>
+                  
+                  <div style="text-align: center;">
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Or scan this QR code</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(window.location.href)}" style="width: 150px; height: 150px; margin: 1rem auto; display: block; background: white; padding: 0.5rem; border-radius: var(--radius-sm);">
+                  </div>
+                </div>
+              </div>
+            `;
+            
+            document.body.appendChild(shareModal);
+            
+            // Add event listeners
+            const closeBtn = shareModal.querySelector('#shareModalCloseBtn');
+            const copyBtn = shareModal.querySelector('#copyShareLinkBtn');
+            const shareUrlInput = shareModal.querySelector('#shareUrlInput');
+            
+            if (closeBtn) {
+              closeBtn.addEventListener('click', () => {
+                shareModal.style.display = 'none';
+                shareModal.remove();
+              });
+            }
+            
+            if (copyBtn && shareUrlInput) {
+              copyBtn.addEventListener('click', () => {
+                shareUrlInput.select();
+                document.execCommand('copy');
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                  copyBtn.textContent = 'Copy';
+                }, 2000);
+                showNotification('Link copied to clipboard!', 'success');
+              });
+            }
           }
         });
       }
       
-      // Show/hide quick actions menu based on scroll
-      let lastScrollTop = 0;
-      window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (quickActions) {
-          if (scrollTop > 300) {
-            quickActions.classList.add('visible');
-          } else {
-            quickActions.classList.remove('visible');
-          }
-          
-          // Hide when scrolling down, show when scrolling up (after initial threshold)
-          if (scrollTop > lastScrollTop && scrollTop > 600) {
-            quickActions.classList.add('hidden');
-          } else {
-            quickActions.classList.remove('hidden');
-          }
-        }
-        
-        lastScrollTop = scrollTop;
-      });
-
-      // Initialize category/filter buttons
-      function initCategoryFilters() {
-        const filterChips = document.querySelectorAll('.filter-chip');
-        
-        filterChips.forEach(chip => {
-          chip.addEventListener('click', () => {
-            // Remove active class from all chips
-            filterChips.forEach(c => c.classList.remove('active'));
+      // Initialize mobile navigation
+      const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+      if (mobileNavItems) {
+        mobileNavItems.forEach((item, index) => {
+          item.addEventListener('click', () => {
+            // Remove active class from all items
+            mobileNavItems.forEach(i => i.classList.remove('active'));
+            // Add active class to clicked item
+            item.classList.add('active');
             
-            // Add active class to clicked chip
-            chip.classList.add('active');
-            
-            // Get category and update game grid
-            const category = chip.getAttribute('data-category');
-            if (typeof displayGames === 'function') {
-              displayGames(category);
+            // Handle navigation actions
+            switch (index) {
+              case 0: // Home
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                break;
+              case 1: // Featured
+                // Scroll to featured section or filter games
+                const filterChips = document.querySelectorAll('.filter-chip');
+                filterChips.forEach(chip => {
+                  if (chip.textContent.trim().includes('Action')) {
+                    chip.click();
+                  }
+                });
+                break;
+              case 2: // Search
+                // Focus search input or open search overlay
+                document.querySelector('.mobile-sidebar-search input')?.focus();
+                openSidebar();
+                break;
+              case 3: // Settings
+                // Open settings modal
+                document.getElementById('settingsModal').style.display = 'flex';
+                break;
             }
           });
         });
       }
-
-      // Initialize game suggestion form
-      function initSuggestGameForm() {
-        const suggestGameForm = document.getElementById('suggestGameForm');
-        const suggestGameCloseBtn = document.querySelector('.suggest-game-close');
-        
-        if (suggestGameForm) {
-          suggestGameForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = e.target.elements.name.value.trim() || 'Anonymous';
-            const email = e.target.elements.email.value.trim() || 'Not Provided';
-            const gameName = e.target.elements.gameName.value.trim();
-            const gameDescription = e.target.elements.gameDescription.value.trim();
-            
-            if (!gameName || !gameDescription) {
-              showNotification('Please provide a game name and description.', 'error');
-              return;
-            }
-
-            const emailBody = encodeURIComponent(`
-Game Suggestion Details:
-
-Sender Name: ${name}
-Sender Email: ${email}
-
-Game Name: ${gameName}
-
-Suggestion Description:
-${gameDescription}
-            `);
-
-            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=briansubirat6@gmail.com&su=Game%20Suggestion:%20${encodeURIComponent(gameName)}&body=${emailBody}`, '_blank');
-            
-            e.target.reset();
-            suggestGameModal.style.display = 'none';
-            showNotification('Thank you for your game suggestion!', 'success');
-          });
-        }
-        
-        if (suggestGameCloseBtn) {
-          suggestGameCloseBtn.addEventListener('click', () => {
-            suggestGameModal.style.display = 'none';
-          });
-        }
-      }
-
-      // Initialize desktop buttons
-      function initDesktopButtons() {
-        const suggestGameBtn = document.getElementById('suggestGameBtn');
-        const aiCopilotBtn = document.getElementById('aiCopilotBtn');
-        const settingsBtn = document.getElementById('settingsBtn');
-        
-        if (suggestGameBtn) {
-          suggestGameBtn.addEventListener('click', () => {
-            suggestGameModal.style.display = 'flex';
-          });
-        }
-        
-        if (aiCopilotBtn) {
-          aiCopilotBtn.addEventListener('click', () => {
-            window.open('https://copilot.microsoft.com/', '_blank');
-          });
-        }
-        
-        if (settingsBtn) {
-          settingsBtn.addEventListener('click', () => {
-            settingsModal.style.display = 'flex';
-          });
-        }
-      }
-
-      // Initialize settings modal
-      function initSettingsModal() {
-        const settingsCloseBtn = document.querySelector('.settings-close-btn');
-        const settingsTabs = document.querySelectorAll('.settings-tab');
-        const settingsContents = document.querySelectorAll('.settings-tab-content');
-        
-        function activateSettingsTab(tabId) {
-          settingsTabs.forEach(tab => {
-            if (tab.getAttribute('data-tab') === tabId) {
-              tab.classList.add('active');
-            } else {
-              tab.classList.remove('active');
-            }
-          });
+      
+      // Enhanced WebProxy instantiation with Vercel compatibility
+      const webProxy = new WebProxy();
+      webProxy.setup();
+      
+      // Add game badges for visual enhancement
+      function addGameBadges() {
+        const gameCards = document.querySelectorAll('.game-card');
+        gameCards.forEach(card => {
+          // Don't add badges to cards that already have them
+          if (card.querySelector('.badge')) return;
           
-          settingsContents.forEach(content => {
-            if (content.getAttribute('data-tab-content') === tabId) {
-              content.classList.add('active');
-            } else {
-              content.classList.remove('active');
-            }
-          });
+          // Randomly add badges to some games for visual interest
+          const random = Math.random();
+          if (random < 0.1) {
+            const badge = document.createElement('div');
+            badge.className = 'badge new';
+            badge.textContent = 'NEW';
+            card.appendChild(badge);
+          } else if (random < 0.2) {
+            const badge = document.createElement('div');
+            badge.className = 'badge hot';
+            badge.textContent = 'HOT';
+            card.appendChild(badge);
+          } else if (random < 0.25) {
+            const badge = document.createElement('div');
+            badge.className = 'badge featured pulse-animation';
+            badge.textContent = 'FEATURED';
+            card.appendChild(badge);
+          }
+        });
+      }
+      
+      // Add dynamic game count indicator
+      function addGameCountIndicator() {
+        const collectionHeader = document.querySelector('.collection-header');
+        if (collectionHeader && window.games) {
+          const countBadge = document.createElement('div');
+          countBadge.className = 'game-count-badge';
+          countBadge.style.background = 'var(--surface-hover)';
+          countBadge.style.padding = '0.3rem 0.8rem';
+          countBadge.style.borderRadius = '30px';
+          countBadge.style.fontSize = '0.9rem';
+          countBadge.style.color = 'var(--text-secondary)';
+          countBadge.style.marginLeft = 'auto';
+          countBadge.textContent = `${window.games.length} games`;
+          
+          collectionHeader.appendChild(countBadge);
         }
-        
-        if (settingsTabs && settingsContents) {
-          settingsTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-              const tabId = tab.getAttribute('data-tab');
-              activateSettingsTab(tabId);
-            });
-          });
-        }
-        
-        if (settingsCloseBtn) {
-          settingsCloseBtn.addEventListener('click', () => {
-            settingsModal.style.display = 'none';
-          });
-        }
-
-        // Clear buttons
-        const clearHistoryBtn = document.getElementById('clearHistory');
-        const clearSettingsBtn = document.getElementById('clearSettings');
-        const clearAllDataBtn = document.getElementById('clearAllData');
-        const resetCloakBtn = document.getElementById('resetCloak');
-        
-        if (clearHistoryBtn) {
-          clearHistoryBtn.addEventListener('click', () => {
-            localStorage.removeItem('recentGames');
-            showNotification('Game history has been cleared', 'success');
-            const recentGamesManager = new RecentGamesManager();
-            recentGamesManager.updateRecentGamesDisplay();
-          });
-        }
-        
-        if (clearSettingsBtn) {
-          clearSettingsBtn.addEventListener('click', () => {
-            if (confirm('Reset all settings to default values?')) {
-              if (window.Settings) {
-                const settings = new Settings();
-                settings.resetSettings();
-                showNotification('All settings have been reset to defaults', 'success');
-              }
-            }
-          });
-        }
-        
-        if (clearAllDataBtn) {
-          clearAllDataBtn.addEventListener('click', () => {
-            if (confirm('This will clear ALL data including game history and settings. Are you sure?')) {
-              localStorage.clear();
-              showNotification('All data has been cleared', 'success');
+      }
+      
+      // Call new UI enhancement functions
+      addGameBadges();
+      addGameCountIndicator();
+      
+      // Enhanced game grid loading with better animations
+      const originalDisplayGames = window.displayGames;
+      if (typeof originalDisplayGames === 'function') {
+        window.displayGames = function(category = 'all', searchTerm = '', sortBy = null, loadMore = false) {
+          // Show loading state
+          if (!loadMore) {
+            showLoading();
+          }
+          
+          setTimeout(() => {
+            // Call original implementation
+            originalDisplayGames(category, searchTerm, sortBy, loadMore);
+            
+            // Add badges to new cards
+            addGameBadges();
+            
+            // Add staggered animation for a nicer effect
+            const cards = document.querySelectorAll('.game-card');
+            cards.forEach((card, index) => {
+              card.style.opacity = '0';
+              card.style.transform = 'translateY(20px)';
               setTimeout(() => {
-                window.location.reload();
-              }, 1500);
-            }
-          });
+                card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              }, 50 * (index % 10)); // Stagger animation but limit to avoid long delays
+            });
+            
+          }, 600);
+        };
+      }
+      
+      // Add swipe functionality for mobile tabs
+      let startX, startY;
+      const contentArea = document.body;
+      
+      contentArea.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }, { passive: true });
+      
+      contentArea.addEventListener('touchend', (e) => {
+        if (!startX || !startY) return;
+        
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        
+        const diffX = startX - endX;
+        const diffY = startY - endY;
+        
+        // Only detect horizontal swipes with minimal vertical movement
+        if (Math.abs(diffX) > 100 && Math.abs(diffY) < 50) {
+          // Get current active tab
+          const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+          const activeIndex = Array.from(mobileNavItems).findIndex(item => item.classList.contains('active'));
+          
+          if (diffX > 0) {
+            // Swipe left - go to next tab
+            const nextIndex = Math.min(activeIndex + 1, mobileNavItems.length - 1);
+            mobileNavItems[nextIndex].click();
+          } else {
+            // Swipe right - go to previous tab
+            const prevIndex = Math.max(activeIndex - 1, 0);
+            mobileNavItems[prevIndex].click();
+          }
         }
         
-        if (resetCloakBtn) {
-          resetCloakBtn.addEventListener('click', () => {
-            if (window.TabCloak) {
-              const tabCloak = new TabCloak();
-              tabCloak.resetCloak();
-              showNotification('Tab cloak has been reset', 'success');
-            }
-          });
-        }
-      }
-
-      // Enhanced game card interaction
-      function enhanceGameCards() {
-        document.addEventListener('click', (e) => {
-          // Find closest game card
-          const gameCard = e.target.closest('.game-card');
-          if (!gameCard) return;
-          
-          try {
-            // Get game data
-            const gameId = gameCard.getAttribute('data-game-id');
-            const game = window.games.find(g => g.id === gameId);
-            
-            if (game) {
-              // Check if info button was clicked
-              const infoButton = e.target.closest('.game-info-btn');
-              
-              if (infoButton) {
-                // Show game info modal
-                showGameInfo(game);
-              } else {
-                // Play the game
-                openGame(game);
-              }
-            }
-          } catch (err) {
-            console.error('Error handling game card click:', err);
-          }
-        });
-      }
-
+        startX = null;
+        startY = null;
+      }, { passive: true });
+      
       // Initialize all sections
       initNewGames();
-      initCategoryFilters();
-      initSuggestGameForm();
-      initDesktopButtons();
-      initSettingsModal();
-      enhanceGameCards();
+      //initCategoryFilters();
+      //initSuggestGameForm();
+      //initDesktopButtons();
+      //initSettingsModal();
+      //enhanceGameCards();
 
       // Call global function to display all games
       if (typeof displayGames === 'function') {
@@ -1911,6 +1936,38 @@ ${gameDescription}
           setTimeout(() => notification.remove(), 300);
         }, 3000);
       };
+
+      // Fix mobile layout issues immediately
+      function fixMobileLayout() {
+        if (window.innerWidth <= 768) {
+          // Adjust content heights
+          const modalContents = document.querySelectorAll('.modal-content');
+          modalContents.forEach(content => {
+            const viewportHeight = window.innerHeight;
+            content.style.maxHeight = `${viewportHeight}px`;
+          });
+          
+          // Improve scrolling
+          document.querySelectorAll('.settings-tab-content, .favorites-body, .game-info-body').forEach(elem => {
+            elem.style.overflowY = 'auto';
+            elem.style.webkitOverflowScrolling = 'touch';
+          });
+        }
+      }
+      
+      fixMobileLayout();
+      window.addEventListener('resize', fixMobileLayout);
+      
+      // Add viewport fix for iOS Safari
+      function fixIOSHeight() {
+        // First we get the viewport height and we multiply it by 1% to get a value for a vh unit
+        let vh = window.innerHeight * 0.01;
+        // Then we set the value in the --vh custom property to the root of the document
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+      
+      fixIOSHeight();
+      window.addEventListener('resize', fixIOSHeight);
     });
   </script>
 </body>
