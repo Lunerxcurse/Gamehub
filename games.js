@@ -107,7 +107,7 @@
       description: 'Intense car crash racing game',
       category: 'racing',
       icon: 'ph-car',
-      url: 'https://www.twoplayergames.org/embed/hyper-cars-ramp-crash',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/hypercars/index.html',
       featured: false
     },
     {
@@ -125,7 +125,7 @@
       description: 'Swing and navigate through challenging levels',
       category: 'arcade',
       icon: 'ph-arrow-swing',  
-      url: 'https://labgstore311.github.io/g69/class-636/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/swingo/index.html',
       featured: false
     },
     {
@@ -143,7 +143,7 @@
       description: 'Endless running adventure game',
       category: 'arcade',
       icon: 'ph-person-simple-run',
-      url: 'https://azgames.io/game/temple-run-2/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/temple-run-2/index.html',
       featured: false
     },
     {
@@ -161,7 +161,7 @@
       description: 'Challenging rolling ball game',
       category: 'arcade',
       icon: 'ph-arrow-bend-down-right',
-      url: 'https://education76.github.io/g/slope/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/slope-3/index.html',
       featured: false
     },
     {
@@ -170,7 +170,7 @@
       description: 'Iconic arcade flying game',
       category: 'arcade',
       icon: 'ph-bird',
-      url: 'https://playcanv.as/p/2OlkUaxF/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/flappybirb/index.html',
       featured: false
     },
     {
@@ -206,7 +206,7 @@
       description: 'Classic snake arcade game',
       category: 'arcade',
       icon: 'ph-gamepad',
-      url: 'https://kdata1.com/5000/2024/snakesolver/',
+      url: 'https://www.google.com/search?q=google+snake&rlz=1CAWOAL_enUS1139&oq=google+snake&gs_lcrp=EgZjaHJvbWUyDAgAEEUYORixAxiABDIKCAEQABixAxiABDIKCAIQABixAxiABDIHCAMQABiABDIKCAQQABiLAxiABDIKCAUQABiLAxiABDIKCAYQABiLAxiABDIGCAcQRRg80gEINDY0NGoxajeoAgCwAgA&sourceid=chrome&ie=UTF-8&surl=1&safe=active&ssui=on',
       featured: false
     },
     {
@@ -215,7 +215,7 @@
       description: 'Browser-based Minecraft experience',
       category: 'simulation',
       icon: 'ph-cube',
-      url: 'https://bagelcomics.com/eaglercraft-main/eaglercraft-main/stable-download/web/index.html',
+      url: '',
       featured: true  
     },
     {
@@ -278,7 +278,7 @@
       description: 'Zombie survival shooter',
       category: 'action',
       icon: 'ph-skull',
-      url: 'https://nzp.gay/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/nzp-gay/index.html',
       featured: false
     },
     {
@@ -287,7 +287,7 @@
       description: 'Classic American football management game',
       category: 'sports',
       icon: 'ph-football',
-      url: 'https://webglmath.github.io/retro-bowl/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/retro-bowl/index.html',
       featured: false
     },
     {
@@ -296,7 +296,7 @@
       description: 'Intense drift racing simulator',
       category: 'racing',
       icon: 'ph-car',
-      url: 'https://1games.io/game/drift-hunters/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/driftboss2/index.html',
       featured: false
     },
     {
@@ -305,7 +305,7 @@
       description: 'High-speed endless tunnel runner',
       category: 'arcade',
       icon: 'ph-arrow-bend-down-right',
-      url: 'https://unblockedgames911.gitlab.io/tunnel-rush/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/tunnel-rush/game/index.html',
       featured: false
     },
     {
@@ -323,7 +323,7 @@
       description: 'Multiplayer tank battle game',
       category: 'action',
       icon: 'ph-army-knife',
-      url: 'https://www.silvergames.com/en/tank-trouble/gameframe',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/tank-trouble-2/index.html',
       featured: false
     },
     {
@@ -332,7 +332,7 @@
       description: 'Addictive cookie production game',
       category: 'simulation',
       icon: 'ph-cookie',
-      url: 'https://orteil.dashnet.org/cookieclicker/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/cookie-clicker/index.html',
       featured: false
     },
     {
@@ -341,7 +341,7 @@
       description: 'Classic multiplayer chase and escape game',
       category: 'multiplayer',
       icon: 'ph-users',
-      url: 'https://labgstore311.github.io/g69/class-633/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/tagfix/index.html',
       featured: false
     },
     {
@@ -368,7 +368,7 @@
       description: 'Challenging platformer with intricate obstacle courses',
       category: 'action',
       icon: 'ph-arrow-up-right',
-      url: 'https://htmlxm.github.io/h9/vex-6/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/vex6/index.html',
       featured: false
     },
     {
@@ -377,7 +377,7 @@
       description: 'Arcade ball bouncing strategy game', 
       category: 'arcade',
       icon: 'ph-circle',
-      url: 'https://www.onlinescientificresearch.com/games/core-ball/core-ball/index.html',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/core-ball/index.html',
       featured: false
     },
     {
@@ -386,7 +386,7 @@
       description: 'Chaotic basketball with unpredictable physics',
       category: 'sports', 
       icon: 'ph-basketball',
-      url: 'https://basketball-random.com/gg/basketball-random/',  
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/basketrandom/index.html',  
       featured: false
     },
     {
@@ -395,7 +395,7 @@
       description: 'Fast-paced building and shooting battle game',
       category: 'action',
       icon: 'ph-crosshair', 
-      url: 'https://1v1.lol/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/1v1lolagain/1v1-lol-2/index.html',
       featured: false
     },
     {
@@ -404,7 +404,7 @@
       description: 'Hilarious multiplayer sniper duel game',
       category: 'action',
       icon: 'ph-target',
-      url: 'https://games.playtropolis.com/rooftop-snipers/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/rooftop-snipers/index.html',
       featured: false
     },
     {
@@ -485,7 +485,7 @@
       description: 'Challenging maze-based adventure game',
       category: 'arcade',
       icon: 'ph-map',
-      url: 'https://tomb-of-the-mask-online.github.io/file/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/tombmask/game/index.html',
       featured: false
     },
     {
@@ -542,14 +542,13 @@
       url: 'https://www.xbox.com/en-US/play/games/fortnite/BT5P2X999VH2',
       featured: true
     },
-    // New added games
     {
       id: 'wordle',
       title: 'Wordle',
       description: 'Guess the hidden word in six tries',
       category: 'puzzle',
       icon: 'ph-textbox',
-      url: 'https://www.nytimes.com/games/wordle/index.html',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/wordle/index.html#daily',
       featured: false
     },
     {
@@ -558,7 +557,7 @@
       description: 'Automated brick-breaking idle game',
       category: 'idle',
       icon: 'ph-bricks',
-      url: 'https://html5.gamedistribution.com/rvvASMiM/c3a70ae98547407a92ebedca8b79fdfa/index.html',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/idle-breakout/index.html',
       featured: false
     },
     {
@@ -567,7 +566,7 @@
       description: 'Rhythm-based action platformer',
       category: 'arcade',
       icon: 'ph-square',
-      url: 'https://webglmath.github.io/geometry-dash/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/geodash1/game.html',
       featured: false
     },
     {
@@ -594,7 +593,7 @@
       description: 'Multiplayer territory conquest game',
       category: 'io',
       icon: 'ph-map',
-      url: 'https://territorial.io/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/territorialio/build/index.html',
       featured: false
     },
     {
@@ -616,15 +615,6 @@
       featured: false
     },
     {
-      id: 'doom',
-      title: 'DOOM',
-      description: 'Classic first-person shooter',
-      category: 'action',
-      icon: 'ph-gun',
-      url: 'https://archive.org/details/doom-play',
-      featured: true
-    },
-    {
       id: 'google-baseball',
       title: 'Google Baseball',
       description: 'Swing the bat at the right time to hit home runs',
@@ -639,7 +629,7 @@
       description: 'Physics-based soccer game with ragdoll players',
       category: 'sports',
       icon: 'ph-soccer-ball',
-      url: 'https://soccer-random.io/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/soccerrandom/index.html',
       featured: false
     },
     {
@@ -648,7 +638,7 @@
       description: 'Soccer with rocket-powered cars, 2D version',
       category: 'sports',
       icon: 'ph-car',
-      url: 'https://openrocket.io/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/rocket-league/index.html',
       featured: false
     },
     {
@@ -666,7 +656,7 @@
       description: 'Classic block-stacking puzzle game',
       category: 'puzzle',
       icon: 'ph-squares-four',
-      url: 'https://tetris.com/play-tetris',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/tetris/index.html',
       featured: false
     },
     {
@@ -684,7 +674,7 @@
       description: 'Multiplayer kart battle game',
       category: 'racing',
       icon: 'ph-car',
-      url: 'https://smashkarts.io/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/smashkarts/index.html',
       featured: false
     },
     {
@@ -711,7 +701,7 @@
       description: 'Futuristic racing game',
       category: 'racing',
       icon: 'ph-triangle',
-      url: 'https://hexgl.bkcore.com/play/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/HexGL/index.html',
       featured: false
     },
     {
@@ -738,7 +728,7 @@
       description: 'Fast-paced tunnel runner game',
       category: 'arcade',
       icon: 'ph-triangle',
-      url: 'https://www.y8.com/games/death_run_3d',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/death-run-3d/index.html',
       featured: false
     },
     {
@@ -747,7 +737,7 @@
       description: 'Competitive Pokémon battle simulator',
       category: 'simulation',
       icon: 'ph-lightning',
-      url: 'https://play.pokemonshowdown.com/',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/pokemon-emerald/index.html',
       featured: false
     },
     {
@@ -756,7 +746,7 @@
       description: 'Physics-based puzzle game',
       category: 'puzzle',
       icon: 'ph-scissors',
-      url: 'https://www.crazygames.com/game/cut-the-rope',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/ctr/index.html',
       featured: false
     },
     {
@@ -792,7 +782,7 @@
       description: 'Roll the block to the goal',
       category: 'puzzle',
       icon: 'ph-cube',
-      url: 'https://www.mathplayground.com/logic_bloxorz.html',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/bloxors/index.html',
       featured: false
     },
     {
@@ -819,7 +809,7 @@
       description: 'Challenging boss fight game',
       category: 'action',
       icon: 'ph-sword',
-      url: 'https://www.crazygames.com/game/just-one-boss',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/just-one-boss/index.html',
       featured: false
     },
     {
@@ -828,7 +818,7 @@
       description: 'Build and manage your supermarket empire',
       category: 'simulation',
       icon: 'ph-storefront',
-      url: 'https://www.crazygames.com/game/monkey-mart',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/monkeymart/file/index.html',
       featured: false
     },
     {
@@ -838,6 +828,33 @@
       category: 'sports',
       icon: 'ph-car',
       url: 'https://www.crazygames.com/game/rocket-soccer-derby',
+      featured: false
+    },
+    {
+      id: 'n-gon',
+      title: 'N-gon',
+      description: 'Physics-based action game with modular power-ups',
+      category: 'action',
+      icon: 'ph-hexagon',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/n-gon/index.html',
+      featured: false
+    },
+    {
+      id: 'connect-4',
+      title: 'Connect 4',
+      description: 'Classic strategy game where you drop discs to connect four',
+      category: 'puzzle',
+      icon: 'ph-circles-four',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/connect4/index.html',
+      featured: false
+    },
+    {
+      id: 'super-star-car',
+      title: 'Super Star Car',
+      description: 'Arcade racing game with colorful graphics and power-ups',
+      category: 'racing',
+      icon: 'ph-car',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/super-star-car/index.html',
       featured: false
     }
   ];
