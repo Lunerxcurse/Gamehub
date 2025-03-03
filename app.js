@@ -121,6 +121,126 @@ function displayGames(category = 'all', searchQuery = '', sortBy = 'popular', lo
   }
 }
 
+class RecentGamesManager {
+  constructor() {
+    this.maxRecentGames = 10;
+  }
+  
+  addRecentGame(game) {
+    // Check if game history saving is enabled
+    const saveHistory = localStorage.getItem('saveHistory') !== 'false';
+    const incognitoMode = localStorage.getItem('incognitoMode') === 'true';
+    
+    if (!saveHistory || incognitoMode) return;
+    
+    // Get existing recent games
+    let recentGames = this.getRecentGames();
+    
+    // Remove duplicate if game already exists
+    recentGames = recentGames.filter(g => g.id !== game.id);
+    
+    // Add new game to the start of the array
+    recentGames.unshift(game);
+    
+    // Limit to max recent games
+    recentGames = recentGames.slice(0, this.maxRecentGames);
+    
+    // Save to localStorage
+    localStorage.setItem('recentGames', JSON.stringify(recentGames));
+    
+    // Update display
+    this.updateRecentGamesDisplay();
+  }
+  
+  getRecentGames() {
+    const saved = localStorage.getItem('recentGames');
+    return saved ? JSON.parse(saved) : [];
+  }
+  
+  updateRecentGamesDisplay() {
+    const jumpBackGrid = document.getElementById('jumpBackGrid');
+    const emptyState = `
+      <div class="jump-back-empty">
+        <i class="ph ph-hourglass"></i>
+        <h3>No Recently Played Games</h3>
+        <p>Games you play will appear here for quick access</p>
+      </div>
+    `;
+    
+    if (!jumpBackGrid) return;
+    
+    const recentGames = this.getRecentGames();
+    
+    if (recentGames.length === 0) {
+      jumpBackGrid.innerHTML = emptyState;
+      return;
+    }
+    
+    // Generate jump back cards
+    const recentGamesHtml = recentGames.map(game => `
+      <div class="jump-back-card" data-game='${JSON.stringify(game)}'>
+        <div class="game-thumbnail">
+          <i class="ph ${game.icon || 'ph-game-controller'}"></i>
+        </div>
+        <div class="jump-back-card-content">
+          <h3>${game.title}</h3>
+          <p>${game.description}</p>
+        </div>
+      </div>
+    `).join('');
+    
+    jumpBackGrid.innerHTML = recentGamesHtml;
+    
+    // Add click event listeners for recent games
+    jumpBackGrid.querySelectorAll('.jump-back-card').forEach(card => {
+      card.addEventListener('click', () => {
+        try {
+          const gameData = JSON.parse(card.getAttribute('data-game'));
+          openGame(gameData);
+        } catch (err) {
+          console.error('Error opening recent game:', err);
+        }
+      });
+    });
+    
+    // Update mobile sidebar recent games
+    const mobileSidebarRecentGames = document.getElementById('mobileSidebarRecentGames');
+    if (mobileSidebarRecentGames) {
+      const mobileRecentGamesHtml = recentGames.slice(0, 5).map(game => `
+        <div class="recent-game-item" data-game='${JSON.stringify(game)}'>
+          <i class="ph ${game.icon || 'ph-game-controller'}"></i>
+          <div>
+            <h4>${game.title}</h4>
+            <p>${game.category}</p>
+          </div>
+        </div>
+      `).join('');
+      
+      mobileSidebarRecentGames.innerHTML = mobileRecentGamesHtml;
+      
+      // Add click event listeners for mobile recent games
+      mobileSidebarRecentGames.querySelectorAll('.recent-game-item').forEach(item => {
+        item.addEventListener('click', () => {
+          try {
+            const gameData = JSON.parse(item.getAttribute('data-game'));
+            openGame(gameData);
+            
+            // Close mobile sidebar
+            const sidebar = document.querySelector('.mobile-sidebar');
+            const overlay = document.querySelector('.mobile-sidebar-overlay');
+            
+            if (sidebar) sidebar.classList.remove('open');
+            if (overlay) overlay.classList.remove('active');
+            document.body.style.overflow = '';
+          } catch (err) {
+            console.error('Error opening mobile recent game:', err);
+          }
+        });
+      });
+    }
+  }
+}
+
 // Add function to open games
 function openGame(game) {
   if (!game || !game.url) return;
@@ -151,3 +271,21 @@ function openGame(game) {
     recentGamesManager.addRecentGame(game);
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const privacyPolicyLink = document.getElementById('privacyPolicyLink');
+  if (privacyPolicyLink) {
+    privacyPolicyLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'privacy-policy.html';
+    });
+  }
+  
+  const contactLink = document.getElementById('contactLink');
+  if (contactLink) {
+    contactLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'contact.html';
+    });
+  }
+});

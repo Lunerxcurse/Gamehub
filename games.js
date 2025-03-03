@@ -206,7 +206,7 @@
       description: 'Classic snake arcade game',
       category: 'arcade',
       icon: 'ph-gamepad',
-      url: 'https://www.google.com/search?q=google+snake&rlz=1CAWOAL_enUS1139&oq=google+snake&gs_lcrp=EgZjaHJvbWUyDAgAEEUYORixAxiABDIKCAEQABixAxiABDIKCAIQABixAxiABDIHCAMQABiABDIKCAQQABiLAxiABDIKCAUQABiLAxiABDIKCAYQABiLAxiABDIGCAcQRRg80gEINDY0NGoxajeoAgCwAgA&sourceid=chrome&ie=UTF-8&surl=1&safe=active&ssui=on',
+      url: 'https://www.google.com/search?q=google+snake&rlz=1CAWOAL_enUS1139&oq=google+snake&gs_lcrp=EgZjaHJvbWUyDAgAEEUYORixAxiABDIKCAEQABixAxiABDIKCAIQABixAxiABDIHCAMQABiABDIKCAQQABiLAxiABDIKCAUQABiLAxiABDIGCAcQRRg80gEINDY0NGoxajeoAgCwAgA&sourceid=chrome&ie=UTF-8&surl=1&safe=active&ssui=on',
       featured: false
     },
     {
@@ -215,8 +215,8 @@
       description: 'Browser-based Minecraft experience',
       category: 'simulation',
       icon: 'ph-cube',
-      url: '',
-      featured: true  
+      url: 'https://d1tm91r4ytbt54.cloudfront.net/2779cbcb-a02f-48a3-9e2e-95a8d123d165/1685483461665/web/index.html',
+      featured: true
     },
     {
       id: 'pac-man',
@@ -752,7 +752,7 @@
     {
       id: 'crossy-road',
       title: 'Crossy Road',
-      description: 'Endless arcade hopper game',
+      description: 'Challenging arcade hopper game',
       category: 'arcade',
       icon: 'ph-road-horizon',
       url: 'https://poki.com/en/g/crossy-road',
@@ -856,10 +856,174 @@
       icon: 'ph-car',
       url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/super-star-car/index.html',
       featured: false
+    },
+    {
+      id: 'choir',
+      title: 'Choir Game',
+      description: 'Create harmonious musical compositions by coordinating choir singers',
+      category: 'music',
+      icon: 'ph-microphone-stage',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/choir/game.html',
+      featured: false
+    },
+    {
+      id: 'tic-tac-toe',
+      title: 'Tic Tac Toe',
+      description: 'Classic strategy game of placing X and O on a 3x3 grid',
+      category: 'puzzle',
+      icon: 'ph-grid-four',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/tictactoe/index.html',
+      featured: false
+    },
+    {
+      id: 'air-horn',
+      title: 'Air Horn Soundboard',
+      description: 'Interactive soundboard with various air horn sounds',
+      category: 'music',
+      icon: 'ph-speaker-high',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/airhorn/index.html',
+      featured: false
+    },
+    {
+      id: 'elastic-man',
+      title: 'Elastic Man',
+      description: 'Stretch and manipulate a stretchy character through physics-based challenges',
+      category: 'puzzle',
+      icon: 'ph-person-simple',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/elasticman/index.html',
+      featured: false
+    },
+    {
+      id: 'eel-slap',
+      title: 'Eel Slap',
+      description: 'Humorous game where you slap an eel across the screen',
+      category: 'arcade',
+      icon: 'ph-fish',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/eelslap/index.html',
+      featured: false
+    },
+    {
+      id: 'terraria-dino',
+      title: 'Terraria Dino Game',
+      description: 'Pixelated dinosaur adventure inspired by Terraria',
+      category: 'action',
+      icon: 'ph-dinosaur',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/Terraria/game/index.html',
+      featured: false
+    },
+    {
+      id: 'doge-miner',
+      title: 'Doge Miner',
+      description: 'Incremental mining game featuring the famous Doge meme',
+      category: 'idle',
+      icon: 'ph-dog',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/DogeMiner/index.html',
+      featured: false
+    },
+    {
+      id: 'impossible-quiz',
+      title: 'The Impossible Quiz',
+      description: 'Challenging quiz game with tricky and unexpected questions',
+      category: 'puzzle',
+      icon: 'ph-question',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/impossiblequiz/index.html',
+      featured: false
+    },
+    {
+      id: 'soundboard',
+      title: 'Ultimate Soundboard',
+      description: 'Collection of fun and quirky sound effects to play',
+      category: 'music',
+      icon: 'ph-speaker-simple-none',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/soundboard/index.html',
+      featured: false
+    },
+    {
+      id: 'mario',
+      title: 'Super Mario',
+      description: 'Classic side-scrolling adventure with everyone\'s favorite plumber',
+      category: 'action',
+      icon: 'ph-game-controller',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/mario-classic/index.html',
+      featured: true
+    },
+    {
+      id: 'chrome-dino',
+      title: 'Chrome Dino Game',
+      description: 'The classic offline dinosaur game from Chrome browser',
+      category: 'arcade',
+      icon: 'ph-dinosaur',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/chrome-dino/index.html',
+      featured: false
+    },
+    {
+      id: 'geoguesser',
+      title: 'GeoGuesser',
+      description: 'Explore the world and guess your location based on street view images',
+      category: 'puzzle',
+      icon: 'ph-map-pin',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/worldgussr/index.html',
+      featured: false
+    },
+    {
+      id: 'cluster-rush',
+      title: 'Cluster Rush',  
+      description: 'High-speed truck jumping and navigation challenge',
+      category: 'action',
+      icon: 'ph-truck',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/cluster-rush/index.html',
+      featured: false
+    },
+    {
+      id: 'tetris-new',
+      title: 'Tetris',
+      description: 'Classic block-stacking puzzle game',
+      category: 'puzzle',
+      icon: 'ph-squares-four',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/tetris/index.html',
+      featured: false
+    },
+    {
+      id: 'dab',
+      title: 'Dab Game',
+      description: 'A fun game all about the classic dab dance move',
+      category: 'arcade',
+      icon: 'ph-hand-pointing',
+      url: 'https://d21u3ic0kp9e91.cloudfront.net/dab/app.html',
+      featured: false
+    },
+    {
+      id: 'rampage',
+      title: 'Rampage',
+      description: 'Classic city destruction game where you play as giant monsters',
+      category: 'action',
+      icon: 'ph-explosion',
+      url: 'https://d3b4yo2b5lbfy.cloudfront.net/rampage/index.html',
+      featured: false
+    },
+    {
+      id: 'big-mac-heroes',
+      title: 'Big Mac Heroes',
+      description: 'Unique adventure game featuring burger-based characters',
+      category: 'arcade',
+      icon: 'ph-hamburger',
+      url: 'https://d2edvleactrkkb.cloudfront.net/',
+      featured: false
     }
   ];
 
   window.games = [...window.games, ...additionalGames];
+
+  // Add Roblox game entry
+  window.games.push({
+    id: 'roblox',
+    title: 'Roblox',
+    description: 'Online platform and game creation system with user-created games',
+    category: 'simulation',
+    icon: 'ph-cube',
+    url: 'https://www.roblox.com/home',
+    featured: true
+  });
 
   const ids = new Set();
   window.games = window.games.filter(game => {
@@ -872,6 +1036,12 @@
     ids.add(game.id);
     return true;
   });
+
+  // Ensure cluster rush URL is correct
+  const clusterRush = window.games.find(game => game.id === 'cluster-rush');
+  if (clusterRush) {
+    clusterRush.url = 'https://d3rtzzzsiu7gdr.cloudfront.net/files/cluster-rush/index.html';
+  }
 
   window.dispatchEvent(new Event('gamesDataReady'));
 })();

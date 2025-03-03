@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Report a Bug - GameHub Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgZmlsbD0iIzdDM0FFRiI+CiAgPHBhdGggZD0iTTE4OCAxMDRhMTIgMTIgMCAwIDEtMTIgMTJoLTU2vjU2YTEyIDEyIDAgMCAxLTI0IDB2LTU2SDIwYTEyIDEyIDAgMCAxIDAtMjRoNTZWMjhhMTIgMTIgMCAwIDEgMjQgMHY1Mmg1NmExMiAxMiAwIDAgMSAxMiAxMnptNjguNTYgMTAuNjktODBhMTYgMTYgMCAwIDAtMjIuNTYgMGwtODAuMDcgODBhMTYgMTYgMCAwIDAgMjIuNTYgMjIuNTdMMTI4IDE1Mi41N2w2OS40NyA2OS40OWExNiAxNiAwIDAgMCAyMi41Ni0yMi41N3oiPjwvcGF0aD4KPC9zdmc+">
+</head>
+<body>
+  <div class="bug-report-container" style="max-width: 800px; margin: 0 auto; padding: 20px; min-height: 100vh;">
+    <div class="bug-report-header" style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
+      <a href="/" class="back-btn" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); text-decoration: none; transition: var(--transition); width: max-content;">
+        <i class="ph ph-arrow-left"></i>
+        Back to GameHub
+      </a>
+      <h1 style="display: flex; align-items: center; gap: 0.8rem; color: var(--primary);">
+        <i class="ph ph-bug"></i> Report a Bug
+      </h1>
+    </div>
+    
+    <main class="bug-report-content">
+      <section style="margin-bottom: 1.5rem; background: var(--surface-hover); padding: 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+        <h2 style="color: var(--primary); margin-bottom: 1rem;">Bug Report Form</h2>
+        <form id="bugReportForm" style="display: flex; flex-direction: column; gap: 1rem;">
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Your Name (Optional)</label>
+            <input type="text" name="name" style="width: 100%; padding: 0.8rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text);">
+          </div>
+          
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Your Email (Optional)</label>
+            <input type="email" name="email" style="width: 100%; padding: 0.8rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text);">
+          </div>
+          
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Game Name</label>
+            <select name="game" required style="width: 100%; padding: 0.8rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text);">
+              <option value="">Select a game</option>
+              <option value="general">General Website Issue</option>
+              <!-- Games will be populated via JavaScript -->
+            </select>
+          </div>
+          
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Type of Bug</label>
+            <select name="bugType" required style="width: 100%; padding: 0.8rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text);">
+              <option value="">Select bug type</option>
+              <option value="game">Game Not Loading</option>
+              <option value="performance">Performance Issues</option>
+              <option value="graphics">Graphics/Visual Bugs</option>
+              <option value="controls">Control Issues</option>
+              <option value="sound">Sound Problems</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Bug Description</label>
+            <textarea name="description" required rows="5" style="width: 100%; padding: 0.8rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); resize: vertical;" placeholder="Please describe the bug in detail. Include what you were doing when it occurred and any error messages you saw."></textarea>
+          </div>
+          
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Steps to Reproduce</label>
+            <textarea name="steps" required rows="3" style="width: 100%; padding: 0.8rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); resize: vertical;" placeholder="List the steps to reproduce this bug."></textarea>
+          </div>
+          
+          <button type="submit" style="background: var(--primary); color: white; padding: 0.8rem; border: none; border-radius: var(--radius-sm); cursor: pointer; font-weight: 500; transition: var(--transition);">Submit Bug Report</button>
+        </form>
+      </section>
+      
+      <section style="margin-bottom: 1.5rem; background: var(--surface-hover); padding: 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+        <h3 style="color: var(--primary); margin-bottom: 0.8rem;">Before Submitting</h3>
+        <ul style="list-style-type: none; padding: 0;">
+          <li style="display: flex; align-items: start; gap: 0.8rem; margin-bottom: 0.8rem;">
+            <i class="ph ph-check-circle" style="color: var(--primary); margin-top: 0.2rem;"></i>
+            <span>Check if your browser and game are up to date</span>
+          </li>
+          <li style="display: flex; align-items: start; gap: 0.8rem; margin-bottom: 0.8rem;">
+            <i class="ph ph-check-circle" style="color: var(--primary); margin-top: 0.2rem;"></i>
+            <span>Try refreshing the page or clearing your browser cache</span>
+          </li>
+          <li style="display: flex; align-items: start; gap: 0.8rem;">
+            <i class="ph ph-check-circle" style="color: var(--primary); margin-top: 0.2rem;"></i>
+            <span>Check if the issue has already been reported</span>
+          </li>
+        </ul>
+      </section>
+      
+      <section style="margin-bottom: 1.5rem; background: var(--surface-hover); padding: 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+        <h3 style="color: var(--primary); margin-bottom: 0.8rem;">Alternative Contact Methods</h3>
+        <p style="margin-bottom: 1rem;">You can also report bugs through these channels:</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+          <a href="mailto:briansubirat6@gmail.com" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none;">
+            <i class="ph ph-envelope"></i>
+            Email Support
+          </a>
+          <a href="https://discord.com/users/bmthluv" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none;">
+            <i class="ph ph-discord-logo"></i>
+            Discord Support
+          </a>
+          <a href="https://github.com/BrianSubirat" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none;">
+            <i class="ph ph-github-logo"></i>
+            GitHub Issues
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Populate games dropdown if window.games is available
+      if (window.games) {
+        const gameSelect = document.querySelector('select[name="game"]');
+        if (gameSelect) {
+          window.games.forEach(game => {
+            const option = document.createElement('option');
+            option.value = game.id;
+            option.textContent = game.title;
+            gameSelect.appendChild(option);
+          });
+        }
+      }
+
+      // Handle form submission
+      const bugReportForm = document.getElementById('bugReportForm');
+      if (bugReportForm) {
+        bugReportForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          // Get form data
+          const formData = new FormData(e.target);
+          const name = formData.get('name') || 'Anonymous';
+          const email = formData.get('email') || 'Not provided';
+          const game = formData.get('game');
+          const bugType = formData.get('bugType');
+          const description = formData.get('description');
+          const steps = formData.get('steps');
+          
+          // Prepare email body
+          const emailBody = `
+Bug Report Details:
+
+Reporter: ${name}
+Email: ${email}
+Game: ${game}
+Bug Type: ${bugType}
+
+Description:
+${description}
+
+Steps to Reproduce:
+${steps}
+          `;
+          
+          // Open email client
+          window.location.href = `mailto:briansubirat6@gmail.com?subject=Bug Report: ${game}&body=${encodeURIComponent(emailBody)}`;
+          
+          // Clear form
+          e.target.reset();
+          
+          // Show success message
+          alert('Thank you for reporting this bug! Redirecting to email client...');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
