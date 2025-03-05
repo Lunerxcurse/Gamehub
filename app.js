@@ -272,7 +272,93 @@ function openGame(game) {
   }
 }
 
+// Update account settings display
+function updateAccountSettingsDisplay() {
+  const userSession = JSON.parse(localStorage.getItem('userSession')) || {};
+  
+  // Add null checks before accessing elements
+  const accountUsername = document.getElementById('accountUsername');
+  const accountEmail = document.getElementById('accountEmail');
+  const emailInput = document.getElementById('emailInput');
+  const displayNameInput = document.getElementById('displayNameInput');
+  const accountAvatarIcon = document.getElementById('accountAvatarIcon');
+  const favoritesCount = document.getElementById('favoritesCount');
+  const memberSince = document.getElementById('memberSince');
+  const lastLogin = document.getElementById('lastLogin');
+
+  if (accountUsername) accountUsername.textContent = userSession.username || userSession.email?.split('@')[0] || 'User';
+  if (accountEmail) accountEmail.textContent = userSession.email || '';
+  if (emailInput) emailInput.value = userSession.email || '';
+  if (displayNameInput) displayNameInput.value = userSession.displayName || '';
+  if (accountAvatarIcon) accountAvatarIcon.className = userSession.avatarIcon || 'ph ph-user';
+
+  // Get favorites count
+  const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+  if (favoritesCount) favoritesCount.textContent = favorites.length || '0';
+
+  // Format dates with null checks
+  if (memberSince && userSession.timestamp) {
+    const date = new Date(userSession.timestamp);
+    memberSince.textContent = date.toLocaleDateString();
+  }
+
+  if (lastLogin && userSession.lastLogin) {
+    const date = new Date(userSession.lastLogin);
+    lastLogin.textContent = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  } else if (lastLogin && userSession.timestamp) {
+    const date = new Date(userSession.timestamp);
+    lastLogin.textContent = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+}
+
+// Add account action buttons functionality
+function setupAccountActionButtons() {
+  const updateProfileBtn = document.getElementById('updateProfileBtn');
+  const displayNameInput = document.getElementById('displayNameInput');
+  const accountUsername = document.getElementById('accountUsername');
+
+  if (updateProfileBtn && displayNameInput && accountUsername) {
+    updateProfileBtn.addEventListener('click', () => {
+      const displayName = displayNameInput.value;
+      const userSession = JSON.parse(localStorage.getItem('userSession') || '{}');
+      userSession.displayName = displayName;
+      localStorage.setItem('userSession', JSON.stringify(userSession));
+      accountUsername.textContent = displayName || userSession.username || userSession.email?.split('@')[0] || 'User';
+      showNotification('Profile updated successfully!', 'success');
+    });
+  }
+
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to sign out?')) {
+        const userSession = JSON.parse(localStorage.getItem('userSession') || '{}');
+        userSession.lastLogin = new Date().getTime();
+        localStorage.setItem('userSession', JSON.stringify(userSession));
+        
+        if (window.auth && typeof window.auth.logout === 'function') {
+          window.auth.logout();
+        } else {
+          localStorage.removeItem('userSession');
+          window.location.href = 'login.html';
+        }
+      }
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  const settingsModal = document.getElementById('settingsModal'); 
+  const settingsBtn = document.getElementById('settingsBtn');
+
+  if (settingsBtn && settingsModal) {
+    settingsBtn.addEventListener('click', () => {
+      updateAccountSettingsDisplay();
+    });
+  }
+
+  setupAccountActionButtons();
+
   const privacyPolicyLink = document.getElementById('privacyPolicyLink');
   if (privacyPolicyLink) {
     privacyPolicyLink.addEventListener('click', (e) => {

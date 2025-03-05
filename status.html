@@ -1,108 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>System Status - GameHub Pro</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgZmlsbD0iIzdDM0FFRiI+CiAgPHBhdGggZD0iTTE4OCAxMDRhMTIgMTIgMCAwIDEtMTIgMTJoLTU2vjU2YTEyIDEyIDAgMCAxLTI0IDB2LTU2SDIwYTEyIDEyIDAgMCAxIDAtMjRoNTZWMjhhMTIgMTIgMCAwIDEgMjQgMHY1Mmg1NmExMiAxMiAwIDAgMSAxMiAxMnptNjguNTYgMTAuNjktODBhMTYgMTYgMCAwIDAtMjIuNTYgMGwtODAuMDcgODBhMTYgMTYgMCAwIDAgMjIuNTYgMjIuNTdMMTI4IDE1Mi41N2w2OS40NyA2OS40OWExNiAxNiAwIDAgMCAyMi41Ni0yMi41N3oiPjwvcGF0aD4KPC9zdmc+">
-</head>
-<body>
-  <div class="status-container" style="max-width: 800px; margin: 0 auto; padding: 20px; min-height: 100vh;">
-    <div class="status-header" style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
-      <a href="/" class="back-btn" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); text-decoration: none; transition: var(--transition); width: max-content;">
-        <i class="ph ph-arrow-left"></i>
-        Back to GameHub
-      </a>
-      <h1 style="display: flex; align-items: center; gap: 0.8rem; color: var(--primary);">
-        <i class="ph ph-timer"></i> System Status
-      </h1>
+<div class="update-item" style="animation-delay: 0.7s;">
+  <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+    <div style="display: flex; align-items: center;">
+      <div class="update-icon" style="background: #3b82f6;">
+        <i class="ph ph-rocket"></i>
+      </div>
+      <span style="font-weight: 600;">Exciting New Games Added</span>
     </div>
-    
-    <main class="status-content">
-      <section style="margin-bottom: 1.5rem; background: var(--surface-hover); padding: 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
-        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
-          <i class="ph ph-check-circle" style="font-size: 1.5rem; color: #10b981;"></i>
-          <h2 style="color: var(--text); margin: 0;">All Systems Operational</h2>
-        </div>
-        <p>GameHub Pro is running smoothly with no reported issues.</p>
-      </section>
-      
-      <section style="margin-bottom: 1.5rem; background: var(--surface-hover); padding: 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
-        <h3 style="color: var(--primary); margin-bottom: 0.8rem;">Service Status</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border);">
-            <div style="display: flex; align-items: center; gap: 0.8rem;">
-              <i class="ph ph-game-controller" style="color: var(--primary);"></i>
-              <span>Game Services</span>
-            </div>
-            <span style="color: #10b981;">Operational</span>
-          </div>
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border);">
-            <div style="display: flex; align-items: center; gap: 0.8rem;">
-              <i class="ph ph-cloud" style="color: var(--primary);"></i>
-              <span>CDN Network</span>
-            </div>
-            <span style="color: #10b981;">Operational</span>
-          </div>
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border);">
-            <div style="display: flex; align-items: center; gap: 0.8rem;">
-              <i class="ph ph-database" style="color: var(--primary);"></i>
-              <span>Game Data Storage</span>
-            </div>
-            <span style="color: #10b981;">Operational</span>
-          </div>
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border);">
-            <div style="display: flex; align-items: center; gap: 0.8rem;">
-              <i class="ph ph-shield-check" style="color: var(--primary);"></i>
-              <span>Security Systems</span>
-            </div>
-            <span style="color: #10b981;">Operational</span>
-          </div>
-        </div>
-      </section>
-      
-      <section style="margin-bottom: 1.5rem; background: var(--surface-hover); padding: 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
-        <h3 style="color: var(--primary); margin-bottom: 0.8rem;">Recent Updates</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <div style="padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border);">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-              <span style="font-weight: 500;">System Maintenance Complete</span>
-              <span style="color: var(--text-secondary);">2 hours ago</span>
-            </div>
-            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Scheduled maintenance completed successfully. All services operating normally.</p>
-          </div>
-          
-          <div style="padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border);">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-              <span style="font-weight: 500;">Performance Optimization</span>
-              <span style="color: var(--text-secondary);">1 day ago</span>
-            </div>
-            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Implemented performance improvements for faster game loading times.</p>
-          </div>
-        </div>
-      </section>
-      
-      <section style="margin-bottom: 1.5rem; background: var(--surface-hover); padding: 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
-        <h3 style="color: var(--primary); margin-bottom: 0.8rem;">Need Help?</h3>
-        <p style="margin-bottom: 1rem;">If you're experiencing any issues, please don't hesitate to contact us:</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-          <a href="mailto:briansubirat6@gmail.com" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none;">
-            <i class="ph ph-envelope"></i>
-            Email Support
-          </a>
-          <a href="https://discord.com/users/bmthluv" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none;">
-            <i class="ph ph-discord-logo"></i>
-            Discord Support
-          </a>
-        </div>
-      </section>
-    </main>
+    <span class="update-badge badge-new">NEW</span>
   </div>
-</body>
-</html>
+  <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 0 50px;">
+    Expanded our game library with six thrilling new titles:
+    • Adrenaline Rush
+    • Age of War
+    • Mr Bullet
+    • Defend the Tank
+    • Pandemic 2
+    • Drive Mad
+
+    Each game offers unique gameplay mechanics and challenges to keep you entertained!
+  </p>
+</div>
+

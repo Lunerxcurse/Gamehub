@@ -519,10 +519,7 @@ main {
   font-size: 0.9rem;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .filter-chip.active, .filter-chip:hover {
@@ -613,7 +610,7 @@ main {
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--border);
-  transition: var(--transition);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   cursor: pointer;
   height: 100%;
   display: flex;
@@ -622,8 +619,8 @@ main {
 }
 
 .game-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-primary);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 20px rgba(124, 58, 237, 0.15);
 }
 
 .game-thumbnail {
@@ -644,7 +641,7 @@ main {
 }
 
 .game-card:hover .game-thumbnail i {
-  transform: translate(-50%, -50%) scale(1.1);
+  animation: none;
 }
 
 .game-info {
@@ -815,13 +812,13 @@ main {
   background: var(--surface-hover);
   border: 1px solid var(--border);
   cursor: pointer;
-  transition: var(--transition);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   box-shadow: var(--card-shadow);
 }
 
 .jump-back-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: var(--shadow-primary);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(124, 58, 237, 0.2);
 }
 
 .jump-back-card-content {
@@ -920,7 +917,7 @@ main {
   background: var(--surface);
   border: 1px solid var(--border);
   overflow: hidden;
-  transition: var(--transition);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   flex: 0 0 auto;
   cursor: pointer;
   position: relative;
@@ -929,8 +926,8 @@ main {
 }
 
 .new-game-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-primary);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(124, 58, 237, 0.2);
 }
 
 .new-game-thumbnail {
@@ -1024,8 +1021,8 @@ main {
   background: var(--primary);
   color: white;
   border-color: var(--primary);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-primary);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(124, 58, 237, 0.2);
 }
 
 /* Search Suggestions */
@@ -1152,6 +1149,7 @@ main {
   width: 95%;
   max-height: 90vh;
   overflow-y: auto;
+  animation: slide-in-right 0.4s ease-out;
 }
 
 .modal-header {
@@ -2128,4 +2126,138 @@ footer {
   .modal-content {
     max-height: calc(100vh - 70px);
   }
+}
+
+@keyframes float-up-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(124, 58, 237, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.6); }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: scale(1); }
+  70% { transform: scale(0.98); }
+  90% { transform: scale(1.02); }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.mobile-action-btn {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+}
+
+.mobile-action-btn:active {
+  transform: scale(0.95);
+}
+
+.account-settings-section {
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  animation: slide-up 0.5s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.account-settings-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.2);
+}
+
+.account-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  border: 2px solid var(--primary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulse-subtle 2s infinite;
+}
+
+.account-avatar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
+}
+
+.account-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+  padding: 0.8rem;
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease;
+}
+
+.account-stat:hover {
+  transform: translateX(10px);
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.account-stat i {
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.account-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.account-action-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(124, 58, 237, 0.25);
+}
+
+.account-action-btn.danger {
+  color: #ef4444;
+}
+
+.account-action-btn.danger:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }

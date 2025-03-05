@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - GameHub Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: var(--background);
+            background-image: radial-gradient(circle at 30% 70%, rgba(124, 58, 237, 0.1) 0%, transparent 40%),
+                            radial-gradient(circle at 70% 30%, rgba(79, 70, 229, 0.08) 0%, transparent 40%);
+        }
+
+        .auth-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 420px;
+            animation: fadeIn 0.5s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .auth-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .auth-logo i {
+            color: var(--primary);
+            font-size: 2.8rem;
+        }
+
+        .auth-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .auth-subtitle {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            padding: 1rem;
+            background: var(--surface-hover);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+        }
+
+        .form-error {
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .password-strength {
+            height: 5px;
+            border-radius: 2.5px;
+            background: #e5e7eb;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .password-strength-meter {
+            height: 100%;
+            width: 0%;
+            border-radius: 2.5px;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+
+        .password-strength-text {
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            color: var(--text-secondary);
+        }
+
+        .auth-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1.1rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .auth-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+        }
+        
+        .auth-btn:active {
+            transform: translateY(0);
+        }
+
+        .auth-links {
+            margin-top: 1.8rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .auth-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .terms-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .terms-check input {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: var(--primary);
+        }
+
+        /* Animation for the card */
+        @keyframes shimmer {
+            0% {
+                background-position: -100% 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        .auth-loading .auth-btn {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 480px) {
+            .auth-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .auth-logo {
+                margin-bottom: 2rem;
+            }
+            
+            .auth-btn {
+                padding: 1rem;
+            }
+        }
+
+        /* Checkmark animation */
+        .success-checkmark {
+            display: none;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+        
+        .checkmark-circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            stroke: var(--primary);
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        
+        .checkmark {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 6;
+            stroke: var(--primary);
+            stroke-miterlimit: 10;
+            box-shadow: inset 0px 0px 0px #7c3aed;
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+            position: relative;
+            top: 5px;
+            right: 5px;
+            margin: 8px;
+        }
+        
+        .checkmark-check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+        
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        @keyframes scale {
+            0%, 100% {
+                transform: none;
+            }
+            50% {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+        }
+        
+        @keyframes fill {
+            100% {
+                box-shadow: inset 0px 0px 0px 30px white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <i class="ph ph-game-controller"></i>
+                <span>GameHub</span>
+            </div>
+            
+            <h1 class="auth-title">Create an Account</h1>
+            <p class="auth-subtitle">Join our gaming community today</p>
+            
+            <div class="success-checkmark">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            
+            <form class="auth-form" id="signupForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Choose a username">
+                    <div class="form-error" id="usernameError">Username must be at least 3 characters</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    <div class="form-error" id="emailError">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Create a password">
+                    <div class="password-strength">
+                        <div class="password-strength-meter" id="passwordStrengthMeter"></div>
+                    </div>
+                    <div class="password-strength-text" id="passwordStrengthText">Password strength</div>
+                    <div class="form-error" id="passwordError">Password must be at least 6 characters</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+                    <div class="form-error" id="confirmPasswordError">Passwords do not match</div>
+                </div>
+
+                <div class="terms-check">
+                    <input type="checkbox" required id="termsCheck">
+                    <label for="termsCheck">I agree to the <a href="terms-of-use.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy</a>. I'm at least 13 years old.</label>
+                </div>
+                
+                <button type="submit" class="auth-btn">
+                    <i class="ph ph-user-plus"></i>
+                    Create Account
+                </button>
+            </form>
+            
+            <div class="auth-links">
+                <p>Already have an account? <a href="login.html">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Password strength meter
+        const passwordInput = document.getElementById('password');
+        const passwordStrengthMeter = document.getElementById('passwordStrengthMeter');
+        const passwordStrengthText = document.getElementById('passwordStrengthText');
+        
+        passwordInput.addEventListener('input', updatePasswordStrength);
+        
+        function updatePasswordStrength() {
+            const password = passwordInput.value;
+            let strength = 0;
+            
+            // Length check
+            if (password.length >= 6) {
+                strength += 25;
+            }
+            
+            // Contains lowercase
+            if (/[a-z]/.test(password)) {
+                strength += 25;
+            }
+            
+            // Contains uppercase
+            if (/[A-Z]/.test(password)) {
+                strength += 25;
+            }
+            
+            // Contains number or special char
+            if (/[0-9!@#$%^&*(),.?":{}|<>]/.test(password)) {
+                strength += 25;
+            }
+            
+            passwordStrengthMeter.style.width = strength + '%';
+            
+            // Update color based on strength
+            if (strength <= 25) {
+                passwordStrengthMeter.style.backgroundColor = '#ef4444';
+                passwordStrengthText.textContent = 'Weak password';
+            } else if (strength <= 50) {
+                passwordStrengthMeter.style.backgroundColor = '#f97316';
+                passwordStrengthText.textContent = 'Moderate password';
+            } else if (strength <= 75) {
+                passwordStrengthMeter.style.backgroundColor = '#eab308';
+                passwordStrengthText.textContent = 'Good password';
+            } else {
+                passwordStrengthMeter.style.backgroundColor = '#10b981';
+                passwordStrengthText.textContent = 'Strong password';
+            }
+        }
+
+        // Form submission with validation
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            // Username validation
+            const username = document.getElementById('username');
+            const usernameError = document.getElementById('usernameError');
+            
+            if (username.value.length < 3) {
+                usernameError.style.display = 'block';
+                username.style.borderColor = '#ef4444';
+                isValid = false;
+            } else {
+                usernameError.style.display = 'none';
+                username.style.borderColor = 'var(--border)';
+            }
+            
+            // Email validation
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(email.value)) {
+                emailError.style.display = 'block';
+                email.style.borderColor = '#ef4444';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+                email.style.borderColor = 'var(--border)';
+            }
+            
+            // Password validation
+            const password = document.getElementById('password');
+            const passwordError = document.getElementById('passwordError');
+            
+            if (password.value.length < 6) {
+                passwordError.style.display = 'block';
+                password.style.borderColor = '#ef4444';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+                password.style.borderColor = 'var(--border)';
+            }
+            
+            // Confirm password validation
+            const confirmPassword = document.getElementById('confirmPassword');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            
+            if (password.value !== confirmPassword.value) {
+                confirmPasswordError.style.display = 'block';
+                confirmPassword.style.borderColor = '#ef4444';
+                isValid = false;
+            } else {
+                confirmPasswordError.style.display = 'none';
+                confirmPassword.style.borderColor = 'var(--border)';
+            }
+            
+            // Terms checkbox validation
+            const termsCheck = document.getElementById('termsCheck');
+            
+            if (!termsCheck.checked) {
+                isValid = false;
+                alert('Please agree to the Terms of Service and Privacy Policy');
+            }
+            
+            // If valid, proceed with signup
+            if (isValid) {
+                // Add loading state
+                document.querySelector('.auth-card').classList.add('auth-loading');
+                document.querySelector('.auth-btn').innerHTML = '<i class="ph ph-spinner ph-spin"></i> Creating account...';
+                
+                // Simulate signup process
+                setTimeout(() => {
+                    // Store new user data
+                    localStorage.setItem('userSession', JSON.stringify({
+                        username: username.value,
+                        email: email.value,
+                        isLoggedIn: true,
+                        timestamp: new Date().getTime()
+                    }));
+                    
+                    // Show success animation
+                    document.querySelector('.auth-form').style.display = 'none';
+                    document.querySelector('.auth-title').textContent = 'Account Created!';
+                    document.querySelector('.auth-subtitle').textContent = 'Welcome to GameHub Pro';
+                    document.querySelector('.success-checkmark').style.display = 'block';
+                    
+                    // Redirect after animation
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                }, 1500);
+            }
+        });
+
+        // Check if user is already logged in
+        window.addEventListener('DOMContentLoaded', () => {
+            const session = JSON.parse(localStorage.getItem('userSession'));
+            if(session && session.isLoggedIn) {
+                window.location.href = 'index.html';
+            }
+            
+            // Initialize password strength meter
+            updatePasswordStrength();
+        });
+    </script>
+</body>
+</html>
