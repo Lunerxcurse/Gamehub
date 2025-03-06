@@ -1,23 +1,247 @@
-<div class="update-item" style="animation-delay: 0.7s;">
-  <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-    <div style="display: flex; align-items: center;">
-      <div class="update-icon" style="background: #3b82f6;">
-        <i class="ph ph-rocket"></i>
-      </div>
-      <span style="font-weight: 600;">Exciting New Games Added</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>System Status - GameHub Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgZmlsbD0iIzdDM0FFRiI+CiAgPHBhdGggZD0iTTE4OCAxMDRhMTIgMTIgMCAwIDEtMTIgMTJoLTU2vjU2YTEyIDEyIDAgMCAxLTI0IDB2LTU2SDIwYTEyIDEyIDAgMCAxIDAtMjRoNTZWMjhhMTIgMTIgMCAwIDEgMjQgMHY1Mmg1NmExMiAxMiAwIDAgMSAxMiAxMnptNjguNTYgMTAuNjktODAuMDctODBhMTYgMTYgMCAwIDAtMjIuNTYgMGwtODAuMDcgODBhMTYgMTYgMCAwIDAgMjIuNTYgMjIuNTdMMTI4IDE1Mi41N2w2OS40NyA2OS40OWExNiAxNiAwIDAgMCAyMi41Ni0yMi41N3oiPjwvcGF0aD4KPC9zdmc+">
+  <style>
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.2); }
+      50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.6); }
+    }
+    
+    @keyframes slide-in {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes status-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .status-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      min-height: 100vh;
+      animation: slide-in 0.5s ease-out;
+    }
+    
+    .status-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .status-content section {
+      margin-bottom: 1.5rem;
+      background: var(--surface-hover);
+      padding: 1.2rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: slide-in 0.5s ease-out;
+      animation-fill-mode: both;
+    }
+    
+    .status-content section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .status-content section:nth-child(1) { animation-delay: 0.1s; }
+    .status-content section:nth-child(2) { animation-delay: 0.2s; }
+    .status-content section:nth-child(3) { animation-delay: 0.3s; }
+    .status-content section:nth-child(4) { animation-delay: 0.4s; }
+    
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 30px;
+      color: #10b981;
+      font-weight: 500;
+      animation: status-pulse 2s infinite;
+    }
+    
+    .update-item {
+      padding: 1rem;
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 0.8rem;
+      transition: transform 0.2s ease;
+    }
+    
+    .update-item:hover {
+      transform: translateX(5px);
+    }
+    
+    .update-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .update-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-left: 0.5rem;
+    }
+    
+    .badge-new {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+    }
+    
+    .badge-fix {
+      background: rgba(124, 58, 237, 0.15);
+      color: var(--primary);
+    }
+    
+    .badge-improvement {
+      background: rgba(59, 130, 246, 0.15);
+      color: #3b82f6;
+    }
+  </style>
+</head>
+<body>
+  <div class="status-container">
+    <div class="status-header">
+      <a href="/" class="back-btn">
+        <i class="ph ph-arrow-left"></i>
+        Back to GameHub
+      </a>
+      <h1>
+        <i class="ph ph-timer"></i> System Status
+      </h1>
     </div>
-    <span class="update-badge badge-new">NEW</span>
+    
+    <main class="status-content">
+      <section>
+        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+          <i class="ph ph-check-circle" style="font-size: 1.5rem; color: #10b981;"></i>
+          <h2 style="color: var(--text); margin: 0;">All Systems Operational</h2>
+          <span class="status-indicator">
+            <i class="ph ph-pulse"></i>
+            Online
+          </span>
+        </div>
+        <p>GameHub Pro is running smoothly with all services fully operational.</p>
+      </section>
+      
+      <section>
+        <h3 style="color: var(--primary); margin-bottom: 1rem;">
+          <i class="ph ph-sparkle"></i> What's New
+        </h3>
+        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+          <div class="update-item">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-weight: 600;">Enhanced Account Settings</span>
+              <span class="update-badge badge-new">NEW</span>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">
+              We've completely revamped the account settings page with improved UI, smooth animations, and better organization.
+            </p>
+          </div>
+          
+          <div class="update-item">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-weight: 600;">New Games Added</span>
+              <span class="update-badge badge-new">NEW</span>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">
+              We've added exciting new games including Dab, Rampage, Big Mac Heroes, and many more to our growing collection.
+            </p>
+          </div>
+          
+          <div class="update-item">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-weight: 600;">UI Improvements</span>
+              <span class="update-badge badge-improvement">IMPROVEMENT</span>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">
+              Enhanced site with smoother animations, improved search functionality with YouTube-style suggestions, and responsive design improvements.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      <section>
+        <h3 style="color: var(--primary); margin-bottom: 0.8rem;">Service Status</h3>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <i class="ph ph-game-controller" style="color: var(--primary);"></i>
+              <span>Game Services</span>
+            </div>
+            <span style="color: #10b981;">Operational</span>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <i class="ph ph-cloud" style="color: var(--primary);"></i>
+              <span>CDN Network</span>
+            </div>
+            <span style="color: #10b981;">Operational</span>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <i class="ph ph-database" style="color: var(--primary);"></i>
+              <span>Game Data Storage</span>
+            </div>
+            <span style="color: #10b981;">Operational</span>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <i class="ph ph-shield-check" style="color: var(--primary);"></i>
+              <span>Security Systems</span>
+            </div>
+            <span style="color: #10b981;">Operational</span>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <i class="ph ph-user-circle" style="color: var(--primary);"></i>
+              <span>User Authentication</span>
+            </div>
+            <span style="color: #10b981;">Operational</span>
+          </div>
+        </div>
+      </section>
+      
+      <section>
+        <h3 style="color: var(--primary); margin-bottom: 0.8rem;">Need Help?</h3>
+        <p style="margin-bottom: 1rem;">If you're experiencing any issues, please don't hesitate to contact us:</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+          <a href="mailto:briansubirat6@gmail.com" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; transition: var(--transition);">
+            <i class="ph ph-envelope"></i>
+            Email Support
+          </a>
+          <a href="https://discord.com/users/bmthluv" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; transition: var(--transition);">
+            <i class="ph ph-discord-logo"></i>
+            Discord Support
+          </a>
+          <a href="report-bug.html" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; transition: var(--transition);">
+            <i class="ph ph-bug"></i>
+            Report a Bug
+          </a>
+        </div>
+      </section>
+    </main>
   </div>
-  <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 0 50px;">
-    Expanded our game library with six thrilling new titles:
-    • Adrenaline Rush
-    • Age of War
-    • Mr Bullet
-    • Defend the Tank
-    • Pandemic 2
-    • Drive Mad
-
-    Each game offers unique gameplay mechanics and challenges to keep you entertained!
-  </p>
-</div>
-
+</body>
+</html>
