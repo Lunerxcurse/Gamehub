@@ -1023,7 +1023,45 @@
 
   window.games = [...window.games, ...additionalGames];
 
-  // Add Roblox game entry
+  window.games.push(
+    {
+      id: 'mr-bullet',
+      title: 'Mr. Bullet',
+      description: 'Precision shooting puzzle game with physics mechanics',
+      category: 'puzzle',
+      icon: 'ph-target',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/mr-bullet/game/index.html',
+      featured: false
+    },
+    {
+      id: 'drive-mad',
+      title: 'Drive Mad',
+      description: 'Extreme stunt driving game with realistic physics',
+      category: 'racing',
+      icon: 'ph-car',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/drive-mad/index.html',
+      featured: false
+    },
+    {
+      id: 'pandemic-2',
+      title: 'Pandemic 2',
+      description: 'Create and spread a deadly virus to wipe out humanity',
+      category: 'simulation',
+      icon: 'ph-virus',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/pandemic2/index.html',
+      featured: false
+    },
+    {
+      id: 'defend-the-tank',
+      title: 'Defend the Tank',
+      description: 'Protect your tank from waves of enemies in this defense game',
+      category: 'action',
+      icon: 'ph-army-tank',
+      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/defend-the-tank/index.html',
+      featured: false
+    }
+  );
+
   window.games.push({
     id: 'roblox',
     title: 'Roblox',
@@ -1032,6 +1070,16 @@
     icon: 'ph-cube',
     url: 'https://www.roblox.com/home',
     featured: true
+  });
+
+  window.games.push({
+    id: 'you-vs-skibidi-toilets',
+    title: 'You vs 100 Skibidi Toilets',
+    description: 'Battle against an army of Skibidi Toilets in this action-packed game',
+    category: 'action',
+    icon: 'ph-toilet',
+    url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/skidibi/index.html',
+    featured: false
   });
 
   const ids = new Set();
@@ -1046,7 +1094,6 @@
     return true;
   });
 
-  // Ensure cluster rush URL is correct
   const clusterRush = window.games.find(game => game.id === 'cluster-rush');
   if (clusterRush) {
     clusterRush.url = 'https://d3rtzzzsiu7gdr.cloudfront.net/files/cluster-rush/index.html';
