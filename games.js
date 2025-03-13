@@ -543,168 +543,6 @@
       featured: false
     },
     {
-      id: 'fortnite',
-      title: 'Fortnite',
-      description: 'Battle Royale browser game experience',
-      category: 'action',
-      icon: 'ph-target',
-      url: 'https://www.xbox.com/en-US/play/games/fortnite/BT5P2X999VH2',
-      featured: true
-    },
-    {
-      id: 'wordle',
-      title: 'Wordle',
-      description: 'Guess the hidden word in six tries',
-      category: 'puzzle',
-      icon: 'ph-textbox',
-      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/wordle/index.html#daily',
-      featured: false
-    },
-    {
-      id: 'idle-breakout',
-      title: 'Idle Breakout',
-      description: 'Automated brick-breaking idle game',
-      category: 'idle',
-      icon: 'ph-bricks',
-      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/idle-breakout/index.html',
-      featured: false
-    },
-    {
-      id: 'geometry-dash',
-      title: 'Geometry Dash',
-      description: 'Rhythm-based action platformer',
-      category: 'arcade',
-      icon: 'ph-square',
-      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/geodash1/game.html',
-      featured: false
-    },
-    {
-      id: 'ovo',
-      title: 'OvO',
-      description: 'Precision platformer with simple controls',
-      category: 'arcade',
-      icon: 'ph-egg',
-      url: 'https://dedragames.com/games/ovo/1.4/',
-      featured: false
-    },
-    {
-      id: 'stickman-golf',
-      title: 'Stickman Golf',
-      description: 'Golf game with physics challenges',
-      category: 'sports',
-      icon: 'ph-golf-ball',
-      url: 'https://www.mathplayground.com/stickman-golf/index.html',
-      featured: false
-    },
-    {
-      id: 'territorial-io',
-      title: 'Territorial.io',
-      description: 'Multiplayer territory conquest game',
-      category: 'io',
-      icon: 'ph-map',
-      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/territorialio/build/index.html',
-      featured: false
-    },
-    {
-      id: 'zombs-royale',
-      title: 'Zombs Royale',
-      description: 'Top-down battle royale with zombies',
-      category: 'io',
-      icon: 'ph-skull',
-      url: 'https://zombsroyale.io/',
-      featured: false
-    },
-    {
-      id: 'ev-io',
-      title: 'Ev.io',
-      description: 'Fast-paced first-person shooter game',
-      category: 'io',
-      icon: 'ph-crosshair',
-      url: 'https://ev.io/',
-      featured: false
-    },
-    {
-      id: 'google-baseball',
-      title: 'Google Baseball',
-      description: 'Swing the bat at the right time to hit home runs',
-      category: 'sports',
-      icon: 'ph-baseball',
-      url: 'https://www.google.com/logos/2019/july4th19/r6/july4th19.html',
-      featured: false
-    },
-    {
-      id: 'soccer-random',
-      title: 'Soccer Random',
-      description: 'Physics-based soccer game with ragdoll players',
-      category: 'sports',
-      icon: 'ph-soccer-ball',
-      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/soccerrandom/index.html',
-      featured: false
-    },
-    {
-      id: 'rocket-league',
-      title: 'Rocket League Haxball',
-      description: 'Soccer with rocket-powered cars, 2D version',
-      category: 'sports',
-      icon: 'ph-car',
-      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/rocket-league/index.html',
-      featured: false
-    },
-    {
-      id: 'happy-wheels',
-      title: 'Happy Wheels',
-      description: 'Physics-based obstacle course game',
-      category: 'action',
-      icon: 'ph-wheelchair',
-      url: 'https://totaljerkface.com/happy_wheels.tjf',
-      featured: false
-    },
-    {
-      id: 'tetris',
-      title: 'Tetris',
-      description: 'Classic block-stacking puzzle game',
-      category: 'puzzle',
-      icon: 'ph-squares-four',
-      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/tetris/index.html',
-      featured: false
-    },
-    {
-      id: 'hole-io',
-      title: 'Hole.io',
-      description: 'Grow your hole to consume everything',
-      category: 'io',
-      icon: 'ph-circle',
-      url: 'https://hole-io.com/',
-      featured: false
-    },
-    {
-      id: 'smash-karts',
-      title: 'Smash Karts',
-      description: 'Multiplayer kart battle game',
-      category: 'racing',
-      icon: 'ph-car',
-      url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/smashkarts/index.html',
-      featured: false
-    },
-    {
-      id: 'slither-io',
-      title: 'Slither.io',
-      description: 'Multiplayer snake game',
-      category: 'io',
-      icon: 'ph-snake',
-      url: 'https://slither.io/',
-      featured: false
-    },
-    {
-      id: 'krunker-io',
-      title: 'Krunker.io',
-      description: 'Fast-paced first-person shooter',
-      category: 'io',
-      icon: 'ph-crosshair',
-      url: 'https://krunker.io/',
-      featured: true
-    },
-    {
       id: 'hexgl',
       title: 'HexGL',
       description: 'Futuristic racing game',
@@ -1063,22 +901,42 @@
   );
 
   window.games.push({
-    id: 'roblox',
-    title: 'Roblox',
-    description: 'Online platform and game creation system with user-created games',
-    category: 'simulation',
-    icon: 'ph-cube',
-    url: 'https://www.roblox.com/home',
-    featured: true
-  });
-
-  window.games.push({
     id: 'you-vs-skibidi-toilets',
     title: 'You vs 100 Skibidi Toilets',
     description: 'Battle against an army of Skibidi Toilets in this action-packed game',
     category: 'action',
     icon: 'ph-toilet',
     url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/skidibi/index.html',
+    featured: false
+  });
+
+  window.games.push({
+    id: 'mx-offroad-mountain-bike',
+    title: 'MX OffRoad Mountain Bike',
+    description: 'Thrilling mountain bike racing with challenging terrain and stunts',
+    category: 'racing',
+    icon: 'ph-bicycle',
+    url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/mxoffroad/game.html',
+    featured: false
+  });
+
+  window.games.push({
+    id: 'portal',
+    title: 'Portal Flash',
+    description: 'Mind-bending puzzle game with teleportation portals',
+    category: 'puzzle',
+    icon: 'ph-circle-half',
+    url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/portalflash/index.html',
+    featured: false
+  });
+
+  window.games.push({
+    id: 'interactive-buddy',
+    title: 'Interactive Buddy',
+    description: 'Sandbox game where you interact with a ragdoll character',
+    category: 'simulation',
+    icon: 'ph-person-simple',
+    url: 'https://d3rtzzzsiu7gdr.cloudfront.net/files/projects/interactivebuddy/index.html',
     featured: false
   });
 

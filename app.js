@@ -21,7 +21,68 @@ class WebProxy {
 const webProxy = new WebProxy();
 webProxy.setup();
 
-//! Fix mobile layout issues immediately
+// Notification system
+window.showNotification = function(message, type = 'info') {
+  // Remove any existing notifications
+  const existingNotification = document.querySelector('.notification');
+  if (existingNotification) {
+    existingNotification.remove();
+  }
+  
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  
+  let icon = 'ph-info';
+  if (type === 'success') icon = 'ph-check-circle';
+  if (type === 'error') icon = 'ph-x-circle';
+  
+  notification.innerHTML = `
+    <i class="ph ${icon}"></i>
+    <p>${message}</p>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Show notification with animation
+  setTimeout(() => notification.classList.add('show'), 10);
+  
+  // Auto hide after 3 seconds
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
+};
+
+function fixMobileLayout() {
+  if (window.innerWidth <= 768) {
+    // Adjust content heights
+    const modalContents = document.querySelectorAll('.modal-content');
+    modalContents.forEach(content => {
+      const viewportHeight = window.innerHeight;
+      content.style.maxHeight = `${viewportHeight}px`;
+    });
+    
+    // Show mobile navigation bar
+    const mobileNavBar = document.querySelector('.mobile-nav-bar');
+    if (mobileNavBar) {
+      mobileNavBar.style.display = 'flex';
+    }
+    
+    // Improve scrolling in settings tabs
+    document.querySelectorAll('.settings-tab-content').forEach(elem => {
+      elem.style.maxHeight = `${window.innerHeight - 150}px`;
+      elem.style.overflowY = 'auto';
+      elem.style.webkitOverflowScrolling = 'touch';
+    });
+    
+    // Improve scrolling in other modal content
+    document.querySelectorAll('.favorites-body, .game-info-body').forEach(elem => {
+      elem.style.overflowY = 'auto';
+      elem.style.webkitOverflowScrolling = 'touch';
+    });
+  }
+}
 
 // Display games function
 function displayGames(category = 'all', searchQuery = '', sortBy = 'popular', loadMore = false) {
@@ -254,27 +315,46 @@ function openGame(game) {
     gameFrame.src = game.url;
     gameModal.style.display = 'flex';
     
-    // Add loading indicator
+    // Add enhanced loading indicator
+    const modalBody = document.querySelector('.modal-body');
     const loadingIndicator = document.createElement('div');
-    loadingIndicator.className = 'loading-indicator';
-    loadingIndicator.innerHTML = '<i class="ph ph-spinner ph-spin"></i><span>Loading game...</span>';
-    document.querySelector('.modal-body').appendChild(loadingIndicator);
+    loadingIndicator.className = 'game-loading-indicator';
+    loadingIndicator.innerHTML = `
+      <div class="loading-animation">
+        <div class="loading-spinner"></div>
+      </div>
+      <div class="loading-text">
+        <h3>Loading ${game.title}...</h3>
+        <p>Get ready to play!</p>
+      </div>
+    `;
+    modalBody.appendChild(loadingIndicator);
     
     // Remove loading indicator when game loads
     gameFrame.onload = () => {
-      const indicator = document.querySelector('.loading-indicator');
-      if (indicator) indicator.remove();
+      const indicator = document.querySelector('.game-loading-indicator');
+      if (indicator) {
+        indicator.classList.add('fade-out');
+        setTimeout(() => indicator.remove(), 500);
+      }
     };
     
     // Add to recent games
     const recentGamesManager = new RecentGamesManager();
     recentGamesManager.addRecentGame(game);
+    
+    // Dispatch game opened event for achievements
+    document.dispatchEvent(new CustomEvent('gameOpened', { 
+      detail: { game }
+    }));
   }
 }
 
 // Update account settings display
 function updateAccountSettingsDisplay() {
   const userSession = JSON.parse(localStorage.getItem('userSession')) || {};
+  const isGuest = userSession.isGuest || false;
+  const provider = userSession.provider || null;
   
   // Add null checks before accessing elements
   const accountUsername = document.getElementById('accountUsername');
@@ -285,13 +365,38 @@ function updateAccountSettingsDisplay() {
   const favoritesCount = document.getElementById('favoritesCount');
   const memberSince = document.getElementById('memberSince');
   const lastLogin = document.getElementById('lastLogin');
+  const guestMessage = document.getElementById('guestAccountMessage');
+  const providerBadge = document.getElementById('providerBadge');
 
   if (accountUsername) accountUsername.textContent = userSession.username || userSession.email?.split('@')[0] || 'User';
   if (accountEmail) accountEmail.textContent = userSession.email || '';
   if (emailInput) emailInput.value = userSession.email || '';
-  if (displayNameInput) displayNameInput.value = userSession.displayName || '';
-  if (accountAvatarIcon) accountAvatarIcon.className = userSession.avatarIcon || 'ph ph-user';
+  if (displayNameInput) displayNameInput.value = userSession.displayName || userSession.username || '';
+  
+  // Display provider badge if exists
+  if (providerBadge && provider) {
+    providerBadge.textContent = provider === 'google' ? 'Google' : 'Discord';
+    providerBadge.className = `provider-badge ${provider}`;
+    providerBadge.style.display = 'inline-flex';
+  } else if (providerBadge) {
+    providerBadge.style.display = 'none';
+  }
+  
+  // Update avatar icon or use custom avatar if provided
+  if (accountAvatarIcon) {
+    if (userSession.avatar) {
+      accountAvatarIcon.innerHTML = `<img src="${userSession.avatar}" alt="User Avatar">`;
+    } else {
+      accountAvatarIcon.innerHTML = '<i class="ph ph-user"></i>';
+      accountAvatarIcon.className = userSession.avatarIcon || 'ph ph-user';
+    }
+  }
 
+  // Show guest message if user is a guest
+  if (guestMessage) {
+    guestMessage.style.display = isGuest ? 'block' : 'none';
+  }
+  
   // Get favorites count
   const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
   if (favoritesCount) favoritesCount.textContent = favorites.length || '0';
@@ -316,6 +421,21 @@ function setupAccountActionButtons() {
   const updateProfileBtn = document.getElementById('updateProfileBtn');
   const displayNameInput = document.getElementById('displayNameInput');
   const accountUsername = document.getElementById('accountUsername');
+  const createAccountBtn = document.getElementById('createAccountBtn');
+  const userSession = JSON.parse(localStorage.getItem('userSession') || '{}');
+  const isGuest = userSession.isGuest || false;
+
+  // Show/hide buttons based on guest status
+  if (updateProfileBtn) {
+    updateProfileBtn.style.display = isGuest ? 'none' : 'block';
+  }
+  
+  if (createAccountBtn) {
+    createAccountBtn.style.display = isGuest ? 'block' : 'none';
+    createAccountBtn.addEventListener('click', () => {
+      window.location.href = 'signup.html';
+    });
+  }
 
   if (updateProfileBtn && displayNameInput && accountUsername) {
     updateProfileBtn.addEventListener('click', () => {
@@ -374,4 +494,6 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = 'contact.html';
     });
   }
+  
+  fixMobileLayout();
 });

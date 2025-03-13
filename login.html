@@ -213,6 +213,34 @@
             font-size: 1.3rem;
         }
 
+        .guest-btn {
+            background: var(--surface);
+            color: var(--primary);
+            border: 2px dashed var(--primary);
+            padding: 0.9rem;
+            margin-top: 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            width: 100%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .guest-btn:hover {
+            background: rgba(124, 58, 237, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.2);
+        }
+
+        .guest-btn i {
+            font-size: 1.3rem;
+        }
+
         /* Animation for the card */
         @keyframes shimmer {
             0% {
@@ -403,6 +431,11 @@
             <div class="auth-links">
                 <p>Don't have an account? <a href="signup.html">Sign up</a></p>
             </div>
+
+            <button id="continueAsGuest" class="guest-btn">
+                <i class="ph ph-user-circle"></i>
+                Continue as Guest
+            </button>
         </div>
     </div>
 
@@ -460,6 +493,8 @@
                     document.querySelector('.auth-form').style.display = 'none';
                     document.querySelector('.oauth-divider').style.display = 'none';
                     document.querySelector('.oauth-buttons').style.display = 'none';
+                    document.querySelector('.auth-links').style.display = 'none';
+                    document.querySelector('#continueAsGuest').style.display = 'none';
                     document.querySelector('.auth-title').textContent = 'Login Successful!';
                     document.querySelector('.auth-subtitle').textContent = 'Redirecting to your dashboard...';
                     document.querySelector('.success-checkmark').style.display = 'block';
@@ -472,27 +507,91 @@
             }
         });
 
-        // Mock OAuth functions
+        // Add guest login functionality
+        document.getElementById('continueAsGuest').addEventListener('click', function() {
+            // Create guest session
+            localStorage.setItem('userSession', JSON.stringify({
+                isGuest: true,
+                username: 'Guest',
+                email: 'guest@example.com',
+                isLoggedIn: false,
+                timestamp: new Date().getTime()
+            }));
+            
+            // Show loading animation
+            this.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Loading...';
+            
+            // Redirect to home page after brief delay
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 800);
+        });
+
+        // Enhance OAuth functions
         function signInWithGoogle() {
             document.querySelector('.auth-card').classList.add('auth-loading');
             document.querySelector('.google-btn').innerHTML = '<i class="ph ph-spinner ph-spin"></i> Connecting...';
             
+            // Simulated OAuth flow
             setTimeout(() => {
-                alert('Google Sign In - Feature coming soon!');
-                document.querySelector('.auth-card').classList.remove('auth-loading');
-                document.querySelector('.google-btn').innerHTML = '<i class="ph ph-google-logo"></i> Continue with Google';
-            }, 1000);
+                // Store demo user data
+                localStorage.setItem('userSession', JSON.stringify({
+                    username: 'Google User',
+                    email: 'google.user@gmail.com',
+                    isLoggedIn: true,
+                    provider: 'google',
+                    timestamp: new Date().getTime(),
+                    avatar: 'https://ui-avatars.com/api/?name=Google+User&background=4285F4&color=fff'
+                }));
+                
+                // Show success animation
+                document.querySelector('.auth-form').style.display = 'none';
+                document.querySelector('.oauth-divider').style.display = 'none';
+                document.querySelector('.oauth-buttons').style.display = 'none';
+                document.querySelector('.auth-links').style.display = 'none';
+                document.querySelector('#continueAsGuest').style.display = 'none';
+                document.querySelector('.auth-title').textContent = 'Google Sign In Successful!';
+                document.querySelector('.auth-subtitle').textContent = 'Redirecting to your dashboard...';
+                document.querySelector('.success-checkmark').style.display = 'block';
+                
+                // Redirect after animation
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            }, 1500);
         }
 
         function signInWithDiscord() {
             document.querySelector('.auth-card').classList.add('auth-loading');
             document.querySelector('.discord-btn').innerHTML = '<i class="ph ph-spinner ph-spin"></i> Connecting...';
             
+            // Simulated OAuth flow
             setTimeout(() => {
-                alert('Discord Sign In - Feature coming soon!');
-                document.querySelector('.auth-card').classList.remove('auth-loading');
-                document.querySelector('.discord-btn').innerHTML = '<i class="ph ph-discord-logo"></i> Continue with Discord';
-            }, 1000);
+                // Store demo user data
+                localStorage.setItem('userSession', JSON.stringify({
+                    username: 'Discord User',
+                    email: 'discord.user@example.com',
+                    isLoggedIn: true,
+                    provider: 'discord',
+                    timestamp: new Date().getTime(),
+                    avatar: 'https://ui-avatars.com/api/?name=Discord+User&background=5865F2&color=fff'
+                }));
+                
+                // Show success animation
+                document.querySelector('.auth-form').style.display = 'none';
+                document.querySelector('.oauth-divider').style.display = 'none';
+                document.querySelector('.oauth-buttons').style.display = 'none';
+                document.querySelector('.auth-links').style.display = 'none';
+                document.querySelector('#continueAsGuest').style.display = 'none';
+                document.querySelector('.auth-title').textContent = 'Discord Sign In Successful!';
+                document.querySelector('.auth-subtitle').textContent = 'Redirecting to your dashboard...';
+                document.querySelector('.success-checkmark').style.display = 'block';
+                
+                // Redirect after animation
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            }, 1500);
         }
 
         function forgotPassword() {

@@ -288,6 +288,34 @@
                 box-shadow: inset 0px 0px 0px 30px white;
             }
         }
+        
+        .guest-btn {
+          background: var(--surface);
+          color: var(--primary);
+          border: 2px dashed var(--primary);
+          padding: 0.9rem;
+          margin-top: 1rem;
+          border-radius: var(--radius-md);
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.8rem;
+          width: 100%;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: var(--transition);
+        }
+
+        .guest-btn:hover {
+          background: rgba(124, 58, 237, 0.1);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 10px rgba(124, 58, 237, 0.2);
+        }
+
+        .guest-btn i {
+          font-size: 1.3rem;
+        }
     </style>
 </head>
 <body>
@@ -351,6 +379,10 @@
             <div class="auth-links">
                 <p>Already have an account? <a href="login.html">Sign in</a></p>
             </div>
+            <button id="continueAsGuest" class="guest-btn">
+              <i class="ph ph-user-circle"></i>
+              Continue as Guest
+            </button>
         </div>
     </div>
 
@@ -498,6 +530,26 @@
                     }, 1500);
                 }, 1500);
             }
+        });
+
+        // Add guest login functionality
+        document.getElementById('continueAsGuest').addEventListener('click', function() {
+          // Create guest session
+          localStorage.setItem('userSession', JSON.stringify({
+            isGuest: true,
+            username: 'Guest',
+            email: 'guest@example.com',
+            isLoggedIn: false,
+            timestamp: new Date().getTime()
+          }));
+          
+          // Show loading animation
+          this.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Loading...';
+          
+          // Redirect to home page after brief delay
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 800);
         });
 
         // Check if user is already logged in

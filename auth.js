@@ -3,10 +3,11 @@ class Auth {
   constructor() {
     this.userSession = JSON.parse(localStorage.getItem('userSession')) || null;
     this.setupEventListeners();
+    this.initializeGuestSession();
   }
 
   isLoggedIn() {
-    return this.userSession && this.userSession.isLoggedIn;
+    return this.userSession && (this.userSession.isLoggedIn || this.userSession.isGuest);
   }
 
   getCurrentUser() {
@@ -27,8 +28,25 @@ class Auth {
 
   checkAuth() {
     if (!this.isLoggedIn()) {
-      window.location.href = 'login.html';
+      // Create guest session instead of redirecting
+      this.createGuestSession();
     }
+  }
+
+  createGuestSession() {
+    this.userSession = {
+      isGuest: true,
+      username: 'Guest',
+      email: 'guest@example.com',
+      isLoggedIn: false,
+      timestamp: new Date().getTime()
+    };
+    localStorage.setItem('userSession', JSON.stringify(this.userSession));
+  }
+
+  initializeGuestSession() {
+    // Don't automatically create guest session if no session exists
+    // Only create guest sessions when explicitly requested from login page
   }
 
   setupEventListeners() {
@@ -53,6 +71,22 @@ class Auth {
     this.userSession = { ...this.userSession, ...updates };
     localStorage.setItem('userSession', JSON.stringify(this.userSession));
   }
+  
+  // Add method to check if achievements and stats need to be initialized
+  initializeUserData() {
+    if (window.achievements) {
+      // Update achievements completed stats
+      const achievementsProgress = window.achievements.getProgress();
+      const achievementsCompletedStat = document.getElementById('achievementsCompletedStat');
+      if (achievementsCompletedStat) {
+        achievementsCompletedStat.textContent = `${achievementsProgress.percentage}%`;
+      }
+      
+      // Update all stats
+      window.achievements.updateStatsUI();
+      window.achievements.updateAchievementUI();
+    }
+  }
 }
 
 // Initialize auth on page load
@@ -62,6 +96,11 @@ window.addEventListener('DOMContentLoaded', () => {
   if (!window.location.pathname.includes('login.html') && 
       !window.location.pathname.includes('signup.html')) {
     auth.checkAuth();
+    
+    // Initialize user data after short delay
+    setTimeout(() => {
+      auth.initializeUserData();
+    }, 500);
   }
 });
 

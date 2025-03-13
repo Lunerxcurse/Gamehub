@@ -282,6 +282,14 @@
             <i class="ph ph-eye-slash"></i>
             Tab Cloak
           </div>
+          <div class="settings-tab" data-tab="achievements">
+            <i class="ph ph-trophy"></i>
+            Achievements
+          </div>
+          <div class="settings-tab" data-tab="stats">
+            <i class="ph ph-chart-line"></i>
+            Stats
+          </div>
           <div class="settings-tab" data-tab="about">
             <i class="ph ph-info"></i>
             About
@@ -298,14 +306,21 @@
                 </div>
                 <h3 id="accountUsername" style="margin-bottom: 0.25rem;"></h3>
                 <p id="accountEmail" style="color: var(--text-secondary); font-size: 0.9rem;"></p>
+                <span id="providerBadge" class="provider-badge" style="display: none;"></span>
+                <div id="guestAccountMessage" style="margin-top: 1rem; display: none;">
+                  <i class="ph ph-info"></i> You're using a guest account. Create an account to save your progress and access all features.
+                </div>
               </div>
               <div class="setting-item">
                 <label>Display Name</label>
                 <input type="text" id="displayNameInput" placeholder="Enter display name">
               </div>
               <div class="setting-item">
-                <button class="account-action-btn" id="updateProfileBtn">
+                <button class="account-action-btn primary" id="updateProfileBtn">
                   <i class="ph ph-check"></i> Update Profile
+                </button>
+                <button class="account-action-btn primary" id="createAccountBtn" style="display: none; margin-top: 0.5rem;">
+                  <i class="ph ph-user-plus"></i> Create Account
                 </button>
               </div>
             </div>
@@ -323,7 +338,7 @@
                 <input type="password" value="••••••••" disabled>
               </div>
               <div class="setting-item">
-                <button class="account-action-btn" id="changePasswordBtn">
+                <button class="account-action-btn primary" id="changePasswordBtn">
                   <i class="ph ph-key"></i> Change Password
                 </button>
               </div>
@@ -558,6 +573,69 @@
           </div>
         </div>
         
+        <div class="settings-tab-content" data-tab-content="achievements">
+          <div class="settings-grid">
+            <div class="settings-section" style="grid-column: 1 / -1;">
+              <h3><i class="ph ph-trophy"></i> Your Achievements</h3>
+              <div id="achievementsList">
+                <!-- Achievements will be loaded here -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="settings-tab-content" data-tab-content="stats">
+          <div class="settings-grid">
+            <div class="settings-section" style="grid-column: 1 / -1;">
+              <h3><i class="ph ph-chart-line"></i> Your Gaming Stats</h3>
+              
+              <div class="user-level-container">
+                <div class="user-level">Level <span id="userLevel">1</span></div>
+                <div class="user-points"><span id="userPoints">0</span> points</div>
+                <div class="level-progress">
+                  <div class="level-progress-bar" id="levelProgressBar" style="width: 0%;"></div>
+                </div>
+              </div>
+              
+              <div class="stats-grid">
+                <div class="stat-card">
+                  <div class="stat-value" id="gamesPlayedStat">0</div>
+                  <div class="stat-label">Games Played</div>
+                </div>
+                
+                <div class="stat-card">
+                  <div class="stat-value" id="uniqueGamesStat">0</div>
+                  <div class="stat-label">Unique Games</div>
+                </div>
+                
+                <div class="stat-card">
+                  <div class="stat-value" id="categoriesPlayedStat">0</div>
+                  <div class="stat-label">Categories</div>
+                </div>
+                
+                <div class="stat-card">
+                  <div class="stat-value" id="playTimeStat">0m</div>
+                  <div class="stat-label">Play Time</div>
+                </div>
+                
+                <div class="stat-card">
+                  <div class="stat-value" id="streakStat">0 days</div>
+                  <div class="stat-label">Login Streak</div>
+                </div>
+                
+                <div class="stat-card">
+                  <div class="stat-value" id="achievementsCompletedStat">0%</div>
+                  <div class="stat-label">Achievements</div>
+                </div>
+              </div>
+              
+              <div style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">
+                <p>Keep playing to earn more achievements and points!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <div class="settings-tab-content" data-tab-content="about">
           <div class="settings-grid">
             <div class="settings-section">
@@ -680,6 +758,12 @@
             <span>Add to Favorites</span>
           </button>
         </div>
+        <div class="game-info-share" style="margin-top: 1rem;">
+          <button class="share-game-btn" id="shareGameBtn" style="width: 100%; padding: 0.8rem; background: var(--surface-hover); border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; transition: var(--transition);">
+            <i class="ph ph-share-network"></i>
+            Share with Friends
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -790,11 +874,261 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="cloak.js"></script>
+  <script src="cloak.js"></script>
   <script src="settings.js"></script>
   <script src="games.js"></script>
   <script src="app.js"></script>
   <script src="auth.js"></script>
+  <script src="achievements.js"></script>
+
+  <style>
+    .account-action-btn {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: var(--radius-md);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      background: var(--surface-hover);
+      color: var(--text);
+      border: 1px solid var(--border);
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .account-action-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .account-action-btn:active {
+      transform: translateY(0);
+    }
+    
+    .account-action-btn.primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    .account-action-btn.primary:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    }
+    
+    .account-action-btn.danger {
+      background: #ef4444;
+      color: white;
+      border-color: #ef4444;
+    }
+    
+    .account-action-btn.danger:hover {
+      background: #dc2626;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    }
+    
+    /* Achievement styles */
+    .achievement-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 0.8rem;
+      transition: var(--transition);
+    }
+
+    .achievement-item:hover {
+      transform: translateX(5px);
+      border-color: var(--primary);
+    }
+
+    .achievement-item.unlocked {
+      background: linear-gradient(to right, var(--surface), rgba(124, 58, 237, 0.1));
+    }
+
+    .achievement-item.secret {
+      background: linear-gradient(to right, var(--surface), rgba(0, 0, 0, 0.2));
+    }
+
+    .achievement-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--surface-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .achievement-icon i {
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    .achievement-item.unlocked .achievement-icon i {
+      color: var(--primary);
+    }
+
+    .achievement-reward {
+      position: absolute;
+      bottom: -5px;
+      right: -5px;
+      background: var(--primary);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 0.2rem 0.4rem;
+      border-radius: 12px;
+    }
+
+    .achievement-info {
+      flex: 1;
+    }
+
+    .achievement-info h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .achievement-info p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .achievement-status {
+      color: var(--text-secondary);
+    }
+
+    .achievement-item.unlocked .achievement-status {
+      color: var(--primary);
+    }
+
+    /* Stats styles */
+    .user-level-container {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .user-level {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .user-points {
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .level-progress {
+      height: 8px;
+      background: var(--surface);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .level-progress-bar {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: 0 8px 15px rgba(124, 58, 237, 0.1);
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    /* Daily reward modal */
+    /* Removed */
+    
+    .provider-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.6rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      margin-left: 0.5rem;
+    }
+    
+    .provider-badge.google {
+      background: #4285F4;
+      color: white;
+    }
+    
+    .provider-badge.discord {
+      background: #5865F2;
+      color: white;
+    }
+    
+    #guestAccountMessage {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(124, 58, 237, 0.1);
+      border-radius: var(--radius-md);
+      border: 1px dashed var(--primary);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      animation: pulse 2s infinite;
+    }
+    
+    #createAccountBtn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      animation: pulse-glow 2s infinite;
+      font-weight: 600;
+    }
+    
+    .account-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  </style>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -2215,6 +2549,50 @@ ${gameDescription}
         });
       }
     });
+    
+    // Add share functionality to playNowBtn event listeners
+    const shareGameBtn = document.getElementById('shareGameBtn');
+    if (shareGameBtn) {
+      shareGameBtn.addEventListener('click', () => {
+        const gameData = JSON.parse(playNowBtn.getAttribute('data-game') || '{}');
+        if (gameData && gameData.title) {
+          if (navigator.share) {
+            navigator.share({
+              title: `Play ${gameData.title} on GameHub Pro`,
+              text: `Check out ${gameData.title} - ${gameData.description}`,
+              url: window.location.href
+            })
+            .then(() => {
+              // Dispatch game shared event for achievements
+              document.dispatchEvent(new CustomEvent('gameShared'));
+              showNotification('Game shared successfully!', 'success');
+            })
+            .catch(err => {
+              console.error('Share failed:', err);
+              copyGameLinkToClipboard(gameData);
+            });
+          } else {
+            copyGameLinkToClipboard(gameData);
+          }
+        }
+      });
+    }
+    
+    function copyGameLinkToClipboard(game) {
+      const text = `Check out ${game.title} on GameHub Pro: ${window.location.href}`;
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          // Dispatch game shared event for achievements
+          document.dispatchEvent(new CustomEvent('gameShared'));
+          showNotification('Game link copied to clipboard!', 'success');
+        })
+        .catch(err => {
+          console.error('Copy failed:', err);
+          showNotification('Failed to copy link', 'error');
+        });
+    }
+    
+    // Removed Daily Reward Modal
   </script>
 </body>
 </html>
