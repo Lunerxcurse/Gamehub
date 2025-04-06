@@ -1,2602 +1,741 @@
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>GameHub Pro - Free Online Games</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgZmlsbD0iIzdDM0FFRiI+CiAgPHBhdGggZD0iTTE4OCAxMDRhMTIgMTIgMCAwIDEtMTIgMTJoLTU2vjU2YTEyIDEyIDAgMCAxLTI0IDB2LTU2SDIwYTEyIDEyIDAgMCAxIDAtMjRoNTZWMjhhMTIgMTIgMCAwIDEgMjQgMHY1Mmg1NmExMiAxMiAwIDAgMSAxMiAxMnptNjguNTYgMTAuNjktODBhMTYgMTYgMCAwIDAtMjIuNTYgMGwtODAuMDcgODBhMTYgMTYgMCAwIDAgMjIuNTYgMjIuNTdMMTI4IDE1Mi41N2w2OS40NyA2OS40OWExNiAxNiAwIDAgMCAyMi41Ni0yMi41N3oiPjwvcGF0aD4KPC9zdmc+">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 11 Clone</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/ChatGPT Image Apr 4, 2025, 09_11_49 PM.png">
+    <script type="importmap">
+        {
+            "imports": {
+                "sortablejs": "https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 </head>
 <body>
-  <!-- Mobile Sidebar -->
-  <div class="mobile-sidebar">
-    <div class="mobile-sidebar-header">
-      <a href="/" class="logo">
-        <i class="ph ph-game-controller"></i>
-        <span>GameHub <sup>PRO</sup></span>
-      </a>
-      <button class="close-btn mobile-sidebar-close">
-        <i class="ph ph-x"></i>
-      </button>
-    </div>
-    
-    <div class="mobile-sidebar-content">
-      <div class="mobile-sidebar-search">
-        <div class="search">
-          <i class="ph ph-magnifying-glass"></i>
-          <input type="text" placeholder="Search games..." id="mobileSidebarSearchInput">
+    <div class="desktop">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="icon" data-name="Recycle Bin">
+                <svg viewBox="0 0 24 24" class="icon-svg">
+                    <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" fill="currentColor"/>
+                </svg>
+                <span>Recycle Bin</span>
+            </div>
+            <div class="icon" data-name="File Explorer">
+                <svg viewBox="0 0 24 24" class="icon-svg">
+                    <path d="M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z" fill="currentColor"/>
+                </svg>
+                <span>File Explorer</span>
+            </div>
+            <div class="icon" data-name="Edge">
+                <img src="/ChatGPT Image Apr 4, 2025, 09_11_49 PM.png" class="icon-svg" alt="Edge">
+                <span>Edge</span>
+            </div>
+            <!-- This is where installed apps will be added dynamically -->
         </div>
-        <div class="mobile-sidebar-search-suggestions" id="mobileSidebarSearchSuggestions"></div>
-      </div>
 
-      <div class="mobile-sidebar-nav">
-        <button class="mobile-action-btn primary-btn" id="mobileSuggestGameBtn">
-          <i class="ph ph-plus-circle"></i>
-          Suggest a Game
-        </button>
-        <button class="mobile-action-btn secondary-btn" id="mobileAiCopilotBtn">
-          <i class="ph ph-robot"></i>
-          AI Copilot
-        </button>
-        <button class="mobile-action-btn" id="mobileSettingsBtn">
-          <i class="ph ph-gear"></i>
-          Settings
-        </button>
-      </div>
-
-      <div class="mobile-sidebar-recent">
-        <h3>
-          <i class="ph ph-clock-clockwise"></i>
-          Recent Games
-        </h3>
-        <div class="recent-games" id="mobileSidebarRecentGames">
-          <!-- Recent games will be populated here -->
-        </div>
-      </div>
-
-      <div class="mobile-sidebar-footer">
-        <p class="version">GameHub Pro v2.4.0</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sidebar Overlay -->
-  <div class="mobile-sidebar-overlay"></div>
-
-  <!-- Mobile Navigation Bar -->
-  <div class="mobile-nav-bar">
-    <a href="#" class="mobile-nav-item active">
-      <i class="ph ph-house"></i>
-      <span>Home</span>
-    </a>
-    <a href="#" class="mobile-nav-item">
-      <i class="ph ph-fire"></i>
-      <span>Hot</span>
-    </a>
-    <a href="#" class="mobile-nav-item">
-      <i class="ph ph-magnifying-glass"></i>
-      <span>Search</span>
-    </a>
-    <a href="#" class="mobile-nav-item" id="mobileNavSettings">
-      <i class="ph ph-gear"></i>
-      <span>Settings</span>
-    </a>
-  </div>
-
-  <!-- Desktop Navigation -->
-  <nav>
-    <a href="/" class="logo">
-      <i class="ph ph-game-controller"></i>
-      <span>GameHub <sup>PRO</sup></span>
-    </a>
-    <div class="nav-controls">
-      <div class="search">
-        <i class="ph ph-magnifying-glass"></i>
-        <input type="text" placeholder="Search games..." id="searchInput">
-        <div class="search-suggestions" id="searchSuggestions"></div>
-      </div>
-      <button id="suggestGameBtn" class="suggest-game-btn">
-        <i class="ph ph-plus-circle"></i>
-        <span>Suggest</span>
-      </button>
-      <button id="aiCopilotBtn" class="ai-btn">
-        <i class="ph ph-robot"></i>
-        <span>AI Copilot</span>
-      </button>
-      <button id="settingsBtn" class="settings-btn">
-        <i class="ph ph-gear"></i>
-      </button>
-    </div>
-  </nav>
-
-  <main>
-    <!-- Recently Played Section -->
-    <section class="jump-back-section">
-      <div class="jump-back-header">
-        <h2 class="jump-back-title">
-          <i class="ph ph-clock-clockwise"></i>
-          Recently Played
-        </h2>
-        <div class="jump-back-actions">
-          <button id="clearRecentBtn" class="action-btn">
-            <i class="ph ph-trash"></i>
-            Clear
-          </button>
-        </div>
-      </div>
-      <div id="jumpBackGrid" class="jump-back-grid">
-        <!-- Recently played games will be inserted here -->
-        <div class="jump-back-empty">
-          <i class="ph ph-hourglass"></i>
-          <h3>No Recently Played Games</h3>
-          <p>Games you play will appear here for quick access</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- New Games Section -->
-    <section class="new-games-section">
-      <div class="new-games-header">
-        <h2 class="new-games-title">
-          <i class="ph ph-sparkle"></i>
-          New Arrivals
-        </h2>
-        <div class="new-games-actions">
-          <button id="refreshNewGamesBtn" class="action-btn">
-            <i class="ph ph-arrows-clockwise"></i>
-            Refresh
-          </button>
-        </div>
-      </div>
-      <div class="new-games-swiper" id="newGamesSwiper">
-        <!-- New games will be populated here via JS -->
-      </div>
-    </section>
-
-    <!-- All Games Section -->
-    <section class="collection-section">
-      <div class="collection-header">
-        <h2 class="collection-title">
-          <i class="ph ph-game-controller"></i>
-          All Games
-        </h2>
-        <div class="game-counter" id="gameTotalCounter">Loading games...</div>
-      </div>
-      
-      <div class="collection-filters">
-        <div class="filter-chip active" data-category="all">
-          <i class="ph ph-squares-four"></i>
-          All Games
-        </div>
-        <div class="filter-chip" data-category="arcade">
-          <i class="ph ph-game-controller"></i>
-          Arcade
-        </div>
-        <div class="filter-chip" data-category="action">
-          <i class="ph ph-sword"></i>
-          Action
-        </div>
-        <div class="filter-chip" data-category="racing">
-          <i class="ph ph-car"></i>
-          Racing
-        </div>
-        <div class="filter-chip" data-category="simulation">
-          <i class="ph ph-person"></i>
-          Simulation
-        </div>
-        <div class="filter-chip" data-category="puzzle">
-          <i class="ph ph-puzzle-piece"></i>
-          Puzzle
-        </div>
-        <div class="filter-chip" data-category="sports">
-          <i class="ph ph-basketball"></i>
-          Sports
-        </div>
-        <div class="filter-chip" data-category="horror">
-          <i class="ph ph-ghost"></i>
-          Horror
-        </div>
-        <div class="filter-chip" data-category="io">
-          <i class="ph ph-globe"></i>
-          .io Games
-        </div>
-        <div class="filter-chip" data-category="idle">
-          <i class="ph ph-timer"></i>
-          Idle
-        </div>
-      </div>
-      
-      <div class="sort-filters">
-        <span class="sort-label">Sort by:</span>
-        <div class="sort-options">
-          <button class="sort-option active" data-sort="popular">Popular</button>
-          <button class="sort-option" data-sort="newest">Newest</button>
-          <button class="sort-option" data-sort="rating">Rating</button>
-          <button class="sort-option" data-sort="name">Name</button>
-        </div>
-      </div>
-      
-      <div class="games-grid" id="gamesGrid">
-        <!-- Games will be populated here via JS -->
-      </div>
-      
-      <div class="load-more-container">
-        <button id="loadMoreBtn" class="load-more-btn">
-          <i class="ph ph-plus-circle"></i>
-          Load More Games
-        </button>
-      </div>
-    </section>
-  </main>
-
-  <!-- Game Modal -->
-  <div id="gameModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="modalTitle"></h2>
-        <div class="modal-controls">
-          <button class="fullscreen-btn" id="fullscreenBtn">
-            <i class="ph ph-arrows-out"></i>
-          </button>
-          <button class="close-btn" id="closeModalBtn">
-            <i class="ph ph-x"></i>
-          </button>
-        </div>
-      </div>
-      <div class="modal-body">
-        <iframe id="gameFrame" frameborder="0" allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- Enhanced Settings Modal -->
-  <div id="settingsModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2><i class="ph ph-gear"></i> Settings</h2>
-        <button class="close-btn settings-close-btn">
-          <i class="ph ph-x"></i>
-        </button>
-      </div>
-      
-      <div class="settings-panel">
-        <div class="settings-tabs">
-          <div class="settings-tab" data-tab="account">
-            <i class="ph ph-user-circle"></i>
-            Account
-          </div>
-          <div class="settings-tab active" data-tab="appearance">
-            <i class="ph ph-paint-brush"></i>
-            Appearance
-          </div>
-          <div class="settings-tab" data-tab="privacy">
-            <i class="ph ph-shield"></i>
-            Privacy
-          </div>
-          <div class="settings-tab" data-tab="controls">
-            <i class="ph ph-keyboard"></i>
-            Controls
-          </div>
-          <div class="settings-tab" data-tab="cloak">
-            <i class="ph ph-eye-slash"></i>
-            Tab Cloak
-          </div>
-          <div class="settings-tab" data-tab="achievements">
-            <i class="ph ph-trophy"></i>
-            Achievements
-          </div>
-          <div class="settings-tab" data-tab="stats">
-            <i class="ph ph-chart-line"></i>
-            Stats
-          </div>
-          <div class="settings-tab" data-tab="about">
-            <i class="ph ph-info"></i>
-            About
-          </div>
-        </div>
-        
-        <div class="settings-tab-content" data-tab-content="account">
-          <div class="settings-grid">
-            <div class="account-settings-section">
-              <h3><i class="ph ph-user-circle"></i> Profile</h3>
-              <div style="text-align: center; margin-bottom: 1.5rem;">
-                <div class="account-avatar">
-                  <i class="ph ph-user" id="accountAvatarIcon"></i>
-                </div>
-                <h3 id="accountUsername" style="margin-bottom: 0.25rem;"></h3>
-                <p id="accountEmail" style="color: var(--text-secondary); font-size: 0.9rem;"></p>
-                <span id="providerBadge" class="provider-badge" style="display: none;"></span>
-                <div id="guestAccountMessage" style="margin-top: 1rem; display: none;">
-                  <i class="ph ph-info"></i> You're using a guest account. Create an account to save your progress and access all features.
-                </div>
-              </div>
-              <div class="setting-item">
-                <label>Display Name</label>
-                <input type="text" id="displayNameInput" placeholder="Enter display name">
-              </div>
-              <div class="setting-item">
-                <button class="account-action-btn primary" id="updateProfileBtn">
-                  <i class="ph ph-check"></i> Update Profile
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="taskbar-left">
+                <button class="start-button" id="startButton">
+                    <svg viewBox="0 0 24 24" class="windows-icon">
+                        <path d="M3,5H9V11H3V5M5,7V9H7V7H5M11,7H21V9H11V7M11,15H21V17H11V15M5,13V15H7V13H5M3,13H9V19H3V13Z" fill="currentColor"/>
+                    </svg>
                 </button>
-                <button class="account-action-btn primary" id="createAccountBtn" style="display: none; margin-top: 0.5rem;">
-                  <i class="ph ph-user-plus"></i> Create Account
-                </button>
-              </div>
+                <div class="search-button">
+                    <svg viewBox="0 0 24 24" class="search-icon">
+                        <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" fill="currentColor"/>
+                    </svg>
+                    <input type="text" placeholder="Search Windows" class="search-input" id="searchInput">
+                    <div class="search-results" id="searchResults">
+                        <!-- Search results will be populated here -->
+                    </div>
+                </div>
+                <div class="taskbar-icons" id="taskbarIcons">
+                    <div class="taskbar-icon active">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="taskbar-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16.36,14C16.44,13.34 16.5,12.68 16.5,12C16.5,11.32 16.44,10.66 16.36,10H19.74C19.9,10.64 20,11.31 20,12C20,12.69 19.9,13.36 19.74,14M14.59,19.56C15.19,18.45 15.65,17.25 15.97,16H18.92C17.96,17.65 16.43,18.93 14.59,19.56M14.34,14H9.66C9.56,13.34 9.5,12.68 9.5,12C9.5,11.32 9.56,10.65 9.66,10H14.34C14.43,10.65 14.5,11.32 14.5,12C14.5,12.68 14.43,13.34 14.34,14M12,19.96C11.17,18.76 10.5,17.43 10.09,16H13.91C13.5,17.43 12.83,18.76 12,19.96M8,8H5.08C6.03,6.34 7.57,5.06 9.4,4.44C8.8,5.55 8.35,6.75 8,8M5.08,16H8C8.35,17.25 8.8,18.45 9.4,19.56C7.57,18.93 6.03,17.65 5.08,16M4.26,14C4.1,13.36 4,12.69 4,12C4,11.31 4.1,10.64 4.26,10H7.64C7.56,10.66 7.5,11.32 7.5,12C7.5,12.68 7.56,13.34 7.64,14M12,4.03C12.83,5.23 13.5,6.57 13.91,8H10.09C10.5,6.57 11.17,5.23 12,4.03M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21H14M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="taskbar-icon">
+                    <img src="/ChatGPT Image Apr 4, 2025, 09_11_49 PM.png" style="width: 20px; height: 20px;" alt="Edge">
+                </div>
+                <div class="taskbar-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z" fill="currentColor"/>
+                    </svg>
+                </div>
             </div>
-            
-   
-            
-            <div class="account-settings-section">
-              <h3><i class="ph ph-lock"></i> Account Security</h3>
-              <div class="setting-item">
-                <label>Email</label>
-                <input type="email" id="emailInput" disabled>
-              </div>
-              <div class="setting-item">
-                <label>Password</label>
-                <input type="password" value="••••••••" disabled>
-              </div>
-              <div class="setting-item">
-                <button class="account-action-btn primary" id="changePasswordBtn">
-                  <i class="ph ph-key"></i> Change Password
-                </button>
-              </div>
-              <div class="setting-item">
-                <button class="account-action-btn danger" id="logoutBtn">
-                  <i class="ph ph-sign-out"></i> Sign Out
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
-        
-        <div class="settings-tab-content active" data-tab-content="appearance">
-          <div class="settings-grid">
-            <div class="settings-section">
-              <h3><i class="ph ph-palette"></i> Theme Colors</h3>
-              <div class="setting-item">
-                <label>Primary Color</label>
-                <input type="color" id="primaryColor" value="#7c3aed">
-              </div>
-              <div class="setting-item">
-                <label>Background Color</label>
-                <input type="color" id="backgroundColor" value="#0f0f13">
-              </div>
-              <div class="setting-item">
-                <label>Surface Color</label>
-                <input type="color" id="surfaceColor" value="#1a1a1f">
-              </div>
+        <div class="taskbar-right">
+            <div class="weather-info" id="weatherInfo">
+                <span class="temperature" id="temperature">--°</span>
+                <span class="location" id="location">Loading...</span>
             </div>
-            
-            <div class="settings-section">
-              <h3><i class="ph ph-device-mobile"></i> Interface</h3>
-              <div class="setting-item">
-                <label>Theme Mode</label>
-                <select id="themeMode">
-                  <option value="dark">Dark Mode</option>
-                  <option value="light">Light Mode</option>
-                  <option value="system">System Default</option>
-                </select>
-              </div>
-              <div class="setting-item">
-                <label>Cursor Style</label>
-                <select id="cursorStyle">
-                  <option value="default">Default (Purple Arrow)</option>
-                  <option value="gamer">Gamer (Controller)</option>
-                  <option value="minimal">Minimal (Circle)</option>
-                </select>
-              </div>
-              <div class="setting-item">
-                <label>Games Grid Size</label>
-                <select id="gridSize">
-                  <option value="small">Small</option>
-                  <option value="medium" selected>Medium</option>
-                  <option value="large">Large</option>
-                </select>
-              </div>
-              <div class="setting-item">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                  <label style="margin-bottom: 0;">Show Game Ratings</label>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="showRatings" checked>
-                    <span class="toggle-slider"></span>
-                  </label>
+            <div class="system-tray">
+                <div class="volume-control">
+                    <div class="volume-slider" id="volumeSlider">
+                        <div class="volume-slider-inner" id="volumeSliderInner"></div>
+                    </div>
+                    <div class="volume-icon" id="volumeIcon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z" fill="currentColor"/>
+                        </svg>
+                    </div>
                 </div>
-              </div>
-              <div class="setting-item">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <label style="margin-bottom: 0;">Enable Animations</label>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="enableAnimations" checked>
-                    <span class="toggle-slider"></span>
-                  </label>
+                <div class="wifi-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12,4C14.1,4 16.1,4.8 17.6,6.3C20.7,9.4 20.7,14.5 17.6,17.6C15.8,19.5 13.3,20.2 10.9,19.9L11.4,17.9C13.1,18.1 14.9,17.5 16.2,16.2C18.5,13.9 18.5,10.1 16.2,7.7C15.1,6.6 13.5,6 12,6V10.6L7,5.6L12,0.6V4M6.3,17.6C4.62,15.5 4,13.82 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,13.82 19.38,15.5 18.36,16.83M3,5H1V21A2,2 0 0,0 3,23H19A2,2 0 0,0 21,21V5L3,5Z" fill="currentColor"/>
+                    </svg>
                 </div>
-              </div>
+                <span class="time" id="time">10:30 AM</span>
+                <span class="date" id="date">5/1/2023</span>
+                <div class="notification-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21H14M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" fill="currentColor"/>
+                    </svg>
+                </div>
             </div>
-          </div>
         </div>
-        
-        <div class="settings-tab-content" data-tab-content="privacy">
-          <div class="settings-grid">
-            <div class="settings-section">
-              <h3><i class="ph ph-shield-check"></i> Privacy Settings</h3>
-              <div class="setting-item">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                  <label style="margin-bottom: 0;">Save Game History</label>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="saveHistory" checked>
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="setting-item">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                  <label style="margin-bottom: 0;">Incognito Mode</label>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="incognitoMode">
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="setting-item">
-                <label>Panic URL</label>
-                <input type="url" id="panicUrl" placeholder="https://classroom.google.com" value="https://classroom.google.com">
-              </div>
-            </div>
-            
-            <div class="settings-section">
-              <h3><i class="ph ph-trash"></i> Data Management</h3>
-              <div class="setting-item">
-                <button class="reset-btn" style="width: 100%; margin-bottom: 1rem;" id="clearHistory">
-                  Clear Game History
-                </button>
-                <button class="reset-btn" style="width: 100%; margin-bottom: 1rem;" id="clearSettings">
-                  Reset Settings
-                </button>
-                <button class="reset-btn" style="width: 100%;" id="clearAllData">
-                  Clear All Data
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="settings-tab-content" data-tab-content="controls">
-          <div class="settings-grid">
-            <div class="settings-section">
-              <h3><i class="ph ph-keyboard"></i> Hotkeys</h3>
-              <div class="setting-item">
-                <label>Panic Key (Quick Exit)</label>
-                <input type="text" id="panicKey" placeholder="Press any key" readonly value="Escape">
-              </div>
-              <div class="setting-item">
-                <label>Fullscreen Key</label>
-                <input type="text" id="fullscreenKey" placeholder="Press any key" readonly value="F">
-              </div>
-              <div class="setting-item">
-                <label>Toggle Settings Key</label>
-                <input type="text" id="settingsKey" placeholder="Press any key" readonly value="S">
-              </div>
-            </div>
-            
-            <div class="settings-section">
-              <h3><i class="ph ph-game-controller"></i> Game Controls</h3>
-              <div class="setting-item">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                  <label style="margin-bottom: 0;">Enable Touch Controls</label>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="touchControls" checked>
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="setting-item">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                  <label style="margin-bottom: 0;">Auto-Pause When Inactive</label>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="autoPause" checked>
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="setting-item">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <label style="margin-bottom: 0;">Game Focus Mode</label>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="gameFocusMode">
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="settings-tab-content" data-tab-content="cloak">
-          <div class="settings-grid">
-            <div class="settings-section">
-              <h3><i class="ph ph-eye-slash"></i> Tab Cloak</h3>
-              <div class="setting-item">
-                <label>Cloak Presets</label>
-                <select id="cloakPreset">
-                  <option value="classroom">Google Classroom</option>
-                  <option value="docs">Google Docs</option>
-                  <option value="drive">Google Drive</option>
-                  <option value="calendar">Calendar</option>
-                  <option value="custom">Custom</option>
-                </select>
-              </div>
-              <div class="setting-item">
-                <label>Custom Title</label>
-                <input type="text" id="cloakTitle" placeholder="Custom page title">
-              </div>
-              <div class="setting-item">
-                <label>Custom Icon</label>
-                <select id="cloakIcon">
-                  <option value="ph-books">Books</option>
-                  <option value="ph-file-doc">Document</option>
-                  <option value="ph-chart-line">Chart</option>
-                  <option value="ph-calendar">Calendar</option>
-                  <option value="ph-student">Student</option>
-                  <option value="ph-graduation-cap">Education</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="settings-section">
-              <h3><i class="ph ph-timer"></i> Auto Cloak</h3>
-              <div class="setting-item">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                  <label style="margin-bottom: 0;">Auto-Cloak on Launch</label>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="autoCloak">
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="setting-item">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                  <label style="margin-bottom: 0;">Auto-Cloak on Tab Switch</label>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="autoCloakTabSwitch">
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="setting-item">
-                <button id="resetCloak" class="reset-btn" style="width: 100%;">
-                  Reset Tab Cloak
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="settings-tab-content" data-tab-content="achievements">
-          <div class="settings-grid">
-            <div class="settings-section" style="grid-column: 1 / -1;">
-              <h3><i class="ph ph-trophy"></i> Your Achievements</h3>
-              <div id="achievementsList">
-                <!-- Achievements will be loaded here -->
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="settings-tab-content" data-tab-content="stats">
-          <div class="settings-grid">
-            <div class="settings-section" style="grid-column: 1 / -1;">
-              <h3><i class="ph ph-chart-line"></i> Your Gaming Stats</h3>
-              
-              <div class="user-level-container">
-                <div class="user-level">Level <span id="userLevel">1</span></div>
-                <div class="user-points"><span id="userPoints">0</span> points</div>
-                <div class="level-progress">
-                  <div class="level-progress-bar" id="levelProgressBar" style="width: 0%;"></div>
-                </div>
-              </div>
-              
-              <div class="stats-grid">
-                <div class="stat-card">
-                  <div class="stat-value" id="gamesPlayedStat">0</div>
-                  <div class="stat-label">Games Played</div>
-                </div>
-                
-                <div class="stat-card">
-                  <div class="stat-value" id="uniqueGamesStat">0</div>
-                  <div class="stat-label">Unique Games</div>
-                </div>
-                
-                <div class="stat-card">
-                  <div class="stat-value" id="categoriesPlayedStat">0</div>
-                  <div class="stat-label">Categories</div>
-                </div>
-                
-                <div class="stat-card">
-                  <div class="stat-value" id="playTimeStat">0m</div>
-                  <div class="stat-label">Play Time</div>
-                </div>
-                
-                <div class="stat-card">
-                  <div class="stat-value" id="streakStat">0 days</div>
-                  <div class="stat-label">Login Streak</div>
-                </div>
-                
-                <div class="stat-card">
-                  <div class="stat-value" id="achievementsCompletedStat">0%</div>
-                  <div class="stat-label">Achievements</div>
-                </div>
-              </div>
-              
-              <div style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">
-                <p>Keep playing to earn more achievements and points!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="settings-tab-content" data-tab-content="about">
-          <div class="settings-grid">
-            <div class="settings-section">
-              <h3><i class="ph ph-info"></i> About GameHub Pro</h3>
-              <div style="text-align: center; padding: 1rem 0;">
-                <i class="ph ph-game-controller" style="font-size: 4rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                <h2 style="margin-bottom: 0.5rem;">GameHub Pro v2.4.0</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">The ultimate game collection platform</p>
-              </div>
-              <div class="setting-item">
-                <p style="margin-bottom: 1rem;">
-                  GameHub Pro provides a curated collection of browser games that you can play for free. Our platform is designed to be user-friendly, fast, and customizable.
-                </p>
-                <p>
-                  Thank you for using GameHub Pro! We're constantly working to improve your gaming experience.
-                </p>
-              </div>
-            </div>
-            
-            <div class="settings-section">
-              <h3><i class="ph ph-envelope"></i> Contact & Support</h3>
-              <div class="setting-item">
-                <p>
-                  If you have any questions, suggestions, or need support, please contact us:
-                </p>
-                <div style="margin-top: 1rem;">
-                  <a href="/cdn-cgi/l/email-protection#ceacbca7afa0bdbbaca7bcafbaf88ea9a3afa7a2e0ada1a3" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 0.5rem;">
-                    <i class="ph ph-envelope"></i>
-                    <span class="__cf_email__" data-cfemail="adcfdfc4ccc3ded8cfc4dfccd99bedcac0ccc4c183cec2c0">[email&#160;protected]</span>
-                  </a>
-                  <a href="https://github.com/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 0.5rem;">
-                    <i class="ph ph-github-logo"></i>
-                    GitHub Repository
-                  </a>
-                  <a href="https://discord.com/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none;">
-                    <i class="ph ph-discord-logo"></i>
-                    Join our Discord
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-
-  <!-- Suggest Game Modal -->
-  <div id="suggestGameModal" class="modal">
-    <div class="suggest-game-content">
-      <div class="modal-header">
-        <h2><i class="ph ph-plus-circle"></i> Suggest a Game</h2>
-        <button class="close-btn suggest-game-close">
-          <i class="ph ph-x"></i>
-        </button>
-      </div>
-      <form class="suggest-game-form" id="suggestGameForm">
-        <input type="text" name="name" placeholder="Your Name (Optional)" />
-        <input type="email" name="email" placeholder="Your Email (Optional)" />
-        <input type="text" name="gameName" placeholder="Game Name" required />
-        <textarea name="gameDescription" placeholder="Why should we add this game?" rows="4" required></textarea>
-        <button type="submit">Submit Suggestion</button>
-      </form>
+</div>
+<div class="start-menu" id="startMenu">
+    <div class="start-header">
+        <div class="pinned-apps-header">Pinned</div>
+        <button class="all-apps-button">All apps</button>
     </div>
-  </div>
-
-  <!-- Game Info Modal -->
-  <div id="gameInfoModal" class="modal">
-    <div class="game-info-content">
-      <div class="modal-header">
-        <h2 id="gameInfoTitle">Game Title</h2>
-        <button class="close-btn game-info-close">
-          <i class="ph ph-x"></i>
-        </button>
-      </div>
-      <div class="game-info-body">
-        <div class="game-info-header">
-          <div id="gameInfoIcon" class="game-info-icon">
-            <i class="ph ph-game-controller"></i>
-          </div>
-          <div class="game-info-meta">
-            <div id="gameInfoCategory" class="game-info-category">Category</div>
-            <div class="game-info-rating">
-              <div class="stars-container" id="gameInfoRating">
-                <i class="ph ph-star-fill"></i>
-                <i class="ph ph-star-fill"></i>
-                <i class="ph ph-star-fill"></i>
-                <i class="ph ph-star-fill"></i>
-                <i class="ph ph-star"></i>
-              </div>
-              <span id="gameInfoRatingValue">4.0</span>
-            </div>
-          </div>
+    <div class="pinned-apps">
+        <div class="app-item">
+            <svg viewBox="0 0 24 24">
+                <path d="M21.86,12.5C21.1,11.63 20.15,11.13 19,11C19,10.43 19,9.5 19,9A7,7 0 0,0 12,2A7,7 0 0,0 5,9C5,9.5 5,10.43 5,11C3.85,11.13 2.9,11.63 2.14,12.5C1.2,13.57 1.14,15.22 1.96,16.43C2.79,17.64 4.4,18 5.5,17.71C6.5,17.43 7,16.85 7,16V11.95C7,11.43 7.43,11 7.95,11H16.05C16.57,11 17,11.43 17,11.95V16C17,16.85 17.5,17.43 18.5,17.71C19.6,18 21.21,17.64 22.04,16.43C22.86,15.22 22.8,13.57 21.86,12.5Z" fill="#0078D7"/>
+            </svg>
+            <span>Edge</span>
         </div>
-        <div class="game-info-description" id="gameInfoDescription">
-          Game description will appear here.
+        <div class="app-item">
+            <svg viewBox="0 0 24 24">
+                <path d="M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z" fill="#FFB900"/>
+            </svg>
+            <span>File Explorer</span>
         </div>
-        <div class="game-info-stats">
-          <div class="stat-item">
-            <i class="ph ph-users"></i>
-            <span id="gameInfoPlays">1.2K plays</span>
-          </div>
-          <div class="stat-item">
-            <i class="ph ph-calendar"></i>
-            <span id="gameInfoAdded">Added on Jan 15, 2024</span>
-          </div>
+        <div class="app-item" id="settingsApp">
+            <svg viewBox="0 0 24 24">
+                <path d="M3,5H9V11H3V5M5,7V9H7V7H5M11,7H21V9H11V7M11,15H21V17H11V15M5,13V15H7V13H5M3,13H9V19H3V13Z" fill="#0078D7"/>
+            </svg>
+            <span>Settings</span>
         </div>
-        <div class="game-info-tags" id="gameInfoTags">
-          <span class="info-tag">Action</span>
-          <span class="info-tag">Multiplayer</span>
-          <span class="info-tag">Strategy</span>
+        <div class="app-item">
+            <svg viewBox="0 0 24 24">
+                <path d="M3,5H9V11H3V5M5,7V9H7V7H5M11,7H21V9H11V7M11,15H21V17H11V15M5,13V15H7V13H5M3,13H9V19H3V13Z" fill="#7F7F7F"/>
+            </svg>
+            <span>Store</span>
         </div>
-        <div class="game-info-controls">
-          <button class="play-now-btn" id="playNowBtn">
-            <i class="ph ph-play"></i>
-            Play Now
-          </button>
-          <button class="add-favorite-btn" id="addFavoriteBtn">
-            <i class="ph ph-heart"></i>
-            <span>Add to Favorites</span>
-          </button>
-        </div>
-        <div class="game-info-share" style="margin-top: 1rem;">
-          <button class="share-game-btn" id="shareGameBtn" style="width: 100%; padding: 0.8rem; background: var(--surface-hover); border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; transition: var(--transition);">
-            <i class="ph ph-share-network"></i>
-            Share with Friends
-          </button>
-        </div>
-      </div>
     </div>
-  </div>
-
-  <!-- Favorites Modal -->
-  <div id="favoritesModal" class="modal">
-    <div class="favorites-content">
-      <div class="modal-header">
-        <h2><i class="ph ph-heart"></i> Your Favorites</h2>
-        <button class="close-btn favorites-close-btn">
-          <i class="ph ph-x"></i>
-        </button>
-      </div>
-      <div class="favorites-body">
-        <div id="favoritesList" class="favorites-list">
-          <!-- Favorites will be listed here -->
+    <div class="recommended-section">
+        <div class="recommended-header">Popular Apps</div>
+        <div class="popular-apps">
+            <div class="popular-app" id="youtubeApp">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z" fill="#FF0000"/>
+                </svg>
+                <span>YouTube</span>
+            </div>
         </div>
-        <div class="favorites-empty" id="favoritesEmptyState">
-          <i class="ph ph-heart-break"></i>
-          <p>No favorite games yet</p>
-          <p class="favorites-empty-subtitle">Add games to your favorites to see them here</p>
-        </div>
-      </div>
     </div>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo">
-        <i class="ph ph-game-controller"></i>
-        <span>GameHub</span>
-      </div>
-      
-      <div class="footer-links">
-        <div class="footer-group">
-          <h4>About</h4>
-          <ul>
-            <li><a href="#" id="aboutUsLink">
-              <i class="ph ph-info"></i> About Us
-            </a></li>
-            <li><a href="contact.html" id="contactLink">
-              <i class="ph ph-envelope"></i> Contact
-            </a></li>
-            <li><a href="privacy-policy.html" id="privacyPolicyLink">
-              <i class="ph ph-shield-check"></i> Privacy Policy
-            </a></li>
-            <li><a href="terms-of-use.html" id="termsOfUseLink">
-              <i class="ph ph-file-text"></i> Terms of Use
-            </a></li>
-          </ul>
+    <div class="start-footer">
+        <div class="user-profile" id="userProfile">
+            <div class="profile-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" fill="currentColor"/>
+                </svg>
+            </div>
+            <span>User</span>
         </div>
-        
-        <div class="footer-group">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="#" id="helpCenterLink">
-              <i class="ph ph-question"></i> Help Center
-            </a></li>
-            <li><a href="#" id="reportBugLink">
-              <i class="ph ph-bug"></i> Report a Bug
-            </a></li>
-            <li><a href="#" id="footerSuggestGame">
-              <i class="ph ph-plus-circle"></i> Suggest a Game
-            </a></li>
-            <li><a href="#" id="statusLink">
-              <i class="ph ph-timer"></i> Status
-            </a></li>
-          </ul>
+        <div class="user-menu" id="userMenu">
+            <div class="user-menu-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" fill="currentColor"/>
+                </svg>
+                <span>Change account settings</span>
+            </div>
+            <div class="user-menu-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7.07,18.28C7.5,17.38 10.12,16.5 12,16.5C13.88,16.5 16.5,17.38 16.93,18.28C15.57,19.36 13.86,20 12,20C10.14,20 8.43,19.36 7.07,18.28M14.34,14H9.66C9.56,13.34 9.5,12.68 9.5,12C9.5,11.32 9.56,10.65 9.66,10H14.34C14.43,10.65 14.5,11.32 14.5,12C14.5,12.68 14.43,13.34 14.34,14M12,4.03C12.83,5.23 13.5,6.57 13.91,8H10.09C10.5,6.57 11.17,5.23 12,4.03M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" fill="currentColor"/>
+                </svg>
+                <span>Manage accounts</span>
+            </div>
+            <div class="user-menu-item" id="lockAccount">
+                <svg viewBox="0 0 24 24">
+                    <path d="M16,17A2,2 0 0,1 14,15C14,13.89 13.1,13 12,13A2,2 0 0,1 10,15A2,2 0 0,1 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" fill="currentColor"/>
+                </svg>
+                <span>Lock</span>
+            </div>
+            <div class="user-menu-item" id="signOut">
+                <svg viewBox="0 0 24 24">
+                    <path d="M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21H14M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z" fill="currentColor"/>
+                </svg>
+                <span>Sign out</span>
+            </div>
         </div>
-        
-        <div class="footer-group">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="https://github.com/BrianSubirat" target="_blank">
-              <i class="ph ph-github-logo"></i> GitHub
-            </a></li>
-            <li><a href="https://twitter.com/BSubirat" target="_blank">
-              <i class="ph ph-twitter-logo"></i> Twitter
-            </a></li>
-            <li><a href="https://discord.com/users/bmthluv" target="_blank">
-              <i class="ph ph-discord-logo"></i> Discord
-            </a></li>
-            <li><a href="/cdn-cgi/l/email-protection#7614041f17180503141f0417024036111b171f1a5815191b">
-              <i class="ph ph-envelope-simple"></i> Email Us
-            </a></li>
-          </ul>
+        <div class="power-button">
+            <svg viewBox="0 0 24 24">
+                <path d="M16,17A2,2 0 0,1 14,15C14,13.89 13.1,13 12,13A2,2 0 0,1 10,15A2,2 0 0,1 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" fill="currentColor"/>
+            </svg>
         </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <div class="copyright">
-          &copy; 2024 GameHub. All rights reserved.
+        <div class="power-menu" id="powerMenu">
+            <div class="power-menu-item" id="powerOff">
+                <svg viewBox="0 0 24 24">
+                    <path d="M16,17A2,2 0 0,1 14,15C14,13.89 13.1,13 12,13A2,2 0 0,1 10,15A2,2 0 0,1 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" fill="currentColor"/>
+                </path>
+                <span>Power off</span>
+            </div>
+            <div class="power-menu-item" id="restart">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12,4C14.1,4 16.1,4.8 17.6,6.3C20.7,9.4 20.7,14.5 17.6,17.6C15.8,19.5 13.3,20.2 10.9,19.9L11.4,17.9C13.1,18.1 14.9,17.5 16.2,16.2C18.5,13.9 18.5,10.1 16.2,7.7C15.1,6.6 13.5,6 12,6V10.6L7,5.6L12,0.6V4M6.3,17.6C4.62,15.5 4,13.82 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,13.82 19.38,15.5 18.36,16.83M3,5H1V21A2,2 0 0,0 3,23H19A2,2 0 0,0 21,21V5L3,5Z" fill="currentColor"/>
+                </svg>
+                <span>Restart</span>
+            </div>
         </div>
-        
-        <div class="social-links">
-          <a href="https://github.com/BrianSubirat" class="social-link" target="_blank">
-            <i class="ph ph-github-logo"></i>
-          </a>
-          <a href="https://twitter.com/BSubirat" class="social-link" target="_blank">
-            <i class="ph ph-twitter-logo"></i>
-          </a>
-          <a href="https://discord.com/users/bmthluv" class="social-link" target="_blank">
-            <i class="ph ph-discord-logo"></i>
-          </a>
-        </div>
-      </div>
     </div>
-  </footer>
+</div>
 
-  <script src="cloak.js"></script>
-  <script src="settings.js"></script>
-  <script src="games.js"></script>
-  <script src="app.js"></script>
-  <script src="auth.js"></script>
-  <script src="achievements.js"></script>
-
-  <style>
-    .account-action-btn {
-      width: 100%;
-      padding: 0.8rem;
-      border-radius: var(--radius-md);
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      background: var(--surface-hover);
-      color: var(--text);
-      border: 1px solid var(--border);
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-    }
-    
-    .account-action-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-    
-    .account-action-btn:active {
-      transform: translateY(0);
-    }
-    
-    .account-action-btn.primary {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
-    
-    .account-action-btn.primary:hover {
-      background: var(--primary-dark);
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
-    }
-    
-    .account-action-btn.danger {
-      background: #ef4444;
-      color: white;
-      border-color: #ef4444;
-    }
-    
-    .account-action-btn.danger:hover {
-      background: #dc2626;
-      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-    }
-    
-    /* Achievement styles */
-    .achievement-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      margin-bottom: 0.8rem;
-      transition: var(--transition);
-    }
-
-    .achievement-item:hover {
-      transform: translateX(5px);
-      border-color: var(--primary);
-    }
-
-    .achievement-item.unlocked {
-      background: linear-gradient(to right, var(--surface), rgba(124, 58, 237, 0.1));
-    }
-
-    .achievement-item.secret {
-      background: linear-gradient(to right, var(--surface), rgba(0, 0, 0, 0.2));
-    }
-
-    .achievement-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--surface-hover);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .achievement-icon i {
-      font-size: 1.5rem;
-      color: var(--text-secondary);
-    }
-
-    .achievement-item.unlocked .achievement-icon i {
-      color: var(--primary);
-    }
-
-    .achievement-reward {
-      position: absolute;
-      bottom: -5px;
-      right: -5px;
-      background: var(--primary);
-      color: white;
-      font-size: 0.7rem;
-      font-weight: bold;
-      padding: 0.2rem 0.4rem;
-      border-radius: 12px;
-    }
-
-    .achievement-info {
-      flex: 1;
-    }
-
-    .achievement-info h3 {
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .achievement-info p {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-    }
-
-    .achievement-status {
-      color: var(--text-secondary);
-    }
-
-    .achievement-item.unlocked .achievement-status {
-      color: var(--primary);
-    }
-
-    /* Stats styles */
-    .user-level-container {
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .user-level {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .user-points {
-      color: var(--text-secondary);
-      margin-bottom: 0.5rem;
-    }
-
-    .level-progress {
-      height: 8px;
-      background: var(--surface);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 0.5rem;
-    }
-
-    .level-progress-bar {
-      height: 100%;
-      background: var(--primary);
-      border-radius: 4px;
-      transition: width 0.3s ease;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1rem;
-      text-align: center;
-      transition: var(--transition);
-    }
-
-    .stat-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-      box-shadow: 0 8px 15px rgba(124, 58, 237, 0.1);
-    }
-
-    .stat-value {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--primary);
-      margin-bottom: 0.3rem;
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-    }
-
-    /* Daily reward modal */
-    /* Removed */
-    
-    .provider-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.3rem 0.6rem;
-      border-radius: 30px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      margin-left: 0.5rem;
-    }
-    
-    .provider-badge.google {
-      background: #4285F4;
-      color: white;
-    }
-    
-    .provider-badge.discord {
-      background: #5865F2;
-      color: white;
-    }
-    
-    #guestAccountMessage {
-      margin-top: 1rem;
-      padding: 1rem;
-      background: rgba(124, 58, 237, 0.1);
-      border-radius: var(--radius-md);
-      border: 1px dashed var(--primary);
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      animation: pulse 2s infinite;
-    }
-    
-    #createAccountBtn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      animation: pulse-glow 2s infinite;
-      font-weight: 600;
-    }
-    
-    .account-avatar img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-  </style>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Mobile sidebar functionality
-      const sidebar = document.querySelector('.mobile-sidebar');
-      const sidebarOverlay = document.querySelector('.mobile-sidebar-overlay');
-      const sidebarCloseBtn = document.querySelector('.mobile-sidebar-close');
-      
-      let touchStartX = 0;
-      let touchEndX = 0;
-      let isSwiping = false;
-
-      // Handle touch start
-      document.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-        isSwiping = true;
-      }, { passive: true });
-
-      // Handle touch move
-      document.addEventListener('touchmove', (e) => {
-        if (!isSwiping) return;
-        
-        touchEndX = e.touches[0].clientX;
-        const swipeDistance = touchEndX - touchStartX;
-        
-        // If swiping from left edge to right (less than 30px from edge)
-        if (touchStartX < 30 && swipeDistance > 50) {
-          openSidebar();
-          isSwiping = false;
-        }
-        
-        // If swiping from right to left while sidebar is open
-        if (sidebar.classList.contains('open') && swipeDistance < -50) {
-          closeSidebar();
-          isSwiping = false;
-        }
-      }, { passive: true });
-
-      // Handle touch end
-      document.addEventListener('touchend', () => {
-        isSwiping = false;
-      }, { passive: true });
-
-      function openSidebar() {
-        sidebar.classList.add('open');
-        sidebarOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeSidebar() {
-        sidebar.classList.remove('open');
-        sidebarOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-
-      // Close sidebar when clicking overlay or close button
-      sidebarOverlay.addEventListener('click', closeSidebar);
-      if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeSidebar);
-
-      // Mobile sidebar button functionality
-      const mobileSuggestGameBtn = document.getElementById('mobileSuggestGameBtn');
-      const mobileAiCopilotBtn = document.getElementById('mobileAiCopilotBtn');
-      const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
-      const suggestGameModal = document.getElementById('suggestGameModal');
-      const settingsModal = document.getElementById('settingsModal');
-
-      if (mobileSuggestGameBtn && suggestGameModal) {
-        mobileSuggestGameBtn.addEventListener('click', () => {
-          suggestGameModal.style.display = 'flex';
-          closeSidebar();
-        });
-      }
-
-      if (mobileAiCopilotBtn) {
-        mobileAiCopilotBtn.addEventListener('click', () => {
-          window.open('https://copilot.microsoft.com/', '_blank');
-          closeSidebar();
-        });
-      }
-
-      if (mobileSettingsBtn && settingsModal) {
-        mobileSettingsBtn.addEventListener('click', () => {
-          settingsModal.style.display = 'flex';
-          closeSidebar();
-        });
-      }
-
-      // Footer suggestion link
-      const footerSuggestGame = document.getElementById('footerSuggestGame');
-      if (footerSuggestGame && suggestGameModal) {
-        footerSuggestGame.addEventListener('click', (e) => {
-          e.preventDefault();
-          suggestGameModal.style.display = 'flex';
-        });
-      }
-
-      // Initialize search functionality for mobile
-      const mobileSidebarSearchInput = document.getElementById('mobileSidebarSearchInput');
-      const mobileSidebarSearchSuggestions = document.getElementById('mobileSidebarSearchSuggestions');
-
-      if (mobileSidebarSearchInput && mobileSidebarSearchSuggestions) {
-        mobileSidebarSearchInput.addEventListener('input', () => {
-          const query = mobileSidebarSearchInput.value.toLowerCase().trim();
-          
-          if (!query) {
-            mobileSidebarSearchSuggestions.classList.remove('active');
-            return;
-          }
-
-          // Filter games based on search query
-          const suggestions = window.games
-            .filter(game => {
-              return game.title.toLowerCase().includes(query) || 
-                     game.description.toLowerCase().includes(query) ||
-                     game.category.toLowerCase().includes(query);
-            })
-            .slice(0, 5);
-
-          // Generate and display suggestions
-          mobileSidebarSearchSuggestions.innerHTML = suggestions
-            .map(game => `
-              <div class="suggestion-item" data-game='${JSON.stringify(game)}'>
-                <i class="ph ${game.icon || 'ph-game-controller'}"></i>
-                <span class="game-title">${game.title}</span>
-                <span class="game-category">${game.category}</span>
-              </div>
-            `)
-            .join('');
-
-          // Add click handlers for suggestions
-          mobileSidebarSearchSuggestions.querySelectorAll('.suggestion-item').forEach(item => {
-            item.addEventListener('click', () => {
-              try {
-                const gameData = JSON.parse(item.dataset.game);
-                openGame(gameData);
-                mobileSidebarSearchInput.value = '';
-                mobileSidebarSearchSuggestions.classList.remove('active');
-                closeSidebar();
-              } catch (err) {
-                console.error('Error handling mobile suggestion click:', err);
-              }
-            });
-          });
-
-          mobileSidebarSearchSuggestions.classList.add('active');
-        });
-
-        // Hide suggestions when clicking elsewhere
-        document.addEventListener('click', (e) => {
-          if (!mobileSidebarSearchInput.contains(e.target) && 
-              !mobileSidebarSearchSuggestions.contains(e.target)) {
-            mobileSidebarSearchSuggestions.classList.remove('active');
-          }
-        });
-      }
-
-      // Initialize new games section
-      function initNewGames() {
-        const newGamesSwiper = document.getElementById('newGamesSwiper');
-        if (!newGamesSwiper || !window.games) return;
-
-        // Get newest games (for demo, just use a random selection)
-        const newGames = [...window.games]
-          .sort(() => 0.5 - Math.random())
-          .slice(0, 10);
-        
-        newGamesSwiper.innerHTML = newGames.map(game => `
-          <div class="new-game-card" data-game='${JSON.stringify(game)}'>
-            <div class="new-game-thumbnail">
-              <i class="ph ${game.icon}"></i>
+<!-- File Explorer Window -->
+<div class="window" id="fileExplorer">
+    <div class="window-header">
+        <div class="window-title">
+            <svg viewBox="0 0 24 24" class="window-icon">
+                <path d="M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z" fill="currentColor"/>
+            </svg>
+            <span>File Explorer</span>
+        </div>
+        <div class="window-controls">
+            <button class="minimize">&#8211;</button>
+            <button class="maximize">&#9744;</button>
+            <button class="close">&#10005;</button>
+        </div>
+    </div>
+    <div class="window-toolbar">
+        <div class="toolbar-actions">
+            <button class="toolbar-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" fill="currentColor"/>
+                </svg>
+            </button>
+            <button class="toolbar-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" fill="currentColor"/>
+                </svg>
+            </button>
+            <button class="toolbar-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M5,20H19V18H5M19,9H15V3H19V9M10,10V8H14V10H10Z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+        <div class="address-bar">
+            <div class="breadcrumb">
+                <span>This PC</span>
+                <span>&gt;</span>
+                <span>Documents</span>
             </div>
-            <div class="new-label">NEW</div>
-            <div class="new-game-info">
-              <h3>${game.title}</h3>
-              <p>${game.description}</p>
+        </div>
+        <div class="search-box">
+            <svg viewBox="0 0 24 24">
+                <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" fill="currentColor"/>
+            </svg>
+            <input type="text" placeholder="Search Documents">
+        </div>
+    </div>
+    <div class="window-content">
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-header">Quick access</div>
+                <div class="sidebar-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" fill="currentColor"/>
+                    </svg>
+                    <span>Desktop</span>
+                </div>
+                <div class="sidebar-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M13,9H18.5L13,3.5V9M5,3H15L21,9V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3M5,5V19H19V12H12V5H5Z" fill="currentColor"/>
+                    </svg>
+                    <span>Downloads</span>
+                </div>
+                <div class="sidebar-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M13,9H18.5L13,3.5V9M5,3H15L21,9V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3M5,5V19H19V12H12V5H5Z" fill="currentColor"/>
+                    </svg>
+                    <span>Documents</span>
+                </div>
+                <div class="sidebar-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21,17H7V3H21M21,1H7A2,2 0 0,0 5,3V21A2,2 0 0,0 7,23H21A2,2 0 0,0 23,21V3A2,2 0 0,0 21,1M3,5H1V21A2,2 0 0,0 3,23H19A2,2 0 0,0 21,21V5L3,5Z" fill="currentColor"/>
+                    </svg>
+                    <span>Pictures</span>
+                </div>
             </div>
-          </div>
-        `).join('');
-
-        newGamesSwiper.querySelectorAll('.new-game-card').forEach(card => {
-          card.addEventListener('click', () => {
-            try {
-              const gameData = JSON.parse(card.dataset.game);
-              openGame(gameData);
-            } catch (err) {
-              console.error('Error handling new game click:', err);
-            }
-          });
-        });
-      }
-
-      // Refresh new games
-      const refreshNewGamesBtn = document.getElementById('refreshNewGamesBtn');
-      if (refreshNewGamesBtn) {
-        refreshNewGamesBtn.addEventListener('click', () => {
-          initNewGames();
-          showNotification('New games refreshed!', 'success');
-        });
-      }
-
-      // Clear recent games
-      const clearRecentBtn = document.getElementById('clearRecentBtn');
-      if (clearRecentBtn) {
-        clearRecentBtn.addEventListener('click', () => {
-          localStorage.removeItem('recentGames');
-          const recentGamesManager = new RecentGamesManager();
-          recentGamesManager.updateRecentGamesDisplay();
-          showNotification('Recent games cleared!', 'success');
-        });
-      }
-
-      // Load more button
-      const loadMoreBtn = document.getElementById('loadMoreBtn');
-      if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', () => {
-          // Simulate loading more games
-          showNotification('Loading more games...', 'info');
-          
-          // Set button to loading state
-          loadMoreBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Loading...';
-          loadMoreBtn.disabled = true;
-          
-          // Wait a bit then show more games
-          setTimeout(() => {
-            // Simulate new games being loaded
-            const activeCategory = document.querySelector('.filter-chip.active')?.getAttribute('data-category') || 'all';
-            displayGames(activeCategory, '', null, true);
-            
-            // Reset button
-            loadMoreBtn.innerHTML = '<i class="ph ph-plus-circle"></i> Load More Games';
-            loadMoreBtn.disabled = false;
-            
-            showNotification('More games loaded!', 'success');
-          }, 1000);
-        });
-      }
-
-      // Game info modal functionality
-      const gameInfoModal = document.getElementById('gameInfoModal');
-      const gameInfoCloseBtn = document.querySelector('.game-info-close');
-      const playNowBtn = document.getElementById('playNowBtn');
-      const addFavoriteBtn = document.getElementById('addFavoriteBtn');
-      
-      if (gameInfoCloseBtn) {
-        gameInfoCloseBtn.addEventListener('click', () => {
-          gameInfoModal.style.display = 'none';
-        });
-      }
-      
-      if (playNowBtn) {
-        playNowBtn.addEventListener('click', () => {
-          const gameData = JSON.parse(playNowBtn.getAttribute('data-game') || '{}');
-          if (gameData && gameData.url) {
-            openGame(gameData);
-            gameInfoModal.style.display = 'none';
-          }
-        });
-      }
-      
-      if (addFavoriteBtn) {
-        addFavoriteBtn.addEventListener('click', () => {
-          const gameData = JSON.parse(addFavoriteBtn.getAttribute('data-game') || '{}');
-          if (gameData && gameData.id) {
-            // Toggle favorite status
-            toggleFavorite(gameData);
-            
-            // Update button text
-            const isFavorite = isFavoriteGame(gameData.id);
-            addFavoriteBtn.innerHTML = isFavorite 
-              ? '<i class="ph ph-heart-break"></i><span>Remove from Favorites</span>'
-              : '<i class="ph ph-heart"></i><span>Add to Favorites</span>';
-          }
-        });
-      }
-      
-      function showGameInfo(game) {
-        if (!game || !gameInfoModal) return;
-        
-        // Set game info
-        document.getElementById('gameInfoTitle').textContent = game.title;
-        document.getElementById('gameInfoIcon').innerHTML = `<i class="ph ${game.icon}"></i>`;
-        document.getElementById('gameInfoCategory').textContent = game.category;
-        document.getElementById('gameInfoDescription').textContent = game.description;
-        
-        // Generate random stats for demo
-        const plays = Math.floor(Math.random() * 10000);
-        const playsFormatted = plays > 1000 ? `${(plays/1000).toFixed(1)}K` : plays;
-        document.getElementById('gameInfoPlays').textContent = `${playsFormatted} plays`;
-        
-        // Random date in 2024
-        const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const randomMonth = month[Math.floor(Math.random() * month.length)];
-        const randomDay = Math.floor(Math.random() * 28) + 1;
-        document.getElementById('gameInfoAdded').textContent = `Added on ${randomMonth} ${randomDay}, 2024`;
-        
-        // Generate random rating
-        const rating = (Math.random() * 1.5 + 3.5).toFixed(1);
-        document.getElementById('gameInfoRatingValue').textContent = rating;
-        
-        // Update stars based on rating
-        const starsContainer = document.getElementById('gameInfoRating');
-        if (starsContainer) {
-          const fullStars = Math.floor(parseFloat(rating));
-          const hasHalfStar = parseFloat(rating) - fullStars >= 0.5;
-          
-          starsContainer.innerHTML = '';
-          
-          for (let i = 0; i < 5; i++) {
-            if (i < fullStars) {
-              starsContainer.innerHTML += '<i class="ph ph-star-fill"></i>';
-            } else if (i === fullStars && hasHalfStar) {
-              starsContainer.innerHTML += '<i class="ph ph-star-half"></i>';
-            } else {
-              starsContainer.innerHTML += '<i class="ph ph-star"></i>';
-            }
-          }
-        }
-        
-        // Generate random tags
-        const allTags = ['Action', 'Adventure', 'Arcade', 'Casual', 'Family', 'Free', 'Indie', 
-                         'Multiplayer', 'Physics', 'Platformer', 'Racing', 'RPG', 'Simulation', 
-                         'Shooter', 'Sports', 'Strategy', 'Puzzle'];
-        const numTags = Math.floor(Math.random() * 3) + 1;
-        const gameTags = [];
-        
-        // Always include the category as a tag
-        gameTags.push(game.category.charAt(0).toUpperCase() + game.category.slice(1));
-        
-        // Add random tags
-        while (gameTags.length < numTags) {
-          const randomTag = allTags[Math.floor(Math.random() * allTags.length)];
-          if (!gameTags.includes(randomTag)) {
-            gameTags.push(randomTag);
-          }
-        }
-        
-        // Set tags
-        document.getElementById('gameInfoTags').innerHTML = gameTags
-          .map(tag => `<span class="info-tag">${tag}</span>`)
-          .join('');
-        
-        // Set data for play button
-        if (playNowBtn) {
-          playNowBtn.setAttribute('data-game', JSON.stringify(game));
-        }
-        
-        // Update favorite button
-        if (addFavoriteBtn) {
-          addFavoriteBtn.setAttribute('data-game', JSON.stringify(game));
-          
-          const isFavorite = isFavoriteGame(game.id);
-          addFavoriteBtn.innerHTML = isFavorite 
-            ? '<i class="ph ph-heart-break"></i><span>Remove from Favorites</span>'
-            : '<i class="ph ph-heart"></i><span>Add to Favorites</span>';
-        }
-        
-        // Show the modal
-        gameInfoModal.style.display = 'flex';
-      }
-      
-      // Favorites functionality
-      function toggleFavorite(game) {
-        if (!game || !game.id) return;
-        
-        let favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
-        const index = favorites.findIndex(g => g.id === game.id);
-        
-        if (index === -1) {
-          // Add to favorites
-          favorites.push(game);
-          showNotification(`Added ${game.title} to favorites`, 'success');
-        } else {
-          // Remove from favorites
-          favorites.splice(index, 1);
-          showNotification(`Removed ${game.title} from favorites`, 'info');
-        }
-        
-        localStorage.setItem('favoriteGames', JSON.stringify(favorites));
-        updateFavoritesModal();
-      }
-      
-      function isFavoriteGame(gameId) {
-        const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
-        return favorites.some(game => game.id === gameId);
-      }
-      
-      // Initialize favorites modal
-      const favoritesModal = document.getElementById('favoritesModal');
-      const favoritesCloseBtn = document.querySelector('.favorites-close-btn');
-      const quickFavoritesBtn = document.getElementById('quickFavoritesBtn');
-      
-      if (favoritesCloseBtn) {
-        favoritesCloseBtn.addEventListener('click', () => {
-          favoritesModal.style.display = 'none';
-        });
-      }
-      
-      if (quickFavoritesBtn) {
-        quickFavoritesBtn.addEventListener('click', () => {
-          updateFavoritesModal();
-          favoritesModal.style.display = 'flex';
-        });
-      }
-      
-      function updateFavoritesModal() {
-        const favoritesList = document.getElementById('favoritesList');
-        const favoritesEmptyState = document.getElementById('favoritesEmptyState');
-        
-        if (!favoritesList || !favoritesEmptyState) return;
-        
-        const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
-        
-        if (favorites.length === 0) {
-          favoritesList.style.display = 'none';
-          favoritesEmptyState.style.display = 'flex';
-          return;
-        }
-        
-        favoritesList.style.display = 'grid';
-        favoritesEmptyState.style.display = 'none';
-        
-        favoritesList.innerHTML = favorites.map(game => `
-          <div class="favorite-item" data-game-id="${game.id}">
-            <div class="favorite-icon">
-              <i class="ph ${game.icon}"></i>
+            <div class="sidebar-section">
+                <div class="sidebar-header">This PC</div>
+                <div class="sidebar-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6,2H18A2,2 0 0,1 20,4V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V4A2,2 0 0,1 6,2M12,4A6,6 0 0,0 6,10C6,12.97 8.16,15.43 11,15.92V18H13V15.92C15.84,15.43 18,12.97 18,10A6,6 0 0,0 12,4M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" fill="currentColor"/>
+                    </svg>
+                    <span>Local Disk (C:)</span>
+                </div>
+                <div class="sidebar-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M13,9H18.5L13,3.5V9M5,3H15L21,9V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3M5,5V19H19V12H12V5H5Z" fill="currentColor"/>
+                    </svg>
+                    <span>Network</span>
+                </div>
             </div>
-            <div class="favorite-info">
-              <h3>${game.title}</h3>
-              <p>${game.category}</p>
+        </div>
+        <div class="file-content">
+            <div class="file-item folder">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" fill="currentColor"/>
+                </svg>
+                <span>Personal</span>
             </div>
-            <div class="favorite-actions">
-              <button class="favorite-play-btn" data-game='${JSON.stringify(game)}'>
-                <i class="ph ph-play"></i>
-              </button>
-              <button class="favorite-remove-btn" data-game-id="${game.id}">
-                <i class="ph ph-x"></i>
-              </button>
+            <div class="file-item folder">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" fill="currentColor"/>
+                </svg>
+                <span>Work</span>
             </div>
-          </div>
-        `).join('');
-        
-        // Add event listeners to play buttons
-        favoritesList.querySelectorAll('.favorite-play-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            try {
-              const gameData = JSON.parse(btn.getAttribute('data-game'));
-              openGame(gameData);
-              favoritesModal.style.display = 'none';
-            } catch (err) {
-              console.error('Error playing favorite game:', err);
-            }
-          });
-        });
-        
-        // Add event listeners to remove buttons
-        favoritesList.querySelectorAll('.favorite-remove-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const gameId = btn.getAttribute('data-game-id');
-            const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
-            const gameIndex = favorites.findIndex(g => g.id === gameId);
-            
-            if (gameIndex !== -1) {
-              const gameName = favorites[gameIndex].title;
-              favorites.splice(gameIndex, 1);
-              localStorage.setItem('favoriteGames', JSON.stringify(favorites));
-              
-              showNotification(`Removed ${gameName} from favorites`, 'info');
-              updateFavoritesModal();
-            }
-          });
-        });
-      }
-
-      // Properly implement exit game button functionality
-      const closeModalBtn = document.getElementById('closeModalBtn');
-      const gameModal = document.getElementById('gameModal');
-      
-      if (closeModalBtn && gameModal) {
-        closeModalBtn.addEventListener('click', () => {
-          gameModal.style.display = 'none';
-          // Stop the iframe content
-          const gameFrame = document.getElementById('gameFrame');
-          if (gameFrame) {
-            gameFrame.src = 'about:blank';
-          }
-        });
-      }
-      
-      // Improve fullscreen implementation
-      const fullscreenBtn = document.getElementById('fullscreenBtn');
-      
-      if (fullscreenBtn) {
-        fullscreenBtn.addEventListener('click', () => {
-          const gameFrame = document.getElementById('gameFrame');
-          if (gameFrame && gameFrame.requestFullscreen) {
-            gameFrame.requestFullscreen();
-          } else if (gameFrame && gameFrame.webkitRequestFullscreen) { /* Safari */
-            gameFrame.webkitRequestFullscreen();
-          } else if (gameFrame && gameFrame.msRequestFullscreen) { /* IE11 */
-            gameFrame.msRequestFullscreen();
-          }
-        });
-      }
-
-      // Initialize category/filter buttons
-      function initCategoryFilters() {
-        const filterChips = document.querySelectorAll('.filter-chip');
-        
-        filterChips.forEach(chip => {
-          chip.addEventListener('click', () => {
-            // Remove active class from all chips
-            filterChips.forEach(c => c.classList.remove('active'));
-            
-            // Add active class to clicked chip
-            chip.classList.add('active');
-            
-            // Get category and update game grid
-            const category = chip.getAttribute('data-category');
-            if (typeof displayGames === 'function') {
-              displayGames(category);
-            }
-          });
-        });
-      }
-
-      // Initialize game suggestion form
-      function initSuggestGameForm() {
-        const suggestGameForm = document.getElementById('suggestGameForm');
-        const suggestGameCloseBtn = document.querySelector('.suggest-game-close');
-        
-        if (suggestGameForm) {
-          suggestGameForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = e.target.elements.name.value.trim() || 'Anonymous';
-            const email = e.target.elements.email.value.trim() || 'Not Provided';
-            const gameName = e.target.elements.gameName.value.trim();
-            const gameDescription = e.target.elements.gameDescription.value.trim();
-            
-            if (!gameName || !gameDescription) {
-              showNotification('Please provide a game name and description.', 'error');
-              return;
-            }
-
-            const emailBody = encodeURIComponent(`
-Game Suggestion Details:
-
-Sender Name: ${name}
-Sender Email: ${email}
-
-Game Name: ${gameName}
-
-Suggestion Description:
-${gameDescription}
-            `);
-
-            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=briansubirat6@gmail.com&su=Game%20Suggestion:%20${encodeURIComponent(gameName)}&body=${emailBody}`, '_blank');
-            
-            e.target.reset();
-            suggestGameModal.style.display = 'none';
-            showNotification('Thank you for your game suggestion!', 'success');
-          });
-        }
-        
-        if (suggestGameCloseBtn) {
-          suggestGameCloseBtn.addEventListener('click', () => {
-            suggestGameModal.style.display = 'none';
-          });
-        }
-      }
-
-      // Initialize desktop buttons
-      function initDesktopButtons() {
-        const suggestGameBtn = document.getElementById('suggestGameBtn');
-        const aiCopilotBtn = document.getElementById('aiCopilotBtn');
-        const settingsBtn = document.getElementById('settingsBtn');
-        
-        if (suggestGameBtn) {
-          suggestGameBtn.addEventListener('click', () => {
-            suggestGameModal.style.display = 'flex';
-          });
-        }
-        
-        if (aiCopilotBtn) {
-          aiCopilotBtn.addEventListener('click', () => {
-            window.open('https://copilot.microsoft.com/', '_blank');
-          });
-        }
-        
-        if (settingsBtn) {
-          settingsBtn.addEventListener('click', () => {
-            settingsModal.style.display = 'flex';
-          });
-        }
-      }
-
-      // Initialize settings modal
-      function initSettingsModal() {
-        const settingsCloseBtn = document.querySelector('.settings-close-btn');
-        const settingsTabs = document.querySelectorAll('.settings-tab');
-        const settingsContents = document.querySelectorAll('.settings-tab-content');
-        
-        function activateSettingsTab(tabId) {
-          settingsTabs.forEach(tab => {
-            if (tab.getAttribute('data-tab') === tabId) {
-              tab.classList.add('active');
-            } else {
-              tab.classList.remove('active');
-            }
-          });
-          
-          settingsContents.forEach(content => {
-            if (content.getAttribute('data-tab-content') === tabId) {
-              content.classList.add('active');
-            } else {
-              content.classList.remove('active');
-            }
-          });
-        }
-        
-        if (settingsTabs && settingsContents) {
-          settingsTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-              const tabId = tab.getAttribute('data-tab');
-              activateSettingsTab(tabId);
-            });
-          });
-        }
-        
-        if (settingsCloseBtn) {
-          settingsCloseBtn.addEventListener('click', () => {
-            settingsModal.style.display = 'none';
-          });
-        }
-
-        // Clear buttons
-        const clearHistoryBtn = document.getElementById('clearHistory');
-        const clearSettingsBtn = document.getElementById('clearSettings');
-        const clearAllDataBtn = document.getElementById('clearAllData');
-        const resetCloakBtn = document.getElementById('resetCloak');
-        
-        if (clearHistoryBtn) {
-          clearHistoryBtn.addEventListener('click', () => {
-            localStorage.removeItem('recentGames');
-            showNotification('Game history has been cleared', 'success');
-            const recentGamesManager = new RecentGamesManager();
-            recentGamesManager.updateRecentGamesDisplay();
-          });
-        }
-        
-        if (clearSettingsBtn) {
-          clearSettingsBtn.addEventListener('click', () => {
-            if (confirm('Reset all settings to default values?')) {
-              if (window.Settings) {
-                const settings = new Settings();
-                settings.resetSettings();
-                showNotification('All settings have been reset to defaults', 'success');
-              }
-            }
-          });
-        }
-        
-        if (clearAllDataBtn) {
-          clearAllDataBtn.addEventListener('click', () => {
-            if (confirm('This will clear ALL data including game history and settings. Are you sure?')) {
-              localStorage.clear();
-              showNotification('All data has been cleared', 'success');
-              setTimeout(() => {
-                window.location.reload();
-              }, 1500);
-            }
-          });
-        }
-        
-        if (resetCloakBtn) {
-          resetCloakBtn.addEventListener('click', () => {
-            if (window.TabCloak) {
-              const tabCloak = new TabCloak();
-              tabCloak.resetCloak();
-              showNotification('Tab cloak has been reset', 'success');
-            }
-          });
-        }
-      }
-
-      // Enhanced game card interaction
-      function enhanceGameCards() {
-        document.addEventListener('click', (e) => {
-          // Find closest game card
-          const gameCard = e.target.closest('.game-card');
-          if (!gameCard) return;
-          
-          try {
-            // Get game data
-            const gameId = gameCard.getAttribute('data-game-id');
-            const game = window.games.find(g => g.id === gameId);
-            
-            if (game) {
-              // Check if info button was clicked
-              const infoButton = e.target.closest('.game-info-btn');
-              
-              if (infoButton) {
-                // Show game info modal
-                showGameInfo(game);
-              } else {
-                // Play the game
-                openGame(game);
-              }
-            }
-          } catch (err) {
-            console.error('Error handling game card click:', err);
-          }
-        });
-      }
-
-      // Initialize all sections
-      initNewGames();
-      initCategoryFilters();
-      initSuggestGameForm();
-      initDesktopButtons();
-      initSettingsModal();
-      enhanceGameCards();
-
-      // Call global function to display all games
-      if (typeof displayGames === 'function') {
-        displayGames('all');
-      }
-
-      // Initialize settings functionality
-      function initSettingsFunctionality() {
-        // Theme settings
-        const primaryColorInput = document.getElementById('primaryColor');
-        const backgroundColorInput = document.getElementById('backgroundColor');
-        const surfaceColorInput = document.getElementById('surfaceColor');
-        const themeModeSelect = document.getElementById('themeMode');
-        const cursorStyleSelect = document.getElementById('cursorStyle');
-        
-        function applyCursorStyle(style) {
-          document.body.classList.remove('cursor-gamer', 'cursor-minimal');
-          
-          if (style === 'gamer') {
-            document.body.classList.add('cursor-gamer');
-          } else if (style === 'minimal') {
-            document.body.classList.add('cursor-minimal');
-          }
-          
-          saveSettings();
-        }
-        
-        if (cursorStyleSelect) {
-          cursorStyleSelect.addEventListener('change', () => {
-            applyCursorStyle(cursorStyleSelect.value);
-          });
-        }
-        
-        function applyThemeColors() {
-          const root = document.documentElement;
-          
-          if (primaryColorInput) {
-            root.style.setProperty('--primary', primaryColorInput.value);
-            // Calculate darker shade for primary-dark
-            const darkColor = adjustColorBrightness(primaryColorInput.value, -20);
-            root.style.setProperty('--primary-dark', darkColor);
-            // Update gradient
-            root.style.setProperty('--gradient-primary', `linear-gradient(135deg, ${primaryColorInput.value}, ${darkColor})`);
-          }
-          
-          if (backgroundColorInput) {
-            root.style.setProperty('--background', backgroundColorInput.value);
-          }
-          
-          if (surfaceColorInput) {
-            root.style.setProperty('--surface', surfaceColorInput.value);
-            // Calculate slightly lighter shade for surface-hover
-            root.style.setProperty('--surface-hover', adjustColorBrightness(surfaceColorInput.value, 10));
-          }
-
-          // Save settings
-          saveSettings();
-        }
-        
-        function adjustColorBrightness(hex, percent) {
-          // Convert hex to RGB
-          let r = parseInt(hex.substring(1, 3), 16);
-          let g = parseInt(hex.substring(3, 5), 16);
-          let b = parseInt(hex.substring(5, 7), 16);
-          
-          // Adjust brightness
-          r = Math.max(0, Math.min(255, r + percent));
-          g = Math.max(0, Math.min(255, g + percent));
-          b = Math.max(0, Math.min(255, b + percent));
-          
-          // Convert back to hex
-          return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
-        }
-        
-        // Apply theme mode
-        function applyThemeMode(mode) {
-          const root = document.documentElement;
-          
-          if (mode === 'light') {
-            root.style.setProperty('--background', '#f8fafc');
-            root.style.setProperty('--surface', '#ffffff');
-            root.style.setProperty('--surface-hover', '#f1f5f9');
-            root.style.setProperty('--text', '#0f172a');
-            root.style.setProperty('--text-secondary', '#64748b');
-            root.style.setProperty('--border', 'rgba(0,0,0,0.1)');
-            
-            if (backgroundColorInput) backgroundColorInput.value = '#f8fafc';
-            if (surfaceColorInput) surfaceColorInput.value = '#ffffff';
-          } else {
-            root.style.setProperty('--background', '#0f0f13');
-            root.style.setProperty('--surface', '#1a1a1f');
-            root.style.setProperty('--surface-hover', '#24242b');
-            root.style.setProperty('--text', '#ffffff');
-            root.style.setProperty('--text-secondary', '#94a3b8');
-            root.style.setProperty('--border', 'rgba(255,255,255,0.1)');
-            
-            if (backgroundColorInput) backgroundColorInput.value = '#0f0f13';
-            if (surfaceColorInput) surfaceColorInput.value = '#1a1a1f';
-          }
-          
-          saveSettings();
-        }
-        
-        // Add event listeners
-        if (primaryColorInput) {
-          primaryColorInput.addEventListener('input', applyThemeColors);
-        }
-        
-        if (backgroundColorInput) {
-          backgroundColorInput.addEventListener('input', applyThemeColors);
-        }
-        
-        if (surfaceColorInput) {
-          surfaceColorInput.addEventListener('input', applyThemeColors);
-        }
-        
-        if (themeModeSelect) {
-          themeModeSelect.addEventListener('change', () => {
-            applyThemeMode(themeModeSelect.value);
-          });
-        }
-        
-        // Grid size setting
-        const gridSizeSelect = document.getElementById('gridSize');
-        
-        function applyGridSize(size) {
-          const gamesGrid = document.getElementById('gamesGrid');
-          if (!gamesGrid) return;
-          
-          switch (size) {
-            case 'small':
-              gamesGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(180px, 1fr))';
-              break;
-            case 'medium':
-              gamesGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(220px, 1fr))';
-              break;
-            case 'large':
-              gamesGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(260px, 1fr))';
-              break;
-          }
-          
-          saveSettings();
-        }
-        
-        if (gridSizeSelect) {
-          gridSizeSelect.addEventListener('change', () => {
-            applyGridSize(gridSizeSelect.value);
-          });
-        }
-        
-        // Game ratings toggle
-        const showRatingsToggle = document.getElementById('showRatings');
-        
-        function toggleRatings(show) {
-          const ratingElements = document.querySelectorAll('.game-rating');
-          
-          ratingElements.forEach(elem => {
-            elem.style.display = show ? 'flex' : 'none';
-          });
-          
-          saveSettings();
-        }
-        
-        if (showRatingsToggle) {
-          showRatingsToggle.addEventListener('change', () => {
-            toggleRatings(showRatingsToggle.checked);
-          });
-        }
-        
-        // Animations toggle
-        const enableAnimationsToggle = document.getElementById('enableAnimations');
-        
-        function toggleAnimations(enable) {
-          document.body.classList.toggle('reduce-motion', !enable);
-          saveSettings();
-        }
-        
-        if (enableAnimationsToggle) {
-          enableAnimationsToggle.addEventListener('change', () => {
-            toggleAnimations(enableAnimationsToggle.checked);
-          });
-        }
-        
-        // Privacy settings
-        const saveHistoryToggle = document.getElementById('saveHistory');
-        const incognitoModeToggle = document.getElementById('incognitoMode');
-        const panicUrlInput = document.getElementById('panicUrl');
-        
-        if (saveHistoryToggle) {
-          saveHistoryToggle.addEventListener('change', () => {
-            localStorage.setItem('saveHistory', saveHistoryToggle.checked);
-            saveSettings();
-          });
-        }
-        
-        if (incognitoModeToggle) {
-          incognitoModeToggle.addEventListener('change', () => {
-            localStorage.setItem('incognitoMode', incognitoModeToggle.checked);
-            saveSettings();
-          });
-        }
-        
-        if (panicUrlInput) {
-          panicUrlInput.addEventListener('change', () => {
-            localStorage.setItem('panicUrl', panicUrlInput.value);
-            saveSettings();
-          });
-        }
-        
-        // Control settings
-        const panicKeyInput = document.getElementById('panicKey');
-        const fullscreenKeyInput = document.getElementById('fullscreenKey');
-        const settingsKeyInput = document.getElementById('settingsKey');
-        
-        if (panicKeyInput) {
-          panicKeyInput.addEventListener('keydown', (e) => {
-            e.preventDefault();
-            panicKeyInput.value = e.key;
-            localStorage.setItem('panicKey', e.key);
-            saveSettings();
-          });
-        }
-        
-        if (fullscreenKeyInput) {
-          fullscreenKeyInput.addEventListener('keydown', (e) => {
-            e.preventDefault();
-            fullscreenKeyInput.value = e.key;
-            localStorage.setItem('fullscreenKey', e.key);
-            saveSettings();
-          });
-        }
-        
-        if (settingsKeyInput) {
-          settingsKeyInput.addEventListener('keydown', (e) => {
-            e.preventDefault();
-            settingsKeyInput.value = e.key;
-            localStorage.setItem('settingsKey', e.key);
-            saveSettings();
-          });
-        }
-        
-        // Save all settings to localStorage
-        function saveSettings() {
-          const settings = {
-            theme: {
-              primary: primaryColorInput ? primaryColorInput.value : '#7c3aed',
-              background: backgroundColorInput ? backgroundColorInput.value : '#0f0f13',
-              surface: surfaceColorInput ? surfaceColorInput.value : '#1a1a1f',
-              themeMode: themeModeSelect ? themeModeSelect.value : 'dark',
-              cursorStyle: cursorStyleSelect ? cursorStyleSelect.value : 'default'
-            },
-            layout: {
-              gridSize: gridSizeSelect ? gridSizeSelect.value : 'medium',
-              showRatings: showRatingsToggle ? showRatingsToggle.checked : true,
-              enableAnimations: enableAnimationsToggle ? enableAnimationsToggle.checked : true
-            },
-            privacy: {
-              saveHistory: saveHistoryToggle ? saveHistoryToggle.checked : true,
-              incognitoMode: incognitoModeToggle ? incognitoModeToggle.checked : false,
-              panicUrl: panicUrlInput ? panicUrlInput.value : 'https://classroom.google.com'
-            },
-            controls: {
-              panicKey: panicKeyInput ? panicKeyInput.value : 'Escape',
-              fullscreenKey: fullscreenKeyInput ? fullscreenKeyInput.value : 'F',
-              settingsKey: settingsKeyInput ? settingsKeyInput.value : 'S'
-            }
-          };
-          
-          localStorage.setItem('gameHubSettings', JSON.stringify(settings));
-        }
-        
-        // Load settings from localStorage
-        function loadSettings() {
-          const savedSettings = localStorage.getItem('gameHubSettings');
-          if (!savedSettings) return;
-          
-          try {
-            const settings = JSON.parse(savedSettings);
-            
-            // Apply theme settings
-            if (settings.theme) {
-              if (primaryColorInput && settings.theme.primary) {
-                primaryColorInput.value = settings.theme.primary;
-              }
-              
-              if (backgroundColorInput && settings.theme.background) {
-                backgroundColorInput.value = settings.theme.background;
-              }
-              
-              if (surfaceColorInput && settings.theme.surface) {
-                surfaceColorInput.value = settings.theme.surface;
-              }
-              
-              if (themeModeSelect && settings.theme.themeMode) {
-                themeModeSelect.value = settings.theme.themeMode;
-                applyThemeMode(settings.theme.themeMode);
-              }
-              
-              if (cursorStyleSelect && settings.theme.cursorStyle) {
-                cursorStyleSelect.value = settings.theme.cursorStyle;
-                applyCursorStyle(settings.theme.cursorStyle);
-              }
-              
-              // Apply theme colors
-              applyThemeColors();
-            }
-            
-            // Apply layout settings
-            if (settings.layout) {
-              if (gridSizeSelect && settings.layout.gridSize) {
-                gridSizeSelect.value = settings.layout.gridSize;
-                applyGridSize(settings.layout.gridSize);
-              }
-              
-              if (showRatingsToggle && settings.layout.showRatings !== undefined) {
-                showRatingsToggle.checked = settings.layout.showRatings;
-                toggleRatings(settings.layout.showRatings);
-              }
-              
-              if (enableAnimationsToggle && settings.layout.enableAnimations !== undefined) {
-                enableAnimationsToggle.checked = settings.layout.enableAnimations;
-                toggleAnimations(settings.layout.enableAnimations);
-              }
-            }
-            
-            // Apply privacy settings
-            if (settings.privacy) {
-              if (saveHistoryToggle && settings.privacy.saveHistory !== undefined) {
-                saveHistoryToggle.checked = settings.privacy.saveHistory;
-              }
-              
-              if (incognitoModeToggle && settings.privacy.incognitoMode !== undefined) {
-                incognitoModeToggle.checked = settings.privacy.incognitoMode;
-              }
-              
-              if (panicUrlInput && settings.privacy.panicUrl) {
-                panicUrlInput.value = settings.privacy.panicUrl;
-              }
-            }
-            
-            // Apply control settings
-            if (settings.controls) {
-              if (panicKeyInput && settings.controls.panicKey) {
-                panicKeyInput.value = settings.controls.panicKey;
-              }
-              
-              if (fullscreenKeyInput && settings.controls.fullscreenKey) {
-                fullscreenKeyInput.value = settings.controls.fullscreenKey;
-              }
-              
-              if (settingsKeyInput && settings.controls.settingsKey) {
-                settingsKeyInput.value = settings.controls.settingsKey;
-              }
-            }
-          } catch (error) {
-            console.error('Error loading settings:', error);
-          }
-        }
-        
-        // Initialize settings
-        loadSettings();
-        
-        // Apply global hotkeys
-        document.addEventListener('keydown', (e) => {
-          const panicKey = localStorage.getItem('panicKey') || 'Escape';
-          const fullscreenKey = localStorage.getItem('fullscreenKey') || 'F';
-          const settingsKey = localStorage.getItem('settingsKey') || 'S';
-          
-          if (e.key === panicKey) {
-            const panicUrl = localStorage.getItem('panicUrl') || 'https://classroom.google.com';
-            window.location.href = panicUrl;
-          }
-          
-          if (e.key.toLowerCase() === fullscreenKey.toLowerCase() && !e.ctrlKey && !e.altKey && !e.metaKey) {
-            const gameFrame = document.getElementById('gameFrame');
-            if (gameFrame && gameFrame.requestFullscreen) {
-              gameFrame.requestFullscreen();
-            }
-          }
-          
-          if (e.key.toLowerCase() === settingsKey.toLowerCase() && !e.ctrlKey && !e.altKey && !e.metaKey) {
-            settingsModal.style.display = settingsModal.style.display === 'flex' ? 'none' : 'flex';
-          }
-        });
-      }
-      
-      // Initialize settings functionality
-      initSettingsFunctionality();
-
-      // Notification system
-      window.showNotification = function(message, type = 'info') {
-        // Remove any existing notifications
-        const existingNotification = document.querySelector('.notification');
-        if (existingNotification) {
-          existingNotification.remove();
-        }
-        
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        
-        let icon = 'ph-info';
-        if (type === 'success') icon = 'ph-check-circle';
-        if (type === 'error') icon = 'ph-x-circle';
-        
-        notification.innerHTML = `
-          <i class="ph ${icon}"></i>
-          <p>${message}</p>
-        `;
-        
-        document.body.appendChild(notification);
-        
-        // Show notification with animation
-        setTimeout(() => notification.classList.add('show'), 10);
-        
-        // Auto hide after 3 seconds
-        setTimeout(() => {
-          notification.classList.remove('show');
-          setTimeout(() => notification.remove(), 300);
-        }, 3000);
-      };
-
-      // Update aboutUsLink click handler
-      const aboutUsLink = document.getElementById('aboutUsLink');
-      if (aboutUsLink) {
-        aboutUsLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          
-          // Show settings modal
-          const settingsModal = document.getElementById('settingsModal');
-          if (settingsModal) {
-            settingsModal.style.display = 'flex';
-            
-            // Switch to About tab
-            const settingsTabs = document.querySelectorAll('.settings-tab');
-            const settingsContents = document.querySelectorAll('.settings-tab-content');
-            
-            settingsTabs.forEach(tab => {
-              tab.classList.remove('active');
-              if (tab.getAttribute('data-tab') === 'about') {
-                tab.classList.add('active');
-              }
-            });
-            
-            settingsContents.forEach(content => {
-              content.classList.remove('active');
-              if (content.getAttribute('data-tab-content') === 'about') {
-                content.classList.add('active');
-              }
-            });
-          }
-        });
-      }
-
-      // Initialize mobile navigation bar
-      const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-      const mobileNavSettings = document.getElementById('mobileNavSettings');
-      
-      mobileNavItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-          if (this !== mobileNavSettings) {
-            e.preventDefault();
-            mobileNavItems.forEach(nav => nav.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Handle different navigation sections
-            const type = this.querySelector('span').textContent.toLowerCase();
-            
-            if (type === 'home') {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (type === 'hot') {
-              // Scroll to featured/hot games section
-              const hotSection = document.querySelector('.new-games-section');
-              if (hotSection) hotSection.scrollIntoView({ behavior: 'smooth' });
-              
-              // Apply hot filter
-              const filterChips = document.querySelectorAll('.filter-chip');
-              filterChips.forEach(chip => chip.classList.remove('active'));
-              filterChips[0].classList.add('active');
-              displayGames('all', '', 'rating');
-              showNotification('Showing hot games', 'info');
-            } else if (type === 'search') {
-              // Open mobile sidebar with search focused
-              document.querySelector('.mobile-sidebar').classList.add('open');
-              document.querySelector('.mobile-sidebar-overlay').classList.add('active');
-              document.body.style.overflow = 'hidden';
-              document.getElementById('mobileSidebarSearchInput').focus();
-            }
-          }
-        });
-      });
-
-      if (mobileNavSettings) {
-        mobileNavSettings.addEventListener('click', (e) => {
-          e.preventDefault();
-          mobileNavItems.forEach(nav => nav.classList.remove('active'));
-          mobileNavSettings.classList.add('active');
-          document.getElementById('settingsModal').style.display = 'flex';
-        });
-      }
-
-      // Add event listeners for status and report bug links
-      const statusLink = document.getElementById('statusLink');
-      const reportBugLink = document.getElementById('reportBugLink');
-
-      if (statusLink) {
-        statusLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.location.href = 'status.html';
-        });
-      }
-
-      if (reportBugLink) {
-        reportBugLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.location.href = 'report-bug.html';
-        });
-      }
-
-      // Initialize WebProxy after DOM is loaded
-      const webProxy = new WebProxy();
-      webProxy.setup();
-      
-      // Fix mobile layout issues immediately
-      function fixMobileLayout() {
-        if (window.innerWidth <= 768) {
-          // Adjust content heights
-          const modalContents = document.querySelectorAll('.modal-content');
-          modalContents.forEach(content => {
-            const viewportHeight = window.innerHeight;
-            content.style.maxHeight = `${viewportHeight}px`;
-          });
-          
-          // Improve scrolling
-          document.querySelectorAll('.settings-tab-content, .favorites-body, .game-info-body').forEach(elem => {
-            elem.style.overflowY = 'auto';
-            elem.style.webkitOverflowScrolling = 'touch';
-          });
-        }
-      }
-      
-      fixMobileLayout();
-      window.addEventListener('resize', fixMobileLayout);
-      
-      // Add viewport fix for iOS Safari
-      function fixIOSHeight() {
-        // First we get the viewport height and we multiply it by 1% to get a value for a vh unit
-        let vh = window.innerHeight * 0.01;
-        // Then we set the value in the --vh custom property to the root of the document
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-      }
-      
-      fixIOSHeight();
-      window.addEventListener('resize', fixIOSHeight);
-
-      // Fix search functionality
-      const searchInput = document.getElementById('searchInput');
-      const searchSuggestions = document.getElementById('searchSuggestions');
-      
-      if (searchInput && searchSuggestions) {
-        searchInput.addEventListener('input', () => {
-          const query = searchInput.value.toLowerCase().trim();
-          
-          if (!query) {
-            searchSuggestions.classList.remove('active');
-            return;
-          }
-          
-          // Filter games based on search query
-          const suggestions = window.games
-            .filter(game => {
-              return game.title.toLowerCase().includes(query) || 
-                     game.description.toLowerCase().includes(query) ||
-                     game.category.toLowerCase().includes(query);
-            })
-            .slice(0, 5);
-          
-          // Generate and display suggestions with YouTube-like styling
-          searchSuggestions.innerHTML = `
-            <div class="suggestion-header">
-              <i class="ph ph-magnifying-glass"></i>
-              <span>Search results for "<strong>${query}</strong>"</span>
+            <div class="file-item document">
+                <svg viewBox="0 0 24 24">
+                    <path d="M14,10H19.5L14,4.5V10M5,3H15L21,9V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3M5,5V19H19V12H12V5H5Z" fill="#00A4EF"/>
+                </svg>
+                <span>Report.docx</span>
             </div>
-            ${suggestions.map(game => `
-              <div class="suggestion-item" data-game='${JSON.stringify(game)}'>
-                <i class="ph ${game.icon || 'ph-game-controller'}"></i>
-                <span class="game-title">${game.title}</span>
-                <span class="game-category">${game.category}</span>
-              </div>
-            `).join('')}
-            <div class="suggestion-footer">
-              <i class="ph ph-arrow-circle-right"></i>
-              <span>View all results</span>
+            <div class="file-item spreadsheet">
+                <svg viewBox="0 0 24 24">
+                    <path d="M21.17 3.25Q21.5 3.25 21.76 3.5 22 3.74 22 4.08V19.92Q22 20.26 21.76 20.5 21.5 20.75 21.17 20.75H7.83Q7.5 20.75 7.24 20.5 7 20.26 7 19.92V17H2.83Q2.5 17 2.24 16.76 2 16.5 2 16.17V7.83Q2 7.5 2.24 7.24 2.5 7 2.83 7H7V4.08Q7 3.74 7.24 3.5 7.5 3.25 7.83 3.25M7.83 7H12.17Q12.5 7 12.76 7.24 13 7.5 13 7.83V16.17Q13 16.5 12.76 16.76 12.5 17 12.17 17H7.83V19.08Q7.83 19.08 7.83 19.08 7.83 19.08 7.83 19.08H21.17Q21.17 19.08 21.17 19.08 21.17 19.08 21.17 19.08V4.92Q21.17 4.92 21.17 4.92 21.17 4.92 21.17 4.92H7.83Q7.83 4.92 7.83 4.92 7.83 4.92 7.83 4.92M3.83 8.08V15.92H12.17Q12.17 15.92 12.17 15.92 12.17 15.92 12.17 15.92V8.08Q12.17 8.08 12.17 8.08 12.17 8.08 12.17 8.08Z" fill="#107C41"/>
+                </svg>
+                <span>Budget.xlsx</span>
             </div>
-          `;
-          
-          // Add click handlers for suggestions
-          searchSuggestions.querySelectorAll('.suggestion-item').forEach(item => {
-            item.addEventListener('click', () => {
-              try {
-                const gameData = JSON.parse(item.dataset.game);
-                openGame(gameData);
-                searchInput.value = '';
-                searchSuggestions.classList.remove('active');
-              } catch (err) {
-                console.error('Error handling suggestion click:', err);
-              }
-            });
-          });
-          
-          // Add click handler for view all results
-          const viewAllResults = searchSuggestions.querySelector('.suggestion-footer');
-          if (viewAllResults) {
-            viewAllResults.addEventListener('click', () => {
-              displayGames('all', query);
-              searchSuggestions.classList.remove('active');
-              // Show notification
-              showNotification(`Showing results for "${query}"`, 'info');
-            });
-          }
-          
-          searchSuggestions.classList.add('active');
-        });
-        
-        // Hide suggestions when clicking elsewhere
-        document.addEventListener('click', (e) => {
-          if (!searchInput.contains(e.target) && 
-              !searchSuggestions.contains(e.target)) {
-            searchSuggestions.classList.remove('active');
-          }
-        });
-        
-        // Add keyboard navigation for suggestions
-        searchInput.addEventListener('keydown', (e) => {
-          if (!searchSuggestions.classList.contains('active')) return;
-          
-          const suggestions = searchSuggestions.querySelectorAll('.suggestion-item');
-          const footer = searchSuggestions.querySelector('.suggestion-footer');
-          let currentActive = -1;
-          
-          // Find currently active suggestion
-          suggestions.forEach((suggestion, index) => {
-            if (suggestion.classList.contains('active')) {
-              currentActive = index;
-            }
-          });
-          
-          if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            
-            if (currentActive < suggestions.length - 1) {
-              // Activate next suggestion
-              if (currentActive >= 0) suggestions[currentActive].classList.remove('active');
-              suggestions[currentActive + 1].classList.add('active');
-            } else if (currentActive === suggestions.length - 1 && footer) {
-              // Activate footer
-              suggestions[currentActive].classList.remove('active');
-              footer.classList.add('active');
-            } else if (footer && footer.classList.contains('active')) {
-              // Loop back to first suggestion
-              footer.classList.remove('active');
-              if (suggestions.length > 0) suggestions[0].classList.add('active');
-            } else if (suggestions.length > 0) {
-              // Activate first suggestion if none active
-              suggestions[0].classList.add('active');
-            }
-          } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            
-            if (footer && footer.classList.contains('active')) {
-              // Move from footer to last suggestion
-              footer.classList.remove('active');
-              if (suggestions.length > 0) suggestions[suggestions.length - 1].classList.add('active');
-            } else if (currentActive > 0) {
-              // Move to previous suggestion
-              suggestions[currentActive].classList.remove('active');
-              suggestions[currentActive - 1].classList.add('active');
-            } else if (currentActive === 0 && footer) {
-              // Loop to footer
-              suggestions[currentActive].classList.remove('active');
-              footer.classList.add('active');
-            }
-          } else if (e.key === 'Enter') {
-            e.preventDefault();
-            
-            // Trigger click on active element
-            if (currentActive >= 0 && currentActive < suggestions.length) {
-              suggestions[currentActive].click();
-            } else if (footer && footer.classList.contains('active')) {
-              footer.click();
-            }
-          } else if (e.key === 'Escape') {
-            e.preventDefault();
-            searchSuggestions.classList.remove('active');
-          }
-        });
-      }
-    });
-    
-    // Add share functionality to playNowBtn event listeners
-    const shareGameBtn = document.getElementById('shareGameBtn');
-    if (shareGameBtn) {
-      shareGameBtn.addEventListener('click', () => {
-        const gameData = JSON.parse(playNowBtn.getAttribute('data-game') || '{}');
-        if (gameData && gameData.title) {
-          if (navigator.share) {
-            navigator.share({
-              title: `Play ${gameData.title} on GameHub Pro`,
-              text: `Check out ${gameData.title} - ${gameData.description}`,
-              url: window.location.href
-            })
-            .then(() => {
-              // Dispatch game shared event for achievements
-              document.dispatchEvent(new CustomEvent('gameShared'));
-              showNotification('Game shared successfully!', 'success');
-            })
-            .catch(err => {
-              console.error('Share failed:', err);
-              copyGameLinkToClipboard(gameData);
-            });
-          } else {
-            copyGameLinkToClipboard(gameData);
-          }
-        }
-      });
-    }
-    
-    function copyGameLinkToClipboard(game) {
-      const text = `Check out ${game.title} on GameHub Pro: ${window.location.href}`;
-      navigator.clipboard.writeText(text)
-        .then(() => {
-          // Dispatch game shared event for achievements
-          document.dispatchEvent(new CustomEvent('gameShared'));
-          showNotification('Game link copied to clipboard!', 'success');
-        })
-        .catch(err => {
-          console.error('Copy failed:', err);
-          showNotification('Failed to copy link', 'error');
-        });
-    }
-    
-    // Removed Daily Reward Modal
-  </script>
+            <div class="file-item presentation">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15.83,12.5A3.5,3.5 0 0,1 12,9A3.5,3.5 0 0,1 8.17,12.5C7.58,13.34 7.5,14.68 7.5,16C7.5,17.32 8.18,18.5 9,19.17L21.17,19.17C21.73,18.5 22,17.32 22,16 22,14.68 21.42,13.34 20.83,12.5H15.83M19.5,12C19.5,10.23 18.5,8.71 17,7.97V16C18.5,15.29 19.5,13.76 19.5,12M17,21A2,2 0 0,1 15,23A2,2 0 0,1 13,21H7.5C5.67,21 4,19.33 4,17V5C4,3.89 5.67,3 7.5,3H17C18.33,3 19,3.89 19,5V12H17Z" fill="#FF8C00"/>
+                </svg>
+                <span>PowerPoint</span>
+            </div>
+            <div class="file-item pdf">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12,10.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,13.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,10.5M19.5,12C19.5,10.23 18.5,8.71 17,7.97V16C18.5,15.29 19.5,13.76 19.5,12M17,21A2,2 0 0,1 15,23A2,2 0 0,1 13,21H7.5C5.67,21 4,19.33 4,17V5C4,3.89 5.67,3 7.5,3H17C18.33,3 19,3.89 19,5V12H17Z" fill="#FF0000"/>
+                </svg>
+                <span>Manual.pdf</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="window-status-bar">
+    <span>6 items</span>
+    <span>3.24 GB free of 256 GB</span>
+</div>
+
+<div class="window" id="edgeWindow">
+    <div class="window-header">
+        <div class="window-title">
+            <img src="/ChatGPT Image Apr 4, 2025, 09_11_49 PM.png" class="window-icon" style="width: 16px; height: 16px;" alt="Edge">
+            <span>SwiftGuard</span>
+        </div>
+        <div class="window-controls">
+            <button class="minimize">&#8211;</button>
+            <button class="maximize">&#9744;</button>
+            <button class="close">&#10005;</button>
+        </div>
+    </div>
+    <div class="window-content">
+        <iframe id="edgeIframe" src="https://www.bing.com" frameborder="0"></iframe>
+    </div>
+</div>
+
+<!-- Store Window -->
+<div class="window" id="storeWindow">
+    <div class="window-header">
+        <div class="window-title">
+            <svg viewBox="0 0 24 24" class="window-icon">
+                <path d="M3,5H9V11H3V5M5,7V9H7V7H5M11,7H21V9H11V7M11,15H21V17H11V15M5,13V15H7V13H5M3,13H9V19H3V13Z" fill="#7F7F7F"/>
+            </svg>
+            <span>Microsoft Store</span>
+        </div>
+        <div class="window-controls">
+            <button class="minimize">&#8211;</button>
+            <button class="maximize">&#9744;</button>
+            <button class="close">&#10005;</button>
+        </div>
+    </div>
+    <div class="window-content store-content">
+        <div class="store-hero">
+            <h2>Welcome to Flux OS Store</h2>
+            <p>Discover apps and games for your Flux OS device</p>
+        </div>
+        <div class="store-featured">
+            <h3>Featured Apps</h3>
+            <div class="store-apps">
+                <div class="store-app" id="minecraftApp">
+                    <div class="store-app-image">
+                        <img src="/minecraft-icon-13.png" alt="Minecraft" style="width: 80px; height: 80px;">
+                    </div>
+                    <div class="store-app-info">
+                        <div class="store-app-name">Minecraft</div>
+                        <div class="store-app-publisher">Mojang Studios</div>
+                        <div class="store-app-price">Free</div>
+                        <button class="store-app-button">Get</button>
+                    </div>
+                </div>
+                <div class="store-app" id="codZombiesStoreApp">
+                    <div class="store-app-image">
+                        <img src="/Screenshot_2025-04-04_202904-removebg-preview.png" alt="COD Zombies: Portable" style="width: 80px; height: 80px;">
+                    </div>
+                    <div class="store-app-info">
+                        <div class="store-app-name">COD Zombies: Portable</div>
+                        <div class="store-app-publisher">NZ.P Studios</div>
+                        <div class="store-app-price">Free</div>
+                        <button class="store-app-button">Get</button>
+                    </div>
+                </div>
+                <div class="store-app" id="fnafStoreApp">
+                    <div class="store-app-image">
+                        <img src="/fnaf_1_logo_by_esoteriques_df2b7us-fullview-2719929492.jpg" alt="Five Nights at Freddy's" style="width: 80px; height: 80px;">
+                    </div>
+                    <div class="store-app-info">
+                        <div class="store-app-name">Five Nights at Freddy's</div>
+                        <div class="store-app-publisher">Scott Cawthon</div>
+                        <div class="store-app-price">Free</div>
+                        <button class="store-app-button">Get</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- YouTube Window -->
+<div class="window" id="youtubeWindow">
+    <div class="window-header">
+        <div class="window-title">
+            <svg viewBox="0 0 24 24" class="window-icon">
+                <path d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z" fill="#FF0000"/>
+            </svg>
+            <span>YouTube</span>
+        </div>
+        <div class="window-controls">
+            <button class="minimize">&#8211;</button>
+            <button class="maximize">&#9744;</button>
+            <button class="close">&#10005;</button>
+        </div>
+    </div>
+    <div class="window-content">
+        <iframe id="youtubeIframe" src="https://youtube-com.pages.dev/" frameborder="0"></iframe>
+    </div>
+</div>
+
+<!-- Settings Window -->
+<div class="window" id="settingsWindow">
+    <div class="window-header">
+        <div class="window-title">
+            <svg viewBox="0 0 24 24" class="window-icon">
+                <path d="M3,5H9V11H3V5M5,7V9H7V7H5M11,7H21V9H11V7M11,15H21V17H11V15M5,13V15H7V13H5M3,13H9V19H3V13Z" fill="currentColor"/>
+            </svg>
+            <span>Settings</span>
+        </div>
+        <div class="window-controls">
+            <button class="minimize">&#8211;</button>
+            <button class="maximize">&#9744;</button>
+            <button class="close">&#10005;</button>
+        </div>
+    </div>
+    <div class="settings-content">
+        <div class="settings-sidebar">
+            <div class="settings-nav-item active">
+                <svg viewBox="0 0 24 24"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" fill="currentColor"/></svg>
+                <span>System</span>
+            </div>
+            <div class="settings-nav-item">
+                <svg viewBox="0 0 24 24"><path d="M17,1H7A2,2 0 0,0 5,3V21A2,2 0 0,0 7,23A2,2 0 0,0 19,21V3A2,2 0 0,0 17,1M17,19H7V5H17V19M10,10V8H14V10H10M10,12V14H14V12H10Z" fill="currentColor"/></svg>
+                <span>Devices</span>
+            </div>
+            <div class="settings-nav-item">
+                <svg viewBox="0 0 24 24"><path d="M12,11A1,1 0 0,0 11,12A1,1 0 0,0 12,13A1,1 0 0,0 13,12A1,1 0 0,0 12,11M12,16.5C9.5,16.5 7.5,14.5 7.5,12C7.5,9.5 9.5,7.5 12,7.5C14.5,7.5 16.5,9.5 16.5,12C16.5,14.5 14.5,16.5 12,16.5M3,5H1V21A2,2 0 0,0 3,23H19A2,2 0 0,0 21,21V5L3,5Z" fill="currentColor"/></svg>
+                <span>Network</span>
+            </div>
+            <div class="settings-nav-item">
+                <svg viewBox="0 0 24 24"><path d="M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" fill="currentColor"/></svg>
+                <span>Update & Security</span>
+            </div>
+        </div>
+        <div class="settings-main">
+            <h2>System Settings</h2>
+            <div class="settings-group">
+                <h3>Display</h3>
+                <div class="settings-item">
+                    <div>
+                        <div class="settings-item-title">Brightness and color</div>
+                        <div class="settings-item-desc">Adjust brightness level and color settings</div>
+                    </div>
+                    <div class="settings-control">
+                        <input type="range" min="0" max="100" value="70">
+                    </div>
+                </div>
+                <div class="settings-item">
+                    <div>
+                        <div class="settings-item-title">Night light</div>
+                        <div class="settings-item-desc">Reduce blue light emitted from your screen</div>
+                    </div>
+                    <div class="settings-control">
+                        <label class="toggle">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-group">
+                <h3>Sound</h3>
+                <div class="settings-item">
+                    <div>
+                        <div class="settings-item-title">Volume</div>
+                        <div class="settings-item-desc">Adjust system volume</div>
+                    </div>
+                    <div class="settings-control">
+                        <input type="range" min="0" max="100" value="50">
+                    </div>
+                </div>
+                <div class="settings-item">
+                    <div>
+                        <div class="settings-item-title">Sound scheme</div>
+                        <div class="settings-item-desc">Choose system sounds</div>
+                    </div>
+                    <div class="settings-control">
+                        <select>
+                            <option>Windows Default</option>
+                            <option>No Sounds</option>
+                            <option>Windows Minimal</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-group">
+                <h3>Power & battery</h3>
+                <div class="settings-item">
+                    <div>
+                        <div class="settings-item-title">Power mode</div>
+                        <div class="settings-item-desc">Choose how you want to balance performance and battery life</div>
+                    </div>
+                    <div class="settings-control">
+                        <select>
+                            <option>Balanced</option>
+                            <option>Best performance</option>
+                            <option>Battery saver</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- COD Zombies Window -->
+<div class="window" id="codZombiesWindow">
+    <div class="window-header">
+        <div class="window-title">
+            <svg viewBox="0 0 24 24" class="window-icon">
+                <path d="M21,5C19.89,4.65 18.67,4.5 17.5,4.5C15.55,4.5 13.45,4.9 12,6C10.55,4.9 8.45,4.5 6.5,4.5C4.55,4.5 2.45,4.9 1,6V20.65C1,20.9 1.25,21.15 1.5,21.15C1.6,21.15 1.65,21.1 1.75,21.1C3.1,20.45 5.05,20 6.5,20C8.45,20 10.55,20.4 12,21.5C13.35,20.65 15.8,20 17.5,20C19.15,20 20.85,20.3 22.25,21.05C22.35,21.1 22.4,21.1 22.5,21.1C22.75,21.1 23,20.85 23,20.6V6C22.4,5.55 21.75,5.25 21,5M21,18.5C19.9,18.15 18.7,18 17.5,18C15.8,18 13.35,18.65 12,19.5V8C13.35,7.15 15.8,6.5 17.5,6.5C18.7,6.5 19.9,6.65 21,7V18.5Z" fill="#aa3333"/>
+            </svg>
+            <span>COD Zombies: Portable</span>
+        </div>
+        <div class="window-controls">
+            <button class="minimize">&#8211;</button>
+            <button class="maximize">&#9744;</button>
+            <button class="close">&#10005;</button>
+        </div>
+    </div>
+    <div class="window-content">
+        <iframe id="codZombiesIframe" src="https://d3rtzzzsiu7gdr.cloudfront.net/files/nzp-gay/index.html" frameborder="0"></iframe>
+    </div>
+</div>
+
+<!-- Minecraft Window -->
+<div class="window" id="minecraftWindow">
+    <div class="window-header">
+        <div class="window-title">
+            <svg viewBox="0 0 24 24" class="window-icon">
+                <path d="M4,2H20A2,2 0 0,1 22,4V20A2,2 0 0,0 20,22H4A2,2 0 0,0 2,20V4A2,2 0 0,0 4,2M6,6V10H10V6H6M12,6V10H16V6H12M18,6V10H20V6H18Z" fill="#5C7B63"/>
+            </svg>
+            <span>Minecraft</span>
+        </div>
+        <div class="window-controls">
+            <button class="minimize">&#8211;</button>
+            <button class="maximize">&#9744;</button>
+            <button class="close">&#10005;</button>
+        </div>
+    </div>
+    <div class="window-content">
+        <iframe id="minecraftIframe" src="https://eaglercraft.com/mc/1.8.8-wasm/" frameborder="0"></iframe>
+    </div>
+</div>
+
+<!-- FNAF Window -->
+<div class="window" id="fnafWindow">
+    <div class="window-header">
+        <div class="window-title">
+            <svg viewBox="0 0 24 24" class="window-icon">
+                <path d="M12,3C7.58,3 4,4.79 4,7V17C4,19.21 7.59,21 12,21C16.41,21 20,19.21 20,17V7C20,4.79 16.42,3 12,3M12,5C16.08,5 18,6.37 18,7C18,7.63 16.08,9 12,9C7.92,9 6,7.63 6,7C6,6.37 7.92,5 12,5M6,9.12C7.47,9.67 9.61,10 12,10C14.39,10 16.53,9.67 18,9.12V12.41C17.38,12.18 16.64,12 15.85,12C13.18,12 11.87,13.6 10.42,15.36C9.38,16.67 8.88,17 7.65,17C6.09,17 6,15.37 6,15.37V9.12M18,14.09V16C18,16.65 16.17,18 12,18C7.83,18 6,16.65 6,16V15.36C6.64,15.67 7.14,15.91 8.08,15.91C9.89,15.91 10.56,15.28 11.89,13.6C13.16,12 14.23,10 16.15,10C16.83,10 17.45,10.03 18,10.09V14.09Z" fill="#AA0000"/>
+            </svg>
+            <span>Five Nights at Freddy's</span>
+        </div>
+        <div class="window-controls">
+            <button class="minimize">&#8211;</button>
+            <button class="maximize">&#9744;</button>
+            <button class="close">&#10005;</button>
+        </div>
+    </div>
+    <div class="window-content">
+        <iframe id="fnafIframe" src="https://run3.io/popgame/fnaf/fnaf1/" frameborder="0"></iframe>
+    </div>
+</div>
+
+<!-- Login Screen -->
+<div class="login-screen" id="loginScreen">
+    <div class="login-background"></div>
+    <div class="login-overlay">
+        <div class="login-time" id="loginTime">10:30 AM</div>
+        <div class="login-date" id="loginDate">Monday, May 1</div>
+    </div>
+    <div class="login-container">
+        <div class="user-avatar">
+            <svg viewBox="0 0 24 24">
+                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="login-username">User</div>
+        <div class="login-password-container">
+            <input type="password" class="login-password" placeholder="Password" id="loginPassword">
+        </div>
+        <div class="login-hint">Hint: Just press Enter</div>
+        <div class="login-options">
+            <div class="login-option">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" fill="currentColor"/>
+                </svg>
+                <span>Accessibility</span>
+            </div>
+            <div class="login-option">
+                <svg viewBox="0 0 24 24">
+                    <path d="M16.56,5.44L15.11,6.89C16.84,7.94 18,9.83 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12C6,9.83 7.16,7.94 8.88,6.88L7.44,5.44C5.36,6.88 4,9.28 4,12C4,12.69 4.31,13.08 4.69,13.46L4.69,13.46C4.69,13.46 5.38,14.57 6.57,14.57H17.43C18.62,14.57 19.31,13.46 19.31,12C19.31,12 18.69,10.57 17.43,9.43L17.43,9.43C17.43,9.43 16.56,5.44 16.56,5.44M13,3H11V13H13" fill="currentColor"/>
+                </svg>
+                <span>Power</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="setup-wizard" id="setupWizard">
+    <div class="setup-step active" id="welcomeStep">
+        <h1>Welcome to Flux OS</h1>
+        <p>Let's get started with setting up your system.</p>
+        <button class="setup-button" id="startSetup">Get Started</button>
+    </div>
+
+    <div class="setup-step" id="languageStep">
+        <h2>Choose your language</h2>
+        <div class="language-options">
+            <div class="language-option">
+                <input type="radio" name="language" id="en" value="en" checked>
+                <label for="en">English (United States)</label>
+            </div>
+            <div class="language-option">
+                <input type="radio" name="language" id="es" value="es">
+                <label for="es">Español</label>
+            </div>
+            <div class="language-option">
+                <input type="radio" name="language" id="fr" value="fr">
+                <label for="fr">Français</label>
+            </div>
+            <div class="language-option">
+                <input type="radio" name="language" id="de" value="de">
+                <label for="de">Deutsch</label>
+            </div>
+        </div>
+        <button class="setup-button" id="nextLanguage">Next</button>
+    </div>
+
+    <div class="setup-step" id="securityStep">
+        <h2>Set up your PIN</h2>
+        <p>Create a 4-digit PIN to secure your device</p>
+        <div class="pin-setup">
+            <input type="password" maxlength="4" pattern="\d*" id="pinInput" placeholder="Enter PIN">
+            <input type="password" maxlength="4" pattern="\d*" id="pinConfirm" placeholder="Confirm PIN">
+        </div>
+        <div class="pin-hint">
+            <input type="text" id="pinHint" placeholder="PIN hint (optional)">
+        </div>
+        <div class="error-message" id="pinError"></div>
+        <button class="setup-button" id="nextSecurity">Next</button>
+    </div>
+
+    <div class="setup-step" id="gamesStep">
+        <h2>Choose your favorite games</h2>
+        <p>Select the games you'd like to have pre-installed</p>
+        <div class="games-options">
+            <div class="game-option">
+                <input type="checkbox" id="minecraft" value="minecraft">
+                <label for="minecraft">
+                    <img src="/minecraft-icon-13.png" alt="Minecraft">
+                    <span>Minecraft</span>
+                </label>
+            </div>
+            <div class="game-option">
+                <input type="checkbox" id="codZombies" value="codZombies">
+                <label for="codZombies">
+                    <img src="/Screenshot_2025-04-04_202904-removebg-preview.png" alt="COD Zombies">
+                    <span>COD Zombies: Portable</span>
+                </label>
+            </div>
+            <div class="game-option">
+                <input type="checkbox" id="fnaf" value="fnaf">
+                <label for="fnaf">
+                    <img src="/fnaf_1_logo_by_esoteriques_df2b7us-fullview-2719929492.jpg" alt="FNAF">
+                    <span>Five Nights at Freddy's</span>
+                </label>
+            </div>
+        </div>
+        <button class="setup-button" id="nextGames">Next</button>
+    </div>
+
+    <div class="setup-step" id="finishStep">
+        <h2>Setup Complete!</h2>
+        <p>Your system is ready to use.</p>
+        <div class="setup-summary">
+            <div class="summary-item">
+                <span>Language:</span>
+                <span id="summaryLanguage">English (United States)</span>
+            </div>
+            <div class="summary-item">
+                <span>Security:</span>
+                <span>PIN Protection Enabled</span>
+            </div>
+            <div class="summary-item">
+                <span>Games:</span>
+                <span id="summaryGames"></span>
+            </div>
+        </div>
+        <button class="setup-button" id="finishSetup">Start Flux OS</button>
+    </div>
+</div>
+
+<!-- Context menu will be created dynamically via JavaScript -->
+
+<script type="module" src="script.js"></script>
 </body>
 </html>
