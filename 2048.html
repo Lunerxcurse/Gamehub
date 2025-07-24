@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>2048 Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+      color: white;
+      font-family: 'Poppins', Arial, sans-serif;
+      touch-action: none;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      background: rgba(51, 51, 51, 0.7);
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cell {
+      aspect-ratio: 1;
+      width: 100%;
+      background: #444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(18px, 5vw, 28px);
+      font-weight: bold;
+      border-radius: 8px;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.1);
+    }
+    
+    .score {
+      font-size: 28px;
+      margin: 20px;
+      background: rgba(51, 51, 51, 0.7);
+      padding: 10px 25px;
+      border-radius: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .control-btn {
+      background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+      border: none;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .control-btn:active {
+      background: linear-gradient(145deg, #5a5a5a, #4a4a4a);
+      transform: translateY(2px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    #upBtn { grid-column: 2; }
+    #leftBtn { grid-column: 1; grid-row: 2; }
+    #rightBtn { grid-column: 3; grid-row: 2; }
+    #downBtn { grid-column: 2; grid-row: 3; }
+  </style>
+</head>
+<body>
+  <div class="score">Score: <span id="score">0</span></div>
+  <div class="grid" id="grid"></div>
+  
+  <div class="controls">
+    <button id="upBtn" class="control-btn">↑</button>
+    <button id="leftBtn" class="control-btn">←</button>
+    <button id="rightBtn" class="control-btn">→</button>
+    <button id="downBtn" class="control-btn">↓</button>
+  </div>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const scoreDisplay = document.getElementById('score');
+    let score = 0;
+    let board = [];
+    let startX, startY;
+    
+    function initBoard() {
+      board = Array(4).fill().map(() => Array(4).fill(0));
+      addNewTile();
+      addNewTile();
+      renderBoard();
+    }
+    
+    function renderBoard() {
+      grid.innerHTML = '';
+      board.forEach((row, i) => {
+        row.forEach((cell, j) => {
+          const tile = document.createElement('div');
+          tile.className = 'cell';
+          tile.textContent = cell || '';
+          if (cell) {
+            tile.style.backgroundColor = getTileColor(cell);
+            tile.style.color = cell <= 4 ? '#776e65' : '#f9f6f2';
+            tile.style.transform = 'scale(1)';
+            
+            // Add pop animation for new tiles
+            if (cell === 2 || cell === 4) {
+              setTimeout(() => {
+                tile.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                  tile.style.transform = 'scale(1)';
+                }, 100);
+              }, 50);
+            }
+            
+            // Add shadow based on value
+            const shadowIntensity = Math.min(0.5, Math.log2(cell) * 0.05);
+            tile.style.boxShadow = `0 4px 12px rgba(0, 0, 0, ${shadowIntensity})`;
+          }
+          grid.appendChild(tile);
+        });
+      });
+      scoreDisplay.textContent = score;
+    }
+    
+    function getTileColor(value) {
+      const colors = {
+        2: '#eee4da',
+        4: '#ede0c8',
+        8: '#f2b179',
+        16: '#f59563',
+        32: '#f67c5f',
+        64: '#f65e3b',
+        128: '#edcf72',
+        256: '#edcc61',
+        512: '#edc850',
+        1024: '#edc53f',
+        2048: '#edc22e'
+      };
+      return colors[value] || '#cdc1b4';
+    }
+    
+    function addNewTile() {
+      const emptyCells = [];
+      board.forEach((row, i) => {
+        row.forEach((cell, j) => {
+          if (cell === 0) emptyCells.push([i, j]);
+        });
+      });
+      
+      if (emptyCells.length) {
+        const [i, j] = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        board[i][j] = Math.random() < 0.9 ? 2 : 4;
+      }
+    }
+    
+    function slide(row) {
+      const filtered = row.filter(cell => cell !== 0);
+      for (let i = 0; i < filtered.length - 1; i++) {
+        if (filtered[i] === filtered[i + 1]) {
+          filtered[i] *= 2;
+          score += filtered[i];
+          filtered[i + 1] = 0;
+        }
+      }
+      const newRow = filtered.filter(cell => cell !== 0);
+      return newRow.concat(Array(4 - newRow.length).fill(0));
+    }
+    
+    function moveLeft() {
+      const newBoard = board.map(row => slide(row));
+      if (JSON.stringify(newBoard) !== JSON.stringify(board)) {
+        board = newBoard;
+        addNewTile();
+        renderBoard();
+      }
+    }
+    
+    function moveRight() {
+      const newBoard = board.map(row => slide(row.reverse()).reverse());
+      if (JSON.stringify(newBoard) !== JSON.stringify(board)) {
+        board = newBoard;
+        addNewTile();
+        renderBoard();
+      }
+    }
+    
+    function moveUp() {
+      let rotated = rotateBoard();
+      rotated = rotated.map(row => slide(row));
+      board = rotateBoard(rotated, 3);
+      addNewTile();
+      renderBoard();
+    }
+    
+    function moveDown() {
+      let rotated = rotateBoard();
+      rotated = rotated.map(row => slide(row.reverse()).reverse());
+      board = rotateBoard(rotated, 3);
+      addNewTile();
+      renderBoard();
+    }
+    
+    function rotateBoard(matrix = board, times = 1) {
+      let rotated = matrix;
+      for (let i = 0; i < times; i++) {
+        rotated = rotated[0].map((_, index) =>
+          rotated.map(row => row[index]).reverse()
+        );
+      }
+      return rotated;
+    }
+    
+    grid.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, false);
+
+    grid.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+    }, false);
+
+    grid.addEventListener('touchend', (e) => {
+      const diffX = startX - e.changedTouches[0].clientX;
+      const diffY = startY - e.changedTouches[0].clientY;
+      
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+          moveLeft();
+        } else {
+          moveRight();
+        }
+      } else {
+        if (diffY > 0) {
+          moveUp();
+        } else {
+          moveDown();
+        }
+      }
+    }, false);
+
+    document.getElementById('upBtn').addEventListener('click', moveUp);
+    document.getElementById('leftBtn').addEventListener('click', moveLeft);
+    document.getElementById('rightBtn').addEventListener('click', moveRight);
+    document.getElementById('downBtn').addEventListener('click', moveDown);
+    
+    document.addEventListener('keydown', (e) => {
+      switch(e.key) {
+        case 'ArrowLeft':
+          moveLeft();
+          break;
+        case 'ArrowRight':
+          moveRight();
+          break;
+        case 'ArrowUp':
+          moveUp();
+          break;
+        case 'ArrowDown':
+          moveDown();
+          break;
+      }
+    });
+    
+    initBoard();
+  </script>
+</body>
+</html>
